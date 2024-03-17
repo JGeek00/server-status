@@ -350,6 +350,7 @@
       }
     },
     "JGeek00" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
