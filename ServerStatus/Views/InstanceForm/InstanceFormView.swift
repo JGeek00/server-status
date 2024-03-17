@@ -88,7 +88,7 @@ struct InstanceFormView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        instanceFormModel.saveInstance()
+                        instanceFormModel.saveInstance(instancesModel: instancesModel)
                     } label: {
                         Text("Save")
                     }

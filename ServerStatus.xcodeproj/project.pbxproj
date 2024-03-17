@@ -33,6 +33,8 @@
 		0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB662BA71475007A8328 /* InstanceModel.swift */; };
 		0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */; };
 		0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */; };
+		0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB722BA77007007A8328 /* StatusView.swift */; };
+		0DC4DB752BA77032007A8328 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB742BA77032007A8328 /* StatusViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		0DC4DB662BA71475007A8328 /* InstanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceModel.swift; sourceTree = "<group>"; };
 		0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceUrl.swift; sourceTree = "<group>"; };
 		0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersInstancesList.swift; sourceTree = "<group>"; };
+		0DC4DB722BA77007007A8328 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		0DC4DB742BA77032007A8328 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 		0DAD5E2D2BA66568006D3F52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0DC4DB712BA76FF5007A8328 /* Status */,
 				0DAD5E462BA681A0006D3F52 /* Settings */,
 				0DAD5E332BA66791006D3F52 /* InstanceForm */,
 				0DAD5E322BA6678A006D3F52 /* NoInstances */,
@@ -183,6 +188,7 @@
 				0DAD5E372BA667FD006D3F52 /* InstanceFormViewModel.swift */,
 				0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */,
 				0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */,
+				0DC4DB742BA77032007A8328 /* StatusViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -213,6 +219,14 @@
 				0DAD5E512BA68FF0006D3F52 /* Gauge.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0DC4DB712BA76FF5007A8328 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				0DC4DB722BA77007007A8328 /* StatusView.swift */,
+			);
+			path = Status;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +310,7 @@
 				0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */,
 				0DAD5E382BA667FD006D3F52 /* InstanceFormViewModel.swift in Sources */,
 				0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */,
+				0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */,
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
 				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
 				0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */,
@@ -303,6 +318,7 @@
 				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
 				0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */,
 				0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */,
+				0DC4DB752BA77032007A8328 /* StatusViewModel.swift in Sources */,
 				0DAD5E5D2BA69B53006D3F52 /* Urls.swift in Sources */,
 				0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */,
 				0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */,

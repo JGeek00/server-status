@@ -420,6 +420,16 @@
         }
       }
     },
+    "Server status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado del servidor"
+          }
+        }
+      }
+    },
     "Set as default server" : {
       "localizations" : {
         "es" : {

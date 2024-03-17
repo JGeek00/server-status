@@ -3,16 +3,33 @@ import CoreData
 
 class InstancesViewModel: ObservableObject {
     @Published var defaultServer = ""
+    @Published var selectedInstance: ServerInstances?
     
     init() {
-        self.defaultServer = UserDefaults.standard.object(forKey: StorageKeys.defaultServer) as? String ?? ""
+        let def = UserDefaults.standard.object(forKey: StorageKeys.defaultServer) as? String ?? ""
+        defaultServer = def
+        if def != "" {
+            let instances = fetchInstances(instanceId: def)
+            if !instances.isEmpty {
+                selectedInstance = instances[0]
+            }
+        }
+        else {
+            let instances = fetchInstances(instanceId: nil)
+            if !instances.isEmpty {
+                selectedInstance = instances[0]
+            }
+        }
     }
     
     private let persistenceController = PersistenceController.shared
     
-    private func fetchInstances() -> [ServerInstances] {
+    private func fetchInstances(instanceId: String?) -> [ServerInstances] {
         var data: [ServerInstances] = []
         let fetchRequest: NSFetchRequest<ServerInstances> = ServerInstances.fetchRequest()
+        if instanceId != nil {
+            fetchRequest.predicate = NSPredicate(format: "id == %@", instanceId! as CVarArg)
+        }
         do {
             data = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
         } catch {
@@ -47,9 +64,10 @@ class InstancesViewModel: ObservableObject {
         do {
             try managedContext.save()
             
-            let newInstances = fetchInstances()
+            let newInstances = fetchInstances(instanceId: nil)
             if newInstances.count == 1 {
                 setDefaultInstance(instance: newInstances[0])
+                selectedInstance = newInstances[0]
             }
         } catch {
             print("Failed to save object: \(error)")
@@ -96,7 +114,7 @@ class InstancesViewModel: ObservableObject {
             managedContext.delete(instance)
             try managedContext.save()
             
-            let instances = fetchInstances()
+            let instances = fetchInstances(instanceId: nil)
             if instances.isEmpty {
                 setDefaultInstance(instance: nil)
             }

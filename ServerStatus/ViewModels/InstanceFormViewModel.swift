@@ -18,8 +18,6 @@ class InstanceFormViewModel: ObservableObject {
     @Published var basicAuthUser = ""
     @Published var basicAuthPassword = ""
     
-    private var instancesModel = InstancesViewModel()
-    
     private let persistenceController = PersistenceController.shared
     
     func reset() {
@@ -85,7 +83,7 @@ class InstanceFormViewModel: ObservableObject {
         }
     }
     
-    func saveInstance() {
+    func saveInstance(instancesModel: InstancesViewModel) {
         if editId != "" {
             instancesModel.editInstance(
                 id: editId,
