@@ -1,9 +1,11 @@
 import Foundation
 import Combine
+import CoreData
 
-class CreateInstanceViewModel: ObservableObject {
+class InstanceFormViewModel: ObservableObject {
     @Published var modalOpen = false
     
+    @Published var editId = ""
     @Published var name = ""
     @Published var connectionMethod = "HTTP"
     @Published var ipDomain = ""
@@ -18,7 +20,10 @@ class CreateInstanceViewModel: ObservableObject {
     
     private var instancesModel = InstancesViewModel()
     
+    private let persistenceController = PersistenceController.shared
+    
     func reset() {
+        editId = ""
         name = ""
         connectionMethod = "HTTP"
         ipDomain = ""
@@ -80,19 +85,33 @@ class CreateInstanceViewModel: ObservableObject {
         }
     }
     
-    func createInstance() {
-        instancesModel.createInstance(
-            id: UUID().uuidString,
-            name: name,
-            connectionMethod: String(connectionMethod).lowercased(),
-            ipDomain: ipDomain,
-            port: port != "" ? port : nil,
-            path: path != "" ? path : nil,
-            useBasicAuth: useBasicAuth,
-            basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
-            basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
-        )
+    func saveInstance() {
+        if editId != "" {
+            instancesModel.editInstance(
+                id: editId,
+                name: name,
+                connectionMethod: String(connectionMethod).lowercased(),
+                ipDomain: ipDomain,
+                port: port != "" ? port : nil,
+                path: path != "" ? path : nil,
+                useBasicAuth: useBasicAuth,
+                basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
+                basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
+            )
+        }
+        else {
+            instancesModel.createInstance(
+                id: UUID().uuidString,
+                name: name,
+                connectionMethod: String(connectionMethod).lowercased(),
+                ipDomain: ipDomain,
+                port: port != "" ? port : nil,
+                path: path != "" ? path : nil,
+                useBasicAuth: useBasicAuth,
+                basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
+                basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
+            )
+        }
         modalOpen.toggle()
-        reset()
     }
 }

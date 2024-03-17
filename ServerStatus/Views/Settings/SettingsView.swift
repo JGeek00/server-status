@@ -3,55 +3,14 @@ import SafariServices
 
 struct SettingsView: View {
     @EnvironmentObject var appConfig: AppConfigViewModel
+    @EnvironmentObject var instancesModel: InstancesViewModel
     @ObservedObject var settingsModel: SettingsViewModel
-    @EnvironmentObject var instancesModel : InstancesViewModel
-    @StateObject var createInstanceModel = CreateInstanceViewModel()
-    
-    @FetchRequest(
-        entity: ServerInstances.entity(),
-        sortDescriptors: [],
-        animation: .spring
-    ) var instances: FetchedResults<ServerInstances>
+    @StateObject var instanceFormModel = InstanceFormViewModel()
     
     var body: some View {
         NavigationView {
             List {
-                Section("Server instances") {
-                    ForEach(instances) {
-                        item in HStack {
-                            Image(systemName: "server.rack")
-                            Spacer().frame(width: 16)
-                            VStack(alignment: .leading) {
-                                Text(item.name ?? "")
-                                Spacer().frame(height: 4)
-                                Text(generateInstanceUrl(instance: item))
-                                    .font(.system(size: 14))
-                            }
-                        }.contextMenu(ContextMenu(menuItems: {
-                            Button(role: .destructive) {
-                                settingsModel.selectedItemDelete = item
-                                settingsModel.confirmDeleteOpen.toggle()
-                            } label: {
-                                Label {
-                                    Text("Delete")
-                                } icon: {
-                                    Image(systemName: "trash")
-                                }
-                                
-                            }
-                        }))
-                    }
-                    Button {
-                        createInstanceModel.modalOpen.toggle()
-                    } label: {
-                        HStack {
-                            Spacer().frame(width: 4)
-                            Image(systemName: "plus")
-                            Spacer().frame(width: 18)
-                            Text("New instance")
-                        }
-                    }
-                }
+                ServersInstancesList(instanceFormModel: instanceFormModel, settingsModel: settingsModel)
                 Section("Theme") {
                     ThemeButton(
                         thisOption: Enums.Theme.system,
@@ -123,10 +82,9 @@ struct SettingsView: View {
         .fullScreenCover(isPresented: $settingsModel.safariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.statusRepo)!).ignoresSafeArea()
         })
-        .sheet(isPresented: $createInstanceModel.modalOpen, content: {
-            CreateInstanceView(createInstanceModel: createInstanceModel)
+        .sheet(isPresented: $instanceFormModel.modalOpen, content: {
+            InstanceFormView(instanceFormModel: instanceFormModel)
         })
-        
         .alert("Delete instance", isPresented:$settingsModel.confirmDeleteOpen, actions: {
             Button(role: .destructive) {
                 instancesModel.deleteInstance(instance: settingsModel.selectedItemDelete!)

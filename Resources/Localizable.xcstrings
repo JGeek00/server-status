@@ -28,6 +28,16 @@
         }
       }
     },
+    "All values are valid" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los valores son válidos"
+          }
+        }
+      }
+    },
     "App version" : {
       "localizations" : {
         "es" : {
@@ -159,6 +169,16 @@
         }
       }
     },
+    "Default server" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servidor por defecto"
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "es" : {
@@ -175,6 +195,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar instancia"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        }
+      }
+    },
+    "Edit instance" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar instancia"
           }
         }
       }
@@ -376,6 +416,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre del servidor"
+          }
+        }
+      }
+    },
+    "Set as default server" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir como servidor por defecto"
           }
         }
       }

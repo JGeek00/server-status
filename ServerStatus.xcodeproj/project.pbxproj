@@ -14,8 +14,8 @@
 		0DAD5E222BA6648F006D3F52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E212BA6648F006D3F52 /* Assets.xcassets */; };
 		0DAD5E262BA6648F006D3F52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E252BA6648F006D3F52 /* Preview Assets.xcassets */; };
 		0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E2F2BA6657E006D3F52 /* NoInstancesView.swift */; };
-		0DAD5E352BA667B7006D3F52 /* CreateInstanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E342BA667B7006D3F52 /* CreateInstanceView.swift */; };
-		0DAD5E382BA667FD006D3F52 /* CreateInstanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E372BA667FD006D3F52 /* CreateInstanceViewModel.swift */; };
+		0DAD5E352BA667B7006D3F52 /* InstanceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E342BA667B7006D3F52 /* InstanceFormView.swift */; };
+		0DAD5E382BA667FD006D3F52 /* InstanceFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E372BA667FD006D3F52 /* InstanceFormViewModel.swift */; };
 		0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E3A2BA670DE006D3F52 /* Regexps.swift */; };
 		0DAD5E412BA67A06006D3F52 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */; };
 		0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E472BA681AB006D3F52 /* SettingsView.swift */; };
@@ -32,6 +32,7 @@
 		0DC4DB652BA713CD007A8328 /* InstancesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */; };
 		0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB662BA71475007A8328 /* InstanceModel.swift */; };
 		0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */; };
+		0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +45,8 @@
 		0DAD5E232BA6648F006D3F52 /* ServerStatus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ServerStatus.entitlements; sourceTree = "<group>"; };
 		0DAD5E252BA6648F006D3F52 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DAD5E2F2BA6657E006D3F52 /* NoInstancesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstancesView.swift; sourceTree = "<group>"; };
-		0DAD5E342BA667B7006D3F52 /* CreateInstanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstanceView.swift; sourceTree = "<group>"; };
-		0DAD5E372BA667FD006D3F52 /* CreateInstanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstanceViewModel.swift; sourceTree = "<group>"; };
+		0DAD5E342BA667B7006D3F52 /* InstanceFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceFormView.swift; sourceTree = "<group>"; };
+		0DAD5E372BA667FD006D3F52 /* InstanceFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceFormViewModel.swift; sourceTree = "<group>"; };
 		0DAD5E3A2BA670DE006D3F52 /* Regexps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regexps.swift; sourceTree = "<group>"; };
 		0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0DAD5E472BA681AB006D3F52 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancesViewModel.swift; sourceTree = "<group>"; };
 		0DC4DB662BA71475007A8328 /* InstanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceModel.swift; sourceTree = "<group>"; };
 		0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceUrl.swift; sourceTree = "<group>"; };
+		0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersInstancesList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				0DAD5E462BA681A0006D3F52 /* Settings */,
-				0DAD5E332BA66791006D3F52 /* CreateInstance */,
+				0DAD5E332BA66791006D3F52 /* InstanceForm */,
 				0DAD5E322BA6678A006D3F52 /* NoInstances */,
 				0DAD5E1F2BA6648E006D3F52 /* RootView.swift */,
 			);
@@ -138,12 +140,12 @@
 			path = NoInstances;
 			sourceTree = "<group>";
 		};
-		0DAD5E332BA66791006D3F52 /* CreateInstance */ = {
+		0DAD5E332BA66791006D3F52 /* InstanceForm */ = {
 			isa = PBXGroup;
 			children = (
-				0DAD5E342BA667B7006D3F52 /* CreateInstanceView.swift */,
+				0DAD5E342BA667B7006D3F52 /* InstanceFormView.swift */,
 			);
-			path = CreateInstance;
+			path = InstanceForm;
 			sourceTree = "<group>";
 		};
 		0DAD5E362BA667F2006D3F52 /* Models */ = {
@@ -178,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				0DAD5E532BA690C9006D3F52 /* AppConfigViewModel.swift */,
-				0DAD5E372BA667FD006D3F52 /* CreateInstanceViewModel.swift */,
+				0DAD5E372BA667FD006D3F52 /* InstanceFormViewModel.swift */,
 				0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */,
 				0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */,
 			);
@@ -200,6 +202,7 @@
 			children = (
 				0DAD5E472BA681AB006D3F52 /* SettingsView.swift */,
 				0DAD5E4C2BA684CF006D3F52 /* ThemeButton.swift */,
+				0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -289,9 +292,10 @@
 				0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */,
 				0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */,
 				0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */,
-				0DAD5E352BA667B7006D3F52 /* CreateInstanceView.swift in Sources */,
+				0DAD5E352BA667B7006D3F52 /* InstanceFormView.swift in Sources */,
 				0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */,
-				0DAD5E382BA667FD006D3F52 /* CreateInstanceViewModel.swift in Sources */,
+				0DAD5E382BA667FD006D3F52 /* InstanceFormViewModel.swift in Sources */,
+				0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */,
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
 				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
 				0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */,

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct NoInstancesView: View {
-    @StateObject var createInstanceModel = CreateInstanceViewModel()
+    @StateObject var instanceFormModel = InstanceFormViewModel()
     @StateObject var settingsModel = SettingsViewModel()
     
     var body: some View {
@@ -14,8 +14,8 @@ struct NoInstancesView: View {
                 .multilineTextAlignment(.center)
             Spacer().frame(height: 50)
             Button {
-                createInstanceModel.reset()
-                createInstanceModel.modalOpen.toggle()
+                instanceFormModel.reset()
+                instanceFormModel.modalOpen.toggle()
             } label: {
                 Label {
                     Text("Add instance")
@@ -41,8 +41,8 @@ struct NoInstancesView: View {
             }
         })
         .padding()
-        .sheet(isPresented: $createInstanceModel.modalOpen, content: {
-            CreateInstanceView(createInstanceModel: createInstanceModel)
+        .sheet(isPresented: $instanceFormModel.modalOpen, content: {
+            InstanceFormView(instanceFormModel: instanceFormModel)
         }).sheet(isPresented: $settingsModel.modalOpen, content: {
             SettingsView(settingsModel: settingsModel)
         })
