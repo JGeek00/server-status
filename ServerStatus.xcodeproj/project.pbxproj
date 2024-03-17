@@ -10,9 +10,24 @@
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
-		0DAD5E202BA6648E006D3F52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1F2BA6648E006D3F52 /* ContentView.swift */; };
+		0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1F2BA6648E006D3F52 /* RootView.swift */; };
 		0DAD5E222BA6648F006D3F52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E212BA6648F006D3F52 /* Assets.xcassets */; };
 		0DAD5E262BA6648F006D3F52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E252BA6648F006D3F52 /* Preview Assets.xcassets */; };
+		0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E2F2BA6657E006D3F52 /* NoInstancesView.swift */; };
+		0DAD5E352BA667B7006D3F52 /* CreateInstanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E342BA667B7006D3F52 /* CreateInstanceView.swift */; };
+		0DAD5E382BA667FD006D3F52 /* CreateInstanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E372BA667FD006D3F52 /* CreateInstanceViewModel.swift */; };
+		0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E3A2BA670DE006D3F52 /* Regexps.swift */; };
+		0DAD5E412BA67A06006D3F52 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */; };
+		0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E472BA681AB006D3F52 /* SettingsView.swift */; };
+		0DAD5E4A2BA682AC006D3F52 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E492BA682AC006D3F52 /* Enums.swift */; };
+		0DAD5E4D2BA684CF006D3F52 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E4C2BA684CF006D3F52 /* ThemeButton.swift */; };
+		0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */; };
+		0DAD5E522BA68FF0006D3F52 /* Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E512BA68FF0006D3F52 /* Gauge.swift */; };
+		0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E532BA690C9006D3F52 /* AppConfigViewModel.swift */; };
+		0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E5A2BA697F6006D3F52 /* StorageKeys.swift */; };
+		0DAD5E5D2BA69B53006D3F52 /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E5C2BA69B53006D3F52 /* Urls.swift */; };
+		0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E662BA69F80006D3F52 /* SafariView.swift */; };
+		0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB602BA6A175007A8328 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +35,25 @@
 		0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStatusApp.swift; sourceTree = "<group>"; };
 		0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0DAD5E1D2BA6648E006D3F52 /* ServerStatus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ServerStatus.xcdatamodel; sourceTree = "<group>"; };
-		0DAD5E1F2BA6648E006D3F52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0DAD5E1F2BA6648E006D3F52 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		0DAD5E212BA6648F006D3F52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DAD5E232BA6648F006D3F52 /* ServerStatus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ServerStatus.entitlements; sourceTree = "<group>"; };
 		0DAD5E252BA6648F006D3F52 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0DAD5E2F2BA6657E006D3F52 /* NoInstancesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstancesView.swift; sourceTree = "<group>"; };
+		0DAD5E342BA667B7006D3F52 /* CreateInstanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstanceView.swift; sourceTree = "<group>"; };
+		0DAD5E372BA667FD006D3F52 /* CreateInstanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstanceViewModel.swift; sourceTree = "<group>"; };
+		0DAD5E3A2BA670DE006D3F52 /* Regexps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regexps.swift; sourceTree = "<group>"; };
+		0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		0DAD5E472BA681AB006D3F52 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0DAD5E492BA682AC006D3F52 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0DAD5E4C2BA684CF006D3F52 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
+		0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		0DAD5E512BA68FF0006D3F52 /* Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gauge.swift; sourceTree = "<group>"; };
+		0DAD5E532BA690C9006D3F52 /* AppConfigViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigViewModel.swift; sourceTree = "<group>"; };
+		0DAD5E5A2BA697F6006D3F52 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		0DAD5E5C2BA69B53006D3F52 /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
+		0DAD5E662BA69F80006D3F52 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		0DC4DB602BA6A175007A8328 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +70,9 @@
 		0DAD5E0C2BA6648E006D3F52 = {
 			isa = PBXGroup;
 			children = (
+				0DAD5E212BA6648F006D3F52 /* Assets.xcassets */,
+				0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */,
+				0DAD5E3F2BA679DF006D3F52 /* Resources */,
 				0DAD5E172BA6648E006D3F52 /* ServerStatus */,
 				0DAD5E162BA6648E006D3F52 /* Products */,
 			);
@@ -56,12 +89,14 @@
 		0DAD5E172BA6648E006D3F52 /* ServerStatus */ = {
 			isa = PBXGroup;
 			children = (
+				0DAD5E502BA68FE4006D3F52 /* Components */,
+				0DAD5E432BA680C3006D3F52 /* Utils */,
+				0DAD5E362BA667F2006D3F52 /* Models */,
+				0DAD5E2D2BA66568006D3F52 /* Views */,
+				0DAD5E422BA6800F006D3F52 /* ViewModels */,
+				0DAD5E392BA670B5006D3F52 /* Constants */,
 				0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */,
-				0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */,
-				0DAD5E1F2BA6648E006D3F52 /* ContentView.swift */,
-				0DAD5E212BA6648F006D3F52 /* Assets.xcassets */,
 				0DAD5E232BA6648F006D3F52 /* ServerStatus.entitlements */,
-				0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */,
 				0DAD5E242BA6648F006D3F52 /* Preview Content */,
 			);
 			path = ServerStatus;
@@ -73,6 +108,96 @@
 				0DAD5E252BA6648F006D3F52 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0DAD5E2D2BA66568006D3F52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E462BA681A0006D3F52 /* Settings */,
+				0DAD5E332BA66791006D3F52 /* CreateInstance */,
+				0DAD5E322BA6678A006D3F52 /* NoInstances */,
+				0DAD5E1F2BA6648E006D3F52 /* RootView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DAD5E322BA6678A006D3F52 /* NoInstances */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E2F2BA6657E006D3F52 /* NoInstancesView.swift */,
+			);
+			path = NoInstances;
+			sourceTree = "<group>";
+		};
+		0DAD5E332BA66791006D3F52 /* CreateInstance */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E342BA667B7006D3F52 /* CreateInstanceView.swift */,
+			);
+			path = CreateInstance;
+			sourceTree = "<group>";
+		};
+		0DAD5E362BA667F2006D3F52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0DAD5E392BA670B5006D3F52 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E3A2BA670DE006D3F52 /* Regexps.swift */,
+				0DAD5E492BA682AC006D3F52 /* Enums.swift */,
+				0DAD5E5A2BA697F6006D3F52 /* StorageKeys.swift */,
+				0DAD5E5C2BA69B53006D3F52 /* Urls.swift */,
+				0DC4DB602BA6A175007A8328 /* Strings.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		0DAD5E3F2BA679DF006D3F52 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0DAD5E422BA6800F006D3F52 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E532BA690C9006D3F52 /* AppConfigViewModel.swift */,
+				0DAD5E372BA667FD006D3F52 /* CreateInstanceViewModel.swift */,
+				0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0DAD5E432BA680C3006D3F52 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */,
+				0DAD5E662BA69F80006D3F52 /* SafariView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0DAD5E462BA681A0006D3F52 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E472BA681AB006D3F52 /* SettingsView.swift */,
+				0DAD5E4C2BA684CF006D3F52 /* ThemeButton.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0DAD5E502BA68FE4006D3F52 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0DAD5E512BA68FF0006D3F52 /* Gauge.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,6 +242,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 0DAD5E0C2BA6648E006D3F52;
 			productRefGroup = 0DAD5E162BA6648E006D3F52 /* Products */;
@@ -135,6 +261,7 @@
 			files = (
 				0DAD5E262BA6648F006D3F52 /* Preview Assets.xcassets in Resources */,
 				0DAD5E222BA6648F006D3F52 /* Assets.xcassets in Resources */,
+				0DAD5E412BA67A06006D3F52 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,9 +273,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */,
+				0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */,
 				0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */,
-				0DAD5E202BA6648E006D3F52 /* ContentView.swift in Sources */,
+				0DAD5E352BA667B7006D3F52 /* CreateInstanceView.swift in Sources */,
+				0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */,
+				0DAD5E382BA667FD006D3F52 /* CreateInstanceViewModel.swift in Sources */,
+				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
+				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
+				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,
+				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
+				0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */,
+				0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */,
+				0DAD5E5D2BA69B53006D3F52 /* Urls.swift in Sources */,
+				0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */,
 				0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */,
+				0DAD5E522BA68FF0006D3F52 /* Gauge.swift in Sources */,
+				0DAD5E4A2BA682AC006D3F52 /* Enums.swift in Sources */,
+				0DAD5E4D2BA684CF006D3F52 /* ThemeButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +423,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Server Status";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -296,7 +439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jgeek00.ServerStatus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -320,6 +463,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Server Status";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -334,7 +479,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jgeek00.ServerStatus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

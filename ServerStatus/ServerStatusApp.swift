@@ -1,20 +1,17 @@
-//
-//  ServerStatusApp.swift
-//  ServerStatus
-//
-//  Created by Juan Gilsanz Polo on 17/3/24.
-//
-
 import SwiftUI
 
 @main
-struct ServerStatusApp: App {
+struct ServerStatusApp: App {    
     let persistenceController = PersistenceController.shared
+    let appConfigViewModel = AppConfigViewModel()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.locale, .init(identifier: "en"))
+                .environment(\.locale, .init(identifier: "es"))
+                .environmentObject(appConfigViewModel)
         }
     }
 }
