@@ -47,10 +47,3 @@ struct StorageData: View {
         }
     }
 }
-
-#Preview {
-    StorageData(
-        gaugeSize: (UIScreen.main.bounds.width*0.5)/2.0,
-        containerWidth: UIScreen.main.bounds.width - 32
-    ).frame(height: 40)
-}

@@ -42,7 +42,3 @@ struct NetworkData: View {
         }
     }
 }
-
-#Preview {
-    NetworkData()
-}

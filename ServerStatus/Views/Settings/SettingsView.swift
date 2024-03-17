@@ -28,6 +28,12 @@ struct SettingsView: View {
                         onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
                     )
                 }
+                Section("App settings") {
+                    Toggle("Show server URL on details screen", isOn: $appConfig.showUrlDetailsScreen)
+                        .onChange(of: appConfig.showUrlDetailsScreen) { oldValue, newValue in
+                            appConfig.updateSettingsToggle(key: StorageKeys.showServerUrlDetails, value: newValue)
+                        }
+                }
                 Section("About the app") {
                     Button {
                         settingsModel.safariOpen.toggle()

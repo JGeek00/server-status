@@ -45,7 +45,3 @@ struct CpuData: View {
         }
     }
 }
-
-#Preview {
-    CpuData(gaugeSize: (UIScreen.main.bounds.width*0.5)/2.0)
-}
