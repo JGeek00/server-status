@@ -29,6 +29,9 @@
 		0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E662BA69F80006D3F52 /* SafariView.swift */; };
 		0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB602BA6A175007A8328 /* Strings.swift */; };
 		0DC4DB632BA6A358007A8328 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 0DC4DB622BA6A358007A8328 /* Readme.md */; };
+		0DC4DB652BA713CD007A8328 /* InstancesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */; };
+		0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB662BA71475007A8328 /* InstanceModel.swift */; };
+		0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		0DAD5E662BA69F80006D3F52 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		0DC4DB602BA6A175007A8328 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0DC4DB622BA6A358007A8328 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancesViewModel.swift; sourceTree = "<group>"; };
+		0DC4DB662BA71475007A8328 /* InstanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceModel.swift; sourceTree = "<group>"; };
+		0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceUrl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				0DC4DB622BA6A358007A8328 /* Readme.md */,
-				0DAD5E212BA6648F006D3F52 /* Assets.xcassets */,
 				0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */,
+				0DAD5E212BA6648F006D3F52 /* Assets.xcassets */,
 				0DAD5E3F2BA679DF006D3F52 /* Resources */,
 				0DAD5E172BA6648E006D3F52 /* ServerStatus */,
 				0DAD5E162BA6648E006D3F52 /* Products */,
@@ -92,10 +98,10 @@
 		0DAD5E172BA6648E006D3F52 /* ServerStatus */ = {
 			isa = PBXGroup;
 			children = (
+				0DAD5E2D2BA66568006D3F52 /* Views */,
 				0DAD5E502BA68FE4006D3F52 /* Components */,
 				0DAD5E432BA680C3006D3F52 /* Utils */,
 				0DAD5E362BA667F2006D3F52 /* Models */,
-				0DAD5E2D2BA66568006D3F52 /* Views */,
 				0DAD5E422BA6800F006D3F52 /* ViewModels */,
 				0DAD5E392BA670B5006D3F52 /* Constants */,
 				0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */,
@@ -143,6 +149,7 @@
 		0DAD5E362BA667F2006D3F52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0DC4DB662BA71475007A8328 /* InstanceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,6 +180,7 @@
 				0DAD5E532BA690C9006D3F52 /* AppConfigViewModel.swift */,
 				0DAD5E372BA667FD006D3F52 /* CreateInstanceViewModel.swift */,
 				0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */,
+				0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 			children = (
 				0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */,
 				0DAD5E662BA69F80006D3F52 /* SafariView.swift */,
+				0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -279,11 +288,13 @@
 				0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */,
 				0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */,
 				0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */,
+				0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */,
 				0DAD5E352BA667B7006D3F52 /* CreateInstanceView.swift in Sources */,
 				0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */,
 				0DAD5E382BA667FD006D3F52 /* CreateInstanceViewModel.swift in Sources */,
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
 				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
+				0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */,
 				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,
 				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
 				0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */,
@@ -291,6 +302,7 @@
 				0DAD5E5D2BA69B53006D3F52 /* Urls.swift in Sources */,
 				0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */,
 				0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */,
+				0DC4DB652BA713CD007A8328 /* InstancesViewModel.swift in Sources */,
 				0DAD5E522BA68FF0006D3F52 /* Gauge.swift in Sources */,
 				0DAD5E4A2BA682AC006D3F52 /* Enums.swift in Sources */,
 				0DAD5E4D2BA684CF006D3F52 /* ThemeButton.swift in Sources */,

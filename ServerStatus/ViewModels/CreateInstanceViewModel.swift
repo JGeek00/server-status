@@ -4,6 +4,7 @@ import Combine
 class CreateInstanceViewModel: ObservableObject {
     @Published var modalOpen = false
     
+    @Published var name = ""
     @Published var connectionMethod = "HTTP"
     @Published var ipDomain = ""
     @Published var ipDomainValid = true
@@ -15,7 +16,10 @@ class CreateInstanceViewModel: ObservableObject {
     @Published var basicAuthUser = ""
     @Published var basicAuthPassword = ""
     
+    private var instancesModel = InstancesViewModel()
+    
     func reset() {
+        name = ""
         connectionMethod = "HTTP"
         ipDomain = ""
         ipDomainValid = true
@@ -74,5 +78,21 @@ class CreateInstanceViewModel: ObservableObject {
         else {
             pathValid = false
         }
+    }
+    
+    func createInstance() {
+        instancesModel.createInstance(
+            id: UUID().uuidString,
+            name: name,
+            connectionMethod: String(connectionMethod).lowercased(),
+            ipDomain: ipDomain,
+            port: port != "" ? port : nil,
+            path: path != "" ? path : nil,
+            useBasicAuth: useBasicAuth,
+            basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
+            basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
+        )
+        modalOpen.toggle()
+        reset()
     }
 }

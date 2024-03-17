@@ -2,13 +2,14 @@ import SwiftUI
 
 struct CreateInstanceView: View {
     @ObservedObject var createInstanceModel: CreateInstanceViewModel
+    @EnvironmentObject var instancesModel: InstancesViewModel
     
     func generateInstanceUrl() -> String {
         return "\(String(createInstanceModel.connectionMethod).lowercased())://\(createInstanceModel.ipDomain)\(createInstanceModel.port != "" ? ":\(createInstanceModel.port)" : "")\(createInstanceModel.path)"
     }
     
     var body: some View {
-        let validValues = createInstanceModel.ipDomainValid && createInstanceModel.portValid && createInstanceModel.pathValid && ((createInstanceModel.useBasicAuth && createInstanceModel.basicAuthUser != "" && createInstanceModel.basicAuthPassword != "") || !createInstanceModel.useBasicAuth)
+        let validValues = createInstanceModel.name != "" && createInstanceModel.ipDomainValid && createInstanceModel.portValid && createInstanceModel.pathValid && ((createInstanceModel.useBasicAuth && createInstanceModel.basicAuthUser != "" && createInstanceModel.basicAuthPassword != "") || !createInstanceModel.useBasicAuth)
         let url = generateInstanceUrl()
         NavigationView {
             Form {
@@ -24,6 +25,9 @@ struct CreateInstanceView: View {
                                     .foregroundColor(.red)
                             }
                         }
+                    }
+                    Section("Server details") {
+                        TextField("Server name", text: $createInstanceModel.name)
                     }
                     Section("Connection details") {
                         Picker("Connection method", selection: $createInstanceModel.connectionMethod) {
@@ -78,7 +82,7 @@ struct CreateInstanceView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        
+                        createInstanceModel.createInstance()
                     } label: {
                         Text("Save")
                     }

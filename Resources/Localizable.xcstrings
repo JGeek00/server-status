@@ -38,6 +38,16 @@
         }
       }
     },
+    "Are you sure you want to delete this instance?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro que deseas eliminar esta instancia?"
+          }
+        }
+      }
+    },
     "Basic authentication" : {
       "localizations" : {
         "en" : {
@@ -149,6 +159,26 @@
         }
       }
     },
+    "Delete" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        }
+      }
+    },
+    "Delete instance" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar instancia"
+          }
+        }
+      }
+    },
     "HTTP" : {
       "localizations" : {
         "es" : {
@@ -225,6 +255,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JGeek00"
+          }
+        }
+      }
+    },
+    "New instance" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva instancia"
           }
         }
       }
@@ -306,6 +346,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardar"
+          }
+        }
+      }
+    },
+    "Server details" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles del servidor"
+          }
+        }
+      }
+    },
+    "Server instances" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instancias de servidores"
+          }
+        }
+      }
+    },
+    "Server name" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del servidor"
           }
         }
       }
