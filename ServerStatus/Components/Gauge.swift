@@ -2,7 +2,6 @@ import SwiftUI
 
 private let minimumAngle = 130.0
 private let maximumAngle = 410.0
-private let lineWidth = 10.0
 
 struct Gauge: View {
     let value: String
@@ -27,32 +26,34 @@ struct Gauge: View {
         let perc = percentage > 100 ? 100 : percentage < 0 ? 0 : percentage
         let percAngle = ((maximumAngle - minimumAngle) * perc/100) + minimumAngle
         let color = getColor(percentage: percentage)
-        VStack {
-            ZStack(alignment: .bottom) {
-                ZStack {
-                    RoundedArc(
-                        startAngle: .degrees(minimumAngle),
-                        endAngle: .degrees(maximumAngle),
-                        lineWidth: lineWidth
-                    )
-                    .foregroundColor(color.opacity(0.3))
-                    .frame(width: 160, height: 160)
-                    RoundedArc(
-                        startAngle: .degrees(minimumAngle),
-                        endAngle: .degrees(percAngle),
-                        lineWidth: lineWidth
-                    )
-                    .foregroundColor(color)
-                    .frame(width: 160, height: 160)
-                    icon
-                        .font(.system(size: 40))
-                }.frame(width: 160, height: 160)
-                Text(value)
-                    .font(.system(size: 22))
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.center)
+        GeometryReader(content: { geometry in
+            VStack {
+                ZStack(alignment: .bottom) {
+                    ZStack {
+                        RoundedArc(
+                            startAngle: .degrees(minimumAngle),
+                            endAngle: .degrees(maximumAngle),
+                            lineWidth: geometry.size.width*0.075
+                        )
+                        .foregroundColor(color.opacity(0.3))
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        RoundedArc(
+                            startAngle: .degrees(minimumAngle),
+                            endAngle: .degrees(percAngle),
+                            lineWidth: geometry.size.width*0.075
+                        )
+                        .foregroundColor(color)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        icon
+                            .font(.system(size: geometry.size.width*0.25))
+                    }.frame(width: geometry.size.width, height: geometry.size.height)
+                    Text(value)
+                        .font(.system(size: geometry.size.width*0.13))
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.center)
+                }
             }
-        }
+        })
     }
 }
 
@@ -83,5 +84,5 @@ private struct RoundedArc: Shape {
         percentage: 30.0,
         icon: Image(systemName: "cpu"),
         colors: [Color.blue, Color.green, Color.yellow, Color.orange, Color.red]
-    )
+    ).frame(width: 160, height: 160)
 }

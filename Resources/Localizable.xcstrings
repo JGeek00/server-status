@@ -1,6 +1,33 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "1 GB" : {
+
+    },
+    "1.00 Gbit/s" : {
+
+    },
+    "5 GB" : {
+
+    },
+    "5 KB/s" : {
+
+    },
+    "13 GB" : {
+
+    },
+    "16 GB" : {
+
+    },
+    "50 Kbit/s" : {
+
+    },
+    "450 GB" : {
+
+    },
+    "500 GB" : {
+
+    },
     "About the app" : {
       "localizations" : {
         "es" : {
@@ -58,6 +85,16 @@
         }
       }
     },
+    "available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "disponible"
+          }
+        }
+      }
+    },
     "Basic authentication" : {
       "localizations" : {
         "en" : {
@@ -70,6 +107,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autenticación basic"
+          }
+        }
+      }
+    },
+    "cached" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en caché"
           }
         }
       }
@@ -122,6 +169,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Método de conexión"
+          }
+        }
+      }
+    },
+    "CPU" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU"
           }
         }
       }
@@ -273,6 +330,9 @@
         }
       }
     },
+    "Intel N100" : {
+
+    },
     "IP address or domain" : {
       "localizations" : {
         "en" : {
@@ -295,6 +355,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JGeek00"
+          }
+        }
+      }
+    },
+    "Memory (RAM)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memoria (RAM)"
+          }
+        }
+      }
+    },
+    "Network" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red"
           }
         }
       }
@@ -322,6 +402,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No hay instancias disponibles"
+          }
+        }
+      }
+    },
+    "on swap" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en swap"
           }
         }
       }
@@ -468,6 +558,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Algunos de los valores faltan o son inválidos"
+          }
+        }
+      }
+    },
+    "Storage" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almacenamiento"
           }
         }
       }

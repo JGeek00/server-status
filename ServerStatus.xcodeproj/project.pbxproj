@@ -35,6 +35,11 @@
 		0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */; };
 		0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB722BA77007007A8328 /* StatusView.swift */; };
 		0DC4DB752BA77032007A8328 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB742BA77032007A8328 /* StatusViewModel.swift */; };
+		0DC4DB772BA77AED007A8328 /* GaugeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB762BA77AED007A8328 /* GaugeColors.swift */; };
+		0DC4DB792BA781F7007A8328 /* CpuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB782BA781F7007A8328 /* CpuData.swift */; };
+		0DC4DB7B2BA782CF007A8328 /* RamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7A2BA782CF007A8328 /* RamData.swift */; };
+		0DC4DB7D2BA78366007A8328 /* StorageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7C2BA78366007A8328 /* StorageData.swift */; };
+		0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7E2BA78436007A8328 /* NetworkData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +73,11 @@
 		0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersInstancesList.swift; sourceTree = "<group>"; };
 		0DC4DB722BA77007007A8328 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		0DC4DB742BA77032007A8328 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
+		0DC4DB762BA77AED007A8328 /* GaugeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeColors.swift; sourceTree = "<group>"; };
+		0DC4DB782BA781F7007A8328 /* CpuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuData.swift; sourceTree = "<group>"; };
+		0DC4DB7A2BA782CF007A8328 /* RamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamData.swift; sourceTree = "<group>"; };
+		0DC4DB7C2BA78366007A8328 /* StorageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageData.swift; sourceTree = "<group>"; };
+		0DC4DB7E2BA78436007A8328 /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +179,7 @@
 				0DAD5E5A2BA697F6006D3F52 /* StorageKeys.swift */,
 				0DAD5E5C2BA69B53006D3F52 /* Urls.swift */,
 				0DC4DB602BA6A175007A8328 /* Strings.swift */,
+				0DC4DB762BA77AED007A8328 /* GaugeColors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -225,6 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				0DC4DB722BA77007007A8328 /* StatusView.swift */,
+				0DC4DB782BA781F7007A8328 /* CpuData.swift */,
+				0DC4DB7A2BA782CF007A8328 /* RamData.swift */,
+				0DC4DB7C2BA78366007A8328 /* StorageData.swift */,
+				0DC4DB7E2BA78436007A8328 /* NetworkData.swift */,
 			);
 			path = Status;
 			sourceTree = "<group>";
@@ -305,6 +320,7 @@
 				0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */,
 				0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */,
 				0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */,
+				0DC4DB7D2BA78366007A8328 /* StorageData.swift in Sources */,
 				0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */,
 				0DAD5E352BA667B7006D3F52 /* InstanceFormView.swift in Sources */,
 				0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */,
@@ -314,15 +330,19 @@
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
 				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
 				0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */,
+				0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */,
 				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,
 				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
 				0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */,
+				0DC4DB772BA77AED007A8328 /* GaugeColors.swift in Sources */,
 				0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */,
 				0DC4DB752BA77032007A8328 /* StatusViewModel.swift in Sources */,
 				0DAD5E5D2BA69B53006D3F52 /* Urls.swift in Sources */,
 				0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */,
+				0DC4DB792BA781F7007A8328 /* CpuData.swift in Sources */,
 				0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */,
 				0DC4DB652BA713CD007A8328 /* InstancesViewModel.swift in Sources */,
+				0DC4DB7B2BA782CF007A8328 /* RamData.swift in Sources */,
 				0DAD5E522BA68FF0006D3F52 /* Gauge.swift in Sources */,
 				0DAD5E4A2BA682AC006D3F52 /* Enums.swift in Sources */,
 				0DAD5E4D2BA684CF006D3F52 /* ThemeButton.swift in Sources */,
