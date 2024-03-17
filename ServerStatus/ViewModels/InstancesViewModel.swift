@@ -33,23 +33,26 @@ class InstancesViewModel: ObservableObject {
         basicAuthPassword: String?
     ) {
         let managedContext = persistenceController.container.viewContext
-        managedContext.perform {
-            let newInstance = ServerInstances(context: managedContext)
-            newInstance.id = id
-            newInstance.name = name
-            newInstance.connectionMethod = connectionMethod
-            newInstance.ipDomain = ipDomain
-            newInstance.port = port
-            newInstance.path = path
-            newInstance.useBasicAuth = useBasicAuth
-            newInstance.basicAuthUser = basicAuthUser
-            newInstance.basicAuthPassword = basicAuthPassword
+        let newInstance = ServerInstances(context: managedContext)
+        newInstance.id = id
+        newInstance.name = name
+        newInstance.connectionMethod = connectionMethod
+        newInstance.ipDomain = ipDomain
+        newInstance.port = port
+        newInstance.path = path
+        newInstance.useBasicAuth = useBasicAuth
+        newInstance.basicAuthUser = basicAuthUser
+        newInstance.basicAuthPassword = basicAuthPassword
+        
+        do {
+            try managedContext.save()
             
-            do {
-                try managedContext.save()
-            } catch {
-                print("Failed to save object: \(error)")
+            let newInstances = fetchInstances()
+            if newInstances.count == 1 {
+                setDefaultInstance(instance: newInstances[0])
             }
+        } catch {
+            print("Failed to save object: \(error)")
         }
     }
     
