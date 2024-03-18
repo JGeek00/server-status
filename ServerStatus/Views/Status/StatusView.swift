@@ -41,22 +41,21 @@ struct StatusView: View {
                     guard let selectedInstance = instancesModel.selectedInstance else { return }
                     await statusModel.fetchStatus(serverInstance: selectedInstance)
                 }
-                .navigationTitle("Server status")
-                .toolbar(content: {
-                    ToolbarItem {
-                        Button {
-                            settingsModel.modalOpen.toggle()
-                        } label: {
-                            Image(systemName: "gear")
-                        }
-                    }
-                })
-                .sheet(isPresented: $settingsModel.modalOpen, content: {
-                    SettingsView(settingsModel: settingsModel)
-                })
             }
-               
         }
+        .navigationTitle("Server status")
+        .toolbar(content: {
+            ToolbarItem {
+                Button {
+                    settingsModel.modalOpen.toggle()
+                } label: {
+                    Image(systemName: "gear")
+                }
+            }
+        })
+        .sheet(isPresented: $settingsModel.modalOpen, content: {
+            SettingsView(settingsModel: settingsModel)
+        })
         .onAppear(perform: {
             guard let selectedInstance = instancesModel.selectedInstance else { return }
             Task { await statusModel.fetchStatus(serverInstance: selectedInstance) }

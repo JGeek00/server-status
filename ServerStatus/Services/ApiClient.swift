@@ -10,7 +10,7 @@ class ApiClient {
                 request.setValue("Basic \(token!)", forHTTPHeaderField: "Authorization")
             }
             let (data, r) = try await URLSession.shared.data(for: request)
-            guard let response =  r as? HTTPURLResponse else { return defaultErrorResponse }
+            guard let response = r as? HTTPURLResponse else { return defaultErrorResponse }
             if response.statusCode < 400 {
                 return StatusResponse(successful: true, statusCode: response.statusCode, data: data)
             }
