@@ -42,6 +42,9 @@
 		0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7E2BA78436007A8328 /* NetworkData.swift */; };
 		0DC4DB892BA7B205007A8328 /* WelcomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB882BA7B205007A8328 /* WelcomeSheetView.swift */; };
 		0DC4DB8B2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB8A2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift */; };
+		0DC4DBB62BA8845F007A8328 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBB52BA8845F007A8328 /* StatusModel.swift */; };
+		0DC4DBBB2BA88AC8007A8328 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */; };
+		0DC4DBBD2BA88F6A007A8328 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,9 @@
 		0DC4DB7E2BA78436007A8328 /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
 		0DC4DB882BA7B205007A8328 /* WelcomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSheetView.swift; sourceTree = "<group>"; };
 		0DC4DB8A2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSheetViewModel.swift; sourceTree = "<group>"; };
+		0DC4DBB52BA8845F007A8328 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
+		0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 		0DAD5E172BA6648E006D3F52 /* ServerStatus */ = {
 			isa = PBXGroup;
 			children = (
+				0DC4DBB92BA88ABE007A8328 /* Services */,
 				0DAD5E2D2BA66568006D3F52 /* Views */,
 				0DAD5E502BA68FE4006D3F52 /* Components */,
 				0DAD5E432BA680C3006D3F52 /* Utils */,
@@ -172,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				0DC4DB662BA71475007A8328 /* InstanceModel.swift */,
+				0DC4DBB52BA8845F007A8328 /* StatusModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 				0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */,
 				0DAD5E662BA69F80006D3F52 /* SafariView.swift */,
 				0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */,
+				0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -256,6 +265,14 @@
 				0DC4DB882BA7B205007A8328 /* WelcomeSheetView.swift */,
 			);
 			path = WelcomeSheet;
+			sourceTree = "<group>";
+		};
+		0DC4DBB92BA88ABE007A8328 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */,
+				0DC4DBB62BA8845F007A8328 /* StatusModel.swift in Sources */,
 				0DC4DB892BA7B205007A8328 /* WelcomeSheetView.swift in Sources */,
 				0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */,
 				0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */,
@@ -341,6 +359,7 @@
 				0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */,
 				0DC4DB8B2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift in Sources */,
 				0DAD5E382BA667FD006D3F52 /* InstanceFormViewModel.swift in Sources */,
+				0DC4DBBB2BA88AC8007A8328 /* ApiClient.swift in Sources */,
 				0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */,
 				0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */,
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
@@ -349,6 +368,7 @@
 				0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */,
 				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,
 				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
+				0DC4DBBD2BA88F6A007A8328 /* BasicAuth.swift in Sources */,
 				0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */,
 				0DC4DB772BA77AED007A8328 /* GaugeColors.swift in Sources */,
 				0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */,

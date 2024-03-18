@@ -34,30 +34,35 @@ struct InstanceFormView: View {
                     }
                     Section("Server details") {
                         TextField("Server name", text: $instanceFormModel.name)
+                            .disabled(instanceFormModel.isLoading)
                     }
                     Section("Connection details") {
                         Picker("Connection method", selection: $instanceFormModel.connectionMethod) {
                             Text("HTTP").tag("http")
                             Text("HTTPS").tag("https")
                         }
+                        .disabled(instanceFormModel.isLoading)
                         TextField("IP address or domain", text: $instanceFormModel.ipDomain).keyboardType(.URL)
                             .onChange(of: instanceFormModel.ipDomain) { _, newValue in
                                 instanceFormModel.validateIpDomain(value: newValue)
                             }
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)
+                            .disabled(instanceFormModel.isLoading)
                         TextField("Port", text: $instanceFormModel.port).keyboardType(.numberPad)
                             .onChange(of: instanceFormModel.port) { _, newValue in
                                 instanceFormModel.validatePort(value: newValue)
                             }
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)
+                            .disabled(instanceFormModel.isLoading)
                         TextField("Path (Example: /path)", text: $instanceFormModel.path).keyboardType(.URL)
                             .onChange(of: instanceFormModel.path) { _, newValue in
                                 instanceFormModel.validatePath(value: newValue)
                             }
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.never)
+                            .disabled(instanceFormModel.isLoading)
                     }
                     Section("Basic authentication") {
                         Toggle(
@@ -66,13 +71,16 @@ struct InstanceFormView: View {
                         ).onChange(of: instanceFormModel.useBasicAuth) {
                             instanceFormModel.toggleBasicAuth()
                         }
+                        .disabled(instanceFormModel.isLoading)
                         if instanceFormModel.useBasicAuth == true {
                             TextField("Username", text: $instanceFormModel.basicAuthUser)
                                 .autocorrectionDisabled()
                                 .textInputAutocapitalization(.never)
+                                .disabled(instanceFormModel.isLoading)
                             SecureField("Password", text: $instanceFormModel.basicAuthPassword)
                                 .autocorrectionDisabled()
                                 .textInputAutocapitalization(.never)
+                                .disabled(instanceFormModel.isLoading)
                         }
                     }
                 }
@@ -87,12 +95,19 @@ struct InstanceFormView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        instanceFormModel.saveInstance(instancesModel: instancesModel)
-                    } label: {
-                        Text("Save")
+                    if instanceFormModel.isLoading == true {
+                        ProgressView()
                     }
-                    .disabled(!validValues)
+                    else {
+                        Button {
+                            instanceFormModel.saveInstance(
+                                instancesModel: instancesModel
+                            )
+                        } label: {
+                            Text("Save")
+                        }
+                        .disabled(!validValues)
+                    }
                 }
             })
         }
