@@ -110,7 +110,6 @@ func transformStatusJSON(_ input: [String: Any]) -> [String: Any] {
 //    // Convert temperatures
 //    if let cpu = input["cpu"] as? [String: Any], let temperatures = cpu["temperatures"] as? [String: [Double]] {
 //        let convertedTemperatures = temperatures.values.map { $0 }
-//        print(convertedTemperatures)
 //        output["cpu"] = cpu.merging(["temperatures": convertedTemperatures]) { (_, new) in new }
 //    }
 //    

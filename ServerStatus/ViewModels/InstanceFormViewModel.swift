@@ -122,18 +122,6 @@ class InstanceFormViewModel: ObservableObject {
                 return
             }
             
-//            if response.data == nil {
-//                return
-//            }
-//            do {
-//                let jsonDictionary = try JSONSerialization.jsonObject(with: response.data!, options: []) as? [String: Any]
-//                let jsonData = try JSONSerialization.data(withJSONObject: transformStatusJSON(jsonDictionary!), options: [])
-//                let data = try JSONDecoder().decode(StatusModel.self, from: Data(jsonData))
-//                print(data)
-//            } catch let error as NSError {
-//                print(error.localizedDescription)
-//            }
-            
             DispatchQueue.main.async {
                 self.modalOpen.toggle()
             }

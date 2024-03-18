@@ -4,22 +4,13 @@
     "" : {
 
     },
-    "1 GB" : {
+    "%@ GB" : {
 
     },
     "1.00 Gbit/s" : {
 
     },
-    "5 GB" : {
-
-    },
     "5 KB/s" : {
-
-    },
-    "13 GB" : {
-
-    },
-    "16 GB" : {
 
     },
     "50 Kbit/s" : {
@@ -372,9 +363,6 @@
           }
         }
       }
-    },
-    "Intel N100" : {
-
     },
     "IP address or domain" : {
       "localizations" : {
