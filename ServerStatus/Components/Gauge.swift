@@ -10,7 +10,7 @@ struct Gauge: View {
     let colors: [Color]
     
     @State private var startAngle = Angle(degrees: minimumAngle)
-    @State private var endAngle = Angle(degrees: maximumAngle)
+    @State private var endAngle = Angle(degrees: minimumAngle)
     
     func getColor(percentage: Double) -> Color {
         let colorIndex = percentage/(100.0/Double(colors.count))
