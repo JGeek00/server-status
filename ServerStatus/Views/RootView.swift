@@ -4,6 +4,7 @@ import CoreData
 struct RootView: View { 
     @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
+    @StateObject var welcomeSheetModel = WelcomeSheetViewModel()
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -22,6 +23,9 @@ struct RootView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .preferredColorScheme(appConfig.getTheme())
+        .sheet(isPresented: $welcomeSheetModel.openSheet) {
+            WelcomeSheetView(welcomeSheetModel: welcomeSheetModel)
+        }
     }
 }
 

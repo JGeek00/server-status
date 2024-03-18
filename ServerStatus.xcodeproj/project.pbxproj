@@ -40,6 +40,8 @@
 		0DC4DB7B2BA782CF007A8328 /* RamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7A2BA782CF007A8328 /* RamData.swift */; };
 		0DC4DB7D2BA78366007A8328 /* StorageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7C2BA78366007A8328 /* StorageData.swift */; };
 		0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7E2BA78436007A8328 /* NetworkData.swift */; };
+		0DC4DB892BA7B205007A8328 /* WelcomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB882BA7B205007A8328 /* WelcomeSheetView.swift */; };
+		0DC4DB8B2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB8A2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		0DC4DB7A2BA782CF007A8328 /* RamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamData.swift; sourceTree = "<group>"; };
 		0DC4DB7C2BA78366007A8328 /* StorageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageData.swift; sourceTree = "<group>"; };
 		0DC4DB7E2BA78436007A8328 /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
+		0DC4DB882BA7B205007A8328 /* WelcomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSheetView.swift; sourceTree = "<group>"; };
+		0DC4DB8A2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSheetViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 		0DAD5E2D2BA66568006D3F52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0DC4DB872BA7B1F5007A8328 /* WelcomeSheet */,
 				0DC4DB712BA76FF5007A8328 /* Status */,
 				0DAD5E462BA681A0006D3F52 /* Settings */,
 				0DAD5E332BA66791006D3F52 /* InstanceForm */,
@@ -200,6 +205,7 @@
 				0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */,
 				0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */,
 				0DC4DB742BA77032007A8328 /* StatusViewModel.swift */,
+				0DC4DB8A2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -242,6 +248,14 @@
 				0DC4DB7E2BA78436007A8328 /* NetworkData.swift */,
 			);
 			path = Status;
+			sourceTree = "<group>";
+		};
+		0DC4DB872BA7B1F5007A8328 /* WelcomeSheet */ = {
+			isa = PBXGroup;
+			children = (
+				0DC4DB882BA7B205007A8328 /* WelcomeSheetView.swift */,
+			);
+			path = WelcomeSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,12 +332,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */,
+				0DC4DB892BA7B205007A8328 /* WelcomeSheetView.swift in Sources */,
 				0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */,
 				0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */,
 				0DC4DB7D2BA78366007A8328 /* StorageData.swift in Sources */,
 				0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */,
 				0DAD5E352BA667B7006D3F52 /* InstanceFormView.swift in Sources */,
 				0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */,
+				0DC4DB8B2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift in Sources */,
 				0DAD5E382BA667FD006D3F52 /* InstanceFormViewModel.swift in Sources */,
 				0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */,
 				0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */,

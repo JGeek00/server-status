@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "1 GB" : {
 
     },
@@ -286,6 +289,9 @@
         }
       }
     },
+    "Get started" : {
+
+    },
     "HTTP" : {
       "localizations" : {
         "es" : {
@@ -531,6 +537,26 @@
         }
       }
     },
+    "Server Status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Status"
+          }
+        }
+      }
+    },
+    "Server Status is a client for Status, a server monitoring tool. In order to use this application, you must have Stauts deployed on your server." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Status es un cliente para Status, una herramienta de monitorización para servidores. Para usar esta aplicación necesitas tener Status desplegado en tu servidor."
+          }
+        }
+      }
+    },
     "Set as default server" : {
       "localizations" : {
         "es" : {
@@ -579,6 +605,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Algunos de los valores faltan o son inválidos"
+          }
+        }
+      }
+    },
+    "Status deployment instructions" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instrucciones de despliegue de Status"
           }
         }
       }
@@ -654,6 +690,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre de usuario"
+          }
+        }
+      }
+    },
+    "You still don't have it? Tap on the following button to check the deployment instructions." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Aún no lo tienes? Toca en el siguiente botón para ver las instrucciones de instalación."
           }
         }
       }
