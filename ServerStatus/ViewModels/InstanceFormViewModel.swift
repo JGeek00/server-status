@@ -20,6 +20,9 @@ class InstanceFormViewModel: ObservableObject {
     
     @Published var isLoading = false
     
+    @Published var showError = false
+    @Published var error = ""
+    
     private let persistenceController = PersistenceController.shared
     
     func reset() {
@@ -96,49 +99,71 @@ class InstanceFormViewModel: ObservableObject {
                 baseUrl: baseUrl,
                 token: useBasicAuth ? encodeCredentialsBasicAuth(username: basicAuthUser, password: basicAuthPassword) : nil
             )
-            
             DispatchQueue.main.async {
                 self.isLoading = false
+                if response.successful == true {
+                    return
+                }
+                if response.statusCode == nil {
+                    self.error = "Cannot reach the server."
+                    self.showError.toggle()
+                }
+                else if response.statusCode == 401 {
+                    self.error = "Incorrect basic authentication data."
+                    self.showError.toggle()
+                }
+                else {
+                    self.error = "Unknown error."
+                    self.showError.toggle()
+                }
             }
             
-            if response.data == nil {
+            if response.successful == false {
                 return
             }
-            do {
-                let jsonDictionary = try JSONSerialization.jsonObject(with: response.data!, options: []) as? [String: Any]
-                let jsonData = try JSONSerialization.data(withJSONObject: transformStatusJSON(jsonDictionary!), options: [])
-                let data = try JSONDecoder().decode(StatusModel.self, from: Data(jsonData))
-                print(data)
-            } catch let error as NSError {
-                print(error.localizedDescription)
+            
+//            if response.data == nil {
+//                return
+//            }
+//            do {
+//                let jsonDictionary = try JSONSerialization.jsonObject(with: response.data!, options: []) as? [String: Any]
+//                let jsonData = try JSONSerialization.data(withJSONObject: transformStatusJSON(jsonDictionary!), options: [])
+//                let data = try JSONDecoder().decode(StatusModel.self, from: Data(jsonData))
+//                print(data)
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//            }
+            
+            DispatchQueue.main.async {
+                self.modalOpen.toggle()
             }
-//            if editId != "" {
-//                instancesModel.editInstance(
-//                    id: editId,
-//                    name: name,
-//                    connectionMethod: String(connectionMethod).lowercased(),
-//                    ipDomain: ipDomain,
-//                    port: port != "" ? port : nil,
-//                    path: path != "" ? path : nil,
-//                    useBasicAuth: useBasicAuth,
-//                    basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
-//                    basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
-//                )
-//            }
-//            else {
-//                instancesModel.createInstance(
-//                    id: UUID().uuidString,
-//                    name: name,
-//                    connectionMethod: String(connectionMethod).lowercased(),
-//                    ipDomain: ipDomain,
-//                    port: port != "" ? port : nil,
-//                    path: path != "" ? path : nil,
-//                    useBasicAuth: useBasicAuth,
-//                    basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
-//                    basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
-//                )
-//            }
-//            modalOpen.toggle()
+            
+            if editId != "" {
+                instancesModel.editInstance(
+                    id: editId,
+                    name: name,
+                    connectionMethod: String(connectionMethod).lowercased(),
+                    ipDomain: ipDomain,
+                    port: port != "" ? port : nil,
+                    path: path != "" ? path : nil,
+                    useBasicAuth: useBasicAuth,
+                    basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
+                    basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
+                )
+            }
+            else {
+                instancesModel.createInstance(
+                    id: UUID().uuidString,
+                    name: name,
+                    connectionMethod: String(connectionMethod).lowercased(),
+                    ipDomain: ipDomain,
+                    port: port != "" ? port : nil,
+                    path: path != "" ? path : nil,
+                    useBasicAuth: useBasicAuth,
+                    basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
+                    basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
+                )
+            }
         }
     }
 }

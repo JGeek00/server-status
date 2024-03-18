@@ -67,7 +67,9 @@ class InstancesViewModel: ObservableObject {
             let newInstances = fetchInstances(instanceId: nil)
             if newInstances.count == 1 {
                 setDefaultInstance(instance: newInstances[0])
-                selectedInstance = newInstances[0]
+                DispatchQueue.main.async {
+                    self.selectedInstance = newInstances[0]
+                }
             }
         } catch {
             print("Failed to save object: \(error)")
@@ -127,7 +129,9 @@ class InstancesViewModel: ObservableObject {
     }
     
     func setDefaultInstance(instance: ServerInstances?) {
-        defaultServer = instance != nil ? instance!.id! : ""
+        DispatchQueue.main.async {
+            self.defaultServer = instance != nil ? instance!.id! : ""
+        }
         UserDefaults.standard.setValue(instance != nil ? instance!.id : nil, forKey: StorageKeys.defaultServer)
     }
 }

@@ -12,7 +12,7 @@ class ApiClient {
             let (data, r) = try await URLSession.shared.data(for: request)
             guard let response =  r as? HTTPURLResponse else { return defaultErrorResponse }
             if response.statusCode < 400 {
-                return StatusResponse(successful: false, statusCode: response.statusCode, data: data)
+                return StatusResponse(successful: true, statusCode: response.statusCode, data: data)
             }
             else {
                 return StatusResponse(successful: false, statusCode: response.statusCode, data: nil)

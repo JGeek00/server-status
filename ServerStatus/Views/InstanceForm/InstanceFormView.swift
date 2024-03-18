@@ -10,13 +10,13 @@ struct InstanceFormView: View {
         animation: .spring
     ) var instances: FetchedResults<ServerInstances>
     
-    func generateInstanceUrl() -> String {
+    func instanceUrl() -> String {
         return "\(String(instanceFormModel.connectionMethod).lowercased())://\(instanceFormModel.ipDomain)\(instanceFormModel.port != "" ? ":\(instanceFormModel.port)" : "")\(instanceFormModel.path)"
     }
     
     var body: some View {
-        let validValues = instanceFormModel.name != "" && instanceFormModel.ipDomainValid && instanceFormModel.portValid && instanceFormModel.pathValid && ((instanceFormModel.useBasicAuth && instanceFormModel.basicAuthUser != "" && instanceFormModel.basicAuthPassword != "") || !instanceFormModel.useBasicAuth)
-        let url = generateInstanceUrl()
+        let validValues = instanceFormModel.name != "" && instanceFormModel.ipDomain != "" && instanceFormModel.ipDomainValid && instanceFormModel.portValid && instanceFormModel.pathValid && ((instanceFormModel.useBasicAuth && instanceFormModel.basicAuthUser != "" && instanceFormModel.basicAuthPassword != "") || !instanceFormModel.useBasicAuth)
+        let url = instanceUrl()
         NavigationView {
             Form {
                 List {
@@ -110,7 +110,18 @@ struct InstanceFormView: View {
                     }
                 }
             })
+            .alert("Error", isPresented: $instanceFormModel.showError) {
+                Button {
+                    instanceFormModel.showError.toggle()
+                } label: {
+                    Text("Close")
+                }
+                } message: {
+                    Text(instanceFormModel.error)
+                }
+
         }
+        .navigationViewStyle(.stack)
         .interactiveDismissDisabled()
     }
 }
