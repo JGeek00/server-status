@@ -24,6 +24,14 @@ class InstancesViewModel: ObservableObject {
     
     private let persistenceController = PersistenceController.shared
     
+    func switchInstance(instance: ServerInstances, statusModel: StatusViewModel) {
+        selectedInstance = instance
+        statusModel.initialLoading = true
+        statusModel.loadError = false
+        statusModel.status = nil
+        statusModel.startTimer(serverInstance: instance)
+    }
+    
     private func fetchInstances(instanceId: String?) -> [ServerInstances] {
         var data: [ServerInstances] = []
         let fetchRequest: NSFetchRequest<ServerInstances> = ServerInstances.fetchRequest()
@@ -133,6 +141,7 @@ class InstancesViewModel: ObservableObject {
                 statusModel.loadError = false
                 setDefaultInstance(instance: instances[0])
                 instancesModel.selectedInstance = instances[0]
+                statusModel.startTimer(serverInstance: instances[0])
             }
         } catch let error as NSError {
             print("Failed to delete entity: \(error)")

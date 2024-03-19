@@ -555,6 +555,7 @@
       }
     },
     "Server status" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

@@ -4,6 +4,8 @@ struct ServersInstancesList: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
     @ObservedObject var instanceFormModel: InstanceFormViewModel
     @ObservedObject var settingsModel: SettingsViewModel
+    @EnvironmentObject var appConfig: AppConfigViewModel
+    @EnvironmentObject var statusModel: StatusViewModel
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -14,65 +16,72 @@ struct ServersInstancesList: View {
     var body: some View {
         Section("Server instances") {
             ForEach(instances) {
-                item in HStack {
+                item in Button {
+                    instancesModel.switchInstance(instance: item, statusModel: statusModel)
+                } label: {
                     HStack {
-                        Image(systemName: "server.rack")
-                        Spacer().frame(width: 16)
-                        VStack(alignment: .leading) {
-                            Text(item.name ?? "")
-                            Spacer().frame(height: 4)
-                            Text(generateInstanceUrl(instance: item))
-                                .font(.system(size: 14))
-                        }
-                        if item.id == instancesModel.selectedInstance?.id {
-                            Spacer()
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.blue)
-                        }
-                    }
-                }.contextMenu(ContextMenu(menuItems: {
-                    Section {
-                        Button {
-                            instancesModel.setDefaultInstance(instance: item)
-                        } label: {
-                            Label {
-                                Text(instancesModel.defaultServer == item.id ? "Default server" : "Set as default server")
-                            } icon: {
-                                Image(systemName: "star")
+                        HStack {
+                            Image(systemName: "server.rack")
+                                .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                            Spacer().frame(width: 16)
+                            VStack(alignment: .leading) {
+                                Text(item.name ?? "")
+                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                Spacer().frame(height: 4)
+                                Text(generateInstanceUrl(instance: item))
+                                    .font(.system(size: 14))
+                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
                             }
-                        }.disabled(instancesModel.defaultServer == item.id)
-                    }
-                    Section {
-                        Button {
-                            instanceFormModel.editId = item.id!
-                            instanceFormModel.name = item.name ?? ""
-                            instanceFormModel.connectionMethod = item.connectionMethod ?? ""
-                            instanceFormModel.ipDomain = item.ipDomain ?? ""
-                            instanceFormModel.port = item.port ?? ""
-                            instanceFormModel.path = item.path ?? ""
-                            instanceFormModel.useBasicAuth = item.useBasicAuth
-                            instanceFormModel.basicAuthUser = item.basicAuthUser ?? ""
-                            instanceFormModel.basicAuthPassword = item.basicAuthPassword ?? ""
-                            instanceFormModel.modalOpen.toggle()
-                        } label: {
-                            Label {
-                                Text("Edit")
-                            } icon: {
-                                Image(systemName: "pencil")
+                            if item.id == instancesModel.selectedInstance?.id {
+                                Spacer()
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
                             }
                         }
-                        Button(role: .destructive) {
-                            settingsModel.selectedItemDelete = item
-                            settingsModel.confirmDeleteOpen.toggle()
-                        } label: {
-                            Label {
-                                Text("Delete")
-                            } icon: {
-                                Image(systemName: "trash")
+                    }.contextMenu(ContextMenu(menuItems: {
+                        Section {
+                            Button {
+                                instancesModel.setDefaultInstance(instance: item)
+                            } label: {
+                                Label {
+                                    Text(instancesModel.defaultServer == item.id ? "Default server" : "Set as default server")
+                                } icon: {
+                                    Image(systemName: "star")
+                                }
+                            }.disabled(instancesModel.defaultServer == item.id)
+                        }
+                        Section {
+                            Button {
+                                instanceFormModel.editId = item.id!
+                                instanceFormModel.name = item.name ?? ""
+                                instanceFormModel.connectionMethod = item.connectionMethod ?? ""
+                                instanceFormModel.ipDomain = item.ipDomain ?? ""
+                                instanceFormModel.port = item.port ?? ""
+                                instanceFormModel.path = item.path ?? ""
+                                instanceFormModel.useBasicAuth = item.useBasicAuth
+                                instanceFormModel.basicAuthUser = item.basicAuthUser ?? ""
+                                instanceFormModel.basicAuthPassword = item.basicAuthPassword ?? ""
+                                instanceFormModel.modalOpen.toggle()
+                            } label: {
+                                Label {
+                                    Text("Edit")
+                                } icon: {
+                                    Image(systemName: "pencil")
+                                }
+                            }
+                            Button(role: .destructive) {
+                                settingsModel.selectedItemDelete = item
+                                settingsModel.confirmDeleteOpen.toggle()
+                            } label: {
+                                Label {
+                                    Text("Delete")
+                                } icon: {
+                                    Image(systemName: "trash")
+                                }
                             }
                         }
-                    }
-                }))
+                    }))
+                }
             }
             Button {
                 instanceFormModel.reset()

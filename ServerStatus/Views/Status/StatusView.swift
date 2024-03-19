@@ -46,7 +46,7 @@ struct StatusView: View {
                 }
             }
         }
-        .navigationTitle("Server status")
+        .navigationTitle(instancesModel.selectedInstance?.name ?? "Server status")
         .toolbar(content: {
             ToolbarItem {
                 Button {
