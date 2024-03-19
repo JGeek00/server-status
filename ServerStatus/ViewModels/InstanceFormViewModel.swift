@@ -160,7 +160,7 @@ class InstanceFormViewModel: ObservableObject {
             do {
                 let data = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
                 guard let instance = data.first else { return }
-                Task { await statusModel.fetchStatus(serverInstance: instance) }
+                statusModel.startTimer(serverInstance: instance)
             } catch {
                 print("Error fetching data: \(error.localizedDescription)")
             }

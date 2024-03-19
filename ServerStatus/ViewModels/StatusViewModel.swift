@@ -5,8 +5,30 @@ class StatusViewModel: ObservableObject {
     @Published var status: [StatusModel]?
     @Published var initialLoading = true
     @Published var loadError = false
+    @Published var timer: Timer?
     
-    func fetchStatus(serverInstance: ServerInstances) async {
+    func startTimer(serverInstance: ServerInstances) {
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { timer in
+                Task {
+                    await self.fetchStatus(
+                        serverInstance: serverInstance,
+                        showError: self.status == nil
+                    )
+                }
+            }
+            guard let t = self.timer else { return }
+            RunLoop.current.add(t, forMode: .common)
+        }
+    }
+    
+    func stopTimer() {
+        guard let t = timer else { return }
+        t.invalidate()
+        timer = nil
+    }
+    
+    func fetchStatus(serverInstance: ServerInstances, showError: Bool) async {
         let response = await ApiClient.status(
             baseUrl: generateInstanceUrl(instance: serverInstance),
             token: serverInstance.useBasicAuth ? encodeCredentialsBasicAuth(username: serverInstance.basicAuthUser!, password: serverInstance.basicAuthPassword!) : nil
@@ -36,8 +58,10 @@ class StatusViewModel: ObservableObject {
             }
         }
         else {
-            DispatchQueue.main.async {
-                self.loadError = true
+            if showError == true {
+                DispatchQueue.main.async {
+                    self.loadError = true
+                }
             }
         }
     }

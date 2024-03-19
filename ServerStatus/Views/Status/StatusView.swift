@@ -39,7 +39,10 @@ struct StatusView: View {
                 }
                 .refreshable {
                     guard let selectedInstance = instancesModel.selectedInstance else { return }
-                    await statusModel.fetchStatus(serverInstance: selectedInstance)
+                    await statusModel.fetchStatus(
+                        serverInstance: selectedInstance, 
+                        showError: false
+                    )
                 }
             }
         }
@@ -58,7 +61,9 @@ struct StatusView: View {
         })
         .onAppear(perform: {
             guard let selectedInstance = instancesModel.selectedInstance else { return }
-            Task { await statusModel.fetchStatus(serverInstance: selectedInstance) }
+            if statusModel.timer == nil {
+                statusModel.startTimer(serverInstance: selectedInstance)
+            }
         })
     }
 }

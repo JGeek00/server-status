@@ -69,6 +69,7 @@ class InstancesViewModel: ObservableObject {
                 setDefaultInstance(instance: newInstances[0])
                 DispatchQueue.main.async {
                     self.selectedInstance = newInstances[0]
+                    
                 }
             }
         } catch {
@@ -118,6 +119,7 @@ class InstancesViewModel: ObservableObject {
             
             let instances = fetchInstances(instanceId: nil)
             if instances.isEmpty {
+                statusModel.stopTimer()
                 statusModel.status = nil
                 statusModel.initialLoading = true
                 statusModel.loadError = false
@@ -125,6 +127,7 @@ class InstancesViewModel: ObservableObject {
                 instancesModel.selectedInstance = nil
             }
             else if instanceId == defaultServer {
+                statusModel.stopTimer()
                 statusModel.status = nil
                 statusModel.initialLoading = true
                 statusModel.loadError = false
