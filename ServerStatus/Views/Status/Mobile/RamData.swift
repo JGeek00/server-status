@@ -5,11 +5,6 @@ struct RamData: View {
     let containerWidth: Double
     @EnvironmentObject var statusView: StatusViewModel
     
-    func formatMemoryValue(value: Int?) -> String {
-        guard let v = value else { return "N/A" }
-        return String(format: "%.1f", Double(v)/1048576.0)
-    }
-    
     var body: some View {
         let data = statusView.status?.last
         

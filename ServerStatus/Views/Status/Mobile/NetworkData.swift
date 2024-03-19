@@ -3,40 +3,6 @@ import SwiftUI
 struct NetworkData: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
-    func formatBits(value: Int?) -> String {
-        guard let v = value else { return "N/A" }
-        let kbps = Double(v)/1000.0
-        if kbps <= 1000 {
-            return "\(String(format: "%.2f", kbps)) Kbit/s"
-        }
-        let mbps = kbps/1000.0
-        if mbps <= 1000 {
-            return "\(String(format: "%.2f", mbps)) Mbit/s"
-        }
-        let gbps = mbps/1000.0
-        if mbps <= 1000 {
-            return "\(String(format: "%.2f", gbps)) Gbit/s"
-        }
-        return "N/A"
-    }    
-    
-    func formatBytes(value: Int?) -> String {
-        guard let v = value else { return "N/A" }
-        let kbps = (Double(v)/8.0)/1000.0
-        if kbps <= 1000 {
-            return "\(String(format: "%.2f", kbps)) KB/s"
-        }
-        let mbps = kbps/1000.0
-        if mbps <= 1000 {
-            return "\(String(format: "%.2f", mbps)) MB/s"
-        }
-        let gbps = mbps/1000.0
-        if mbps <= 1000 {
-            return "\(String(format: "%.2f", gbps)) GB/s"
-        }
-        return "N/A"
-    }
-    
     var body: some View {
         let data = statusModel.status?.last
         let previous = statusModel.status != nil ? statusModel.status!.count > 1 ? statusModel.status![statusModel.status!.count-2] : nil : nil

@@ -5,16 +5,6 @@ struct StorageData: View {
     let containerWidth: Double
     @EnvironmentObject var statusModel: StatusViewModel
     
-    func storageValue(value: Double?) -> String {
-        guard let v = value else { return "N/A" }
-        if v/1000000000 > 1000 {
-            return "\(String(format: "%.1f", v/1000000000000)) TB"
-        }
-        else {
-            return "\(String(format: "%.1f", v/1000000000)) GB"
-        }
-    }
-    
     var body: some View {
         let data = statusModel.status?.last
         VStack {

@@ -17,4 +17,11 @@ class Enums {
             }
         }
     }
+    
+    public enum HardwareItem: String {
+        case cpu
+        case memory
+        case storage
+        case network
+    }
 }

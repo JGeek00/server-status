@@ -6,6 +6,7 @@ class StatusViewModel: ObservableObject {
     @Published var initialLoading = true
     @Published var loadError = false
     @Published var timer: Timer?
+    @Published var selectedHardwareItem: Enums.HardwareItem?
     
     func startTimer(serverInstance: ServerInstances) {
         DispatchQueue.main.async {
