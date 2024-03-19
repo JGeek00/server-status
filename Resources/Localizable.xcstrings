@@ -5,22 +5,24 @@
 
     },
     "%@ GB" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ GB"
+          }
+        }
+      }
     },
-    "1.00 Gbit/s" : {
-
-    },
-    "5 KB/s" : {
-
-    },
-    "50 Kbit/s" : {
-
-    },
-    "450 GB" : {
-
-    },
-    "500 GB" : {
-
+    "%@ Gbit/s" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Gbit/s"
+          }
+        }
+      }
     },
     "About the app" : {
       "localizations" : {
@@ -397,6 +399,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Memoria (RAM)"
+          }
+        }
+      }
+    },
+    "N/A" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N/A"
           }
         }
       }

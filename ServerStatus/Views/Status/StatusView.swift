@@ -90,11 +90,15 @@ private struct MobileView: View {
             Spacer().frame(height: 24)
             Divider()
             Spacer().frame(height: 24)
-            StorageData(gaugeSize: gaugeSize, containerWidth: width)
+            StorageData(
+                gaugeSize: gaugeSize,
+                containerWidth: width,
+                statusModel: statusModel
+            )
             Spacer().frame(height: 24)
             Divider()
             Spacer().frame(height: 24)
-            NetworkData()
+            NetworkData(statusModel: statusModel)
             Spacer().frame(height: 24)
         }
         .padding(.horizontal, 16)
@@ -125,9 +129,13 @@ private struct TabletView: View {
                     statusView: statusModel
                 )
                     .padding(.leading, 16.0)
-                StorageData(gaugeSize: gaugeSize, containerWidth: width)
+                StorageData(
+                    gaugeSize: gaugeSize, 
+                    containerWidth: width,
+                    statusModel: statusModel
+                )
                     .padding(.trailing, 16.0)
-                NetworkData()
+                NetworkData(statusModel: statusModel)
                     .padding(.leading, 16.0)
             }
             .padding()
