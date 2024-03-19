@@ -15,13 +15,20 @@ struct ServersInstancesList: View {
         Section("Server instances") {
             ForEach(instances) {
                 item in HStack {
-                    Image(systemName: "server.rack")
-                    Spacer().frame(width: 16)
-                    VStack(alignment: .leading) {
-                        Text(item.name ?? "")
-                        Spacer().frame(height: 4)
-                        Text(generateInstanceUrl(instance: item))
-                            .font(.system(size: 14))
+                    HStack {
+                        Image(systemName: "server.rack")
+                        Spacer().frame(width: 16)
+                        VStack(alignment: .leading) {
+                            Text(item.name ?? "")
+                            Spacer().frame(height: 4)
+                            Text(generateInstanceUrl(instance: item))
+                                .font(.system(size: 14))
+                        }
+                        if item.id == instancesModel.selectedInstance?.id {
+                            Spacer()
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.blue)
+                        }
                     }
                 }.contextMenu(ContextMenu(menuItems: {
                     Section {

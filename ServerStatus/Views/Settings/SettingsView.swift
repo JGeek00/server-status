@@ -6,6 +6,7 @@ struct SettingsView: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
     @ObservedObject var settingsModel: SettingsViewModel
     @StateObject var instanceFormModel = InstanceFormViewModel()
+    @EnvironmentObject var statusModel: StatusViewModel
     
     var body: some View {
         NavigationView {
@@ -93,7 +94,11 @@ struct SettingsView: View {
         })
         .alert("Delete instance", isPresented:$settingsModel.confirmDeleteOpen, actions: {
             Button(role: .destructive) {
-                instancesModel.deleteInstance(instance: settingsModel.selectedItemDelete!)
+                instancesModel.deleteInstance(
+                    instance: settingsModel.selectedItemDelete!,
+                    instancesModel: instancesModel,
+                    statusModel: statusModel
+                )
                 settingsModel.selectedItemDelete = nil
             } label: {
                 Text("Delete")

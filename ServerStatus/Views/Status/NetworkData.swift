@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct NetworkData: View {
-    @StateObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusModel: StatusViewModel
     
     func formatBits(value: Int?) -> String {
         guard let v = value else { return "N/A" }

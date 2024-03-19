@@ -3,7 +3,7 @@ import SwiftUI
 struct RamData: View {
     let gaugeSize: Double
     let containerWidth: Double
-    @StateObject var statusView: StatusViewModel
+    @EnvironmentObject var statusView: StatusViewModel
     
     func formatMemoryValue(value: Int?) -> String {
         guard let v = value else { return "N/A" }

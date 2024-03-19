@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CpuData: View {
     let gaugeSize: Double
-    @ObservedObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusModel: StatusViewModel
 
     var body: some View {
         let data = statusModel.status?.last

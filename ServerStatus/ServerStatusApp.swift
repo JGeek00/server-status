@@ -5,6 +5,7 @@ struct ServerStatusApp: App {
     let persistenceController = PersistenceController.shared
     let instancesViewModel = InstancesViewModel()
     let appConfigViewModel = AppConfigViewModel()
+    let statusViewModel = StatusViewModel()
 
     var body: some Scene {
         WindowGroup {
@@ -14,6 +15,7 @@ struct ServerStatusApp: App {
                 .environment(\.locale, .init(identifier: "es"))
                 .environmentObject(instancesViewModel)
                 .environmentObject(appConfigViewModel)
+                .environmentObject(statusViewModel)
         }
     }
 }

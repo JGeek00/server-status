@@ -88,7 +88,7 @@ class InstanceFormViewModel: ObservableObject {
         }
     }
     
-    func saveInstance(instancesModel: InstancesViewModel) {
+    func saveInstance(instancesModel: InstancesViewModel, statusModel: StatusViewModel) {
         Task {
             DispatchQueue.main.async {
                 self.isLoading = true
@@ -126,6 +126,8 @@ class InstanceFormViewModel: ObservableObject {
                 self.modalOpen.toggle()
             }
             
+            let instanceId = editId != "" ? editId : UUID().uuidString
+            
             if editId != "" {
                 instancesModel.editInstance(
                     id: editId,
@@ -141,7 +143,7 @@ class InstanceFormViewModel: ObservableObject {
             }
             else {
                 instancesModel.createInstance(
-                    id: UUID().uuidString,
+                    id: instanceId,
                     name: name,
                     connectionMethod: String(connectionMethod).lowercased(),
                     ipDomain: ipDomain,
@@ -152,6 +154,17 @@ class InstanceFormViewModel: ObservableObject {
                     basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
                 )
             }
+            
+            let fetchRequest: NSFetchRequest<ServerInstances> = ServerInstances.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", instanceId as CVarArg)
+            do {
+                let data = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
+                guard let instance = data.first else { return }
+                Task { await statusModel.fetchStatus(serverInstance: instance) }
+            } catch {
+                print("Error fetching data: \(error.localizedDescription)")
+            }
+            
         }
     }
 }

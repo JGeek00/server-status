@@ -5,7 +5,7 @@ struct StatusView: View {
     @StateObject var settingsModel = SettingsViewModel()
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @EnvironmentObject var appConfig: AppConfigViewModel
-    @StateObject var statusModel = StatusViewModel()
+    @EnvironmentObject var statusModel: StatusViewModel
     
     var body: some View {
         VStack {
@@ -78,27 +78,25 @@ private struct MobileView: View {
                     .foregroundColor(.gray)
             }
             Spacer().frame(height: 24)
-            CpuData(gaugeSize: gaugeSize, statusModel: statusModel)
+            CpuData(gaugeSize: gaugeSize)
             Spacer().frame(height: 24)
             Divider()
             Spacer().frame(height: 24)
             RamData(
                 gaugeSize: gaugeSize,
-                containerWidth: width,
-                statusView: statusModel
+                containerWidth: width
             )
             Spacer().frame(height: 24)
             Divider()
             Spacer().frame(height: 24)
             StorageData(
                 gaugeSize: gaugeSize,
-                containerWidth: width,
-                statusModel: statusModel
+                containerWidth: width
             )
             Spacer().frame(height: 24)
             Divider()
             Spacer().frame(height: 24)
-            NetworkData(statusModel: statusModel)
+            NetworkData()
             Spacer().frame(height: 24)
         }
         .padding(.horizontal, 16)
@@ -121,21 +119,19 @@ private struct TabletView: View {
                     .foregroundColor(.gray)
             }
             LazyVGrid(columns: columns, spacing: width*0.2) {
-                CpuData(gaugeSize: gaugeSize, statusModel: statusModel)
+                CpuData(gaugeSize: gaugeSize)
                     .padding(.trailing, 16.0)
                 RamData(
                     gaugeSize: gaugeSize, 
-                    containerWidth: width,
-                    statusView: statusModel
+                    containerWidth: width
                 )
                     .padding(.leading, 16.0)
                 StorageData(
                     gaugeSize: gaugeSize, 
-                    containerWidth: width,
-                    statusModel: statusModel
+                    containerWidth: width
                 )
                     .padding(.trailing, 16.0)
-                NetworkData(statusModel: statusModel)
+                NetworkData()
                     .padding(.leading, 16.0)
             }
             .padding()

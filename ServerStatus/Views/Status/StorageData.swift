@@ -3,7 +3,7 @@ import SwiftUI
 struct StorageData: View {
     let gaugeSize: Double
     let containerWidth: Double
-    @StateObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusModel: StatusViewModel
     
     func storageValue(value: Double?) -> String {
         guard let v = value else { return "N/A" }

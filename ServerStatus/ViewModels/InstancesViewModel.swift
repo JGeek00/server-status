@@ -109,7 +109,7 @@ class InstancesViewModel: ObservableObject {
         }
     }
     
-    func deleteInstance(instance: ServerInstances) {
+    func deleteInstance(instance: ServerInstances, instancesModel: InstancesViewModel, statusModel: StatusViewModel) {
         let instanceId = instance.id!
         let managedContext = persistenceController.container.viewContext
         do {
@@ -118,10 +118,18 @@ class InstancesViewModel: ObservableObject {
             
             let instances = fetchInstances(instanceId: nil)
             if instances.isEmpty {
+                statusModel.status = nil
+                statusModel.initialLoading = true
+                statusModel.loadError = false
                 setDefaultInstance(instance: nil)
+                instancesModel.selectedInstance = nil
             }
             else if instanceId == defaultServer {
+                statusModel.status = nil
+                statusModel.initialLoading = true
+                statusModel.loadError = false
                 setDefaultInstance(instance: instances[0])
+                instancesModel.selectedInstance = instances[0]
             }
         } catch let error as NSError {
             print("Failed to delete entity: \(error)")

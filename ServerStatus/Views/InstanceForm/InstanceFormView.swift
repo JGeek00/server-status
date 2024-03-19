@@ -3,6 +3,7 @@ import SwiftUI
 struct InstanceFormView: View {
     @ObservedObject var instanceFormModel: InstanceFormViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
+    @EnvironmentObject var statusModel: StatusViewModel
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -101,7 +102,8 @@ struct InstanceFormView: View {
                     else {
                         Button {
                             instanceFormModel.saveInstance(
-                                instancesModel: instancesModel
+                                instancesModel: instancesModel,
+                                statusModel: statusModel
                             )
                         } label: {
                             Text("Save")
