@@ -56,31 +56,33 @@ struct NetworkData: View {
                 Spacer()
             }
             Spacer().frame(height: 24)
-            HStack {
-                Spacer()
-                if data?.network?.rx != nil {
-                    VStack {
-                        Image(systemName: "arrow.down.circle")
-                            .font(.system(size: 40))
-                        Spacer().frame(height: 16)
-                        Text(previous?.network?.rx != nil ? formatBits(value: abs(data!.network!.rx! - previous!.network!.rx!)) : "0 Bit/s")
-                        Spacer().frame(height: 8)
-                        Text(previous?.network?.rx != nil ? formatBytes(value: abs(data!.network!.rx! - previous!.network!.rx!)) : "0 B/s")
+            GeometryReader(content: { geometry in
+                HStack {
+                    if data?.network?.rx != nil {
+                        VStack {
+                            Image(systemName: "arrow.down.circle")
+                                .font(.system(size: 40))
+                            Spacer().frame(height: 16)
+                            Text(previous?.network?.rx != nil ? formatBits(value: abs(data!.network!.rx! - previous!.network!.rx!)) : "0 Bit/s")
+                            Spacer().frame(height: 8)
+                            Text(previous?.network?.rx != nil ? formatBytes(value: abs(data!.network!.rx! - previous!.network!.rx!)) : "0 B/s")
+                        }
+                        .frame(width: geometry.size.width/2)
+                    }
+                    if data?.network?.tx != nil {
+                        VStack {
+                            Image(systemName: "arrow.up.circle")
+                                .font(.system(size: 40))
+                            Spacer().frame(height: 16)
+                            Text(previous?.network?.rx != nil ? formatBits(value: abs(data!.network!.tx! - previous!.network!.tx!)) : "0 Bit/s")
+                            Spacer().frame(height: 8)
+                            Text(previous?.network?.rx != nil ? formatBytes(value: abs(data!.network!.tx! - previous!.network!.tx!)) : "0 B/s")
+                        }
+                        .frame(width: geometry.size.width/2)
                     }
                 }
-                Spacer()
-                if data?.network?.tx != nil {
-                    VStack {
-                        Image(systemName: "arrow.up.circle")
-                            .font(.system(size: 40))
-                        Spacer().frame(height: 16)
-                        Text(previous?.network?.rx != nil ? formatBits(value: abs(data!.network!.tx! - previous!.network!.tx!)) : "0 Bit/s")
-                        Spacer().frame(height: 8)
-                        Text(previous?.network?.rx != nil ? formatBytes(value: abs(data!.network!.tx! - previous!.network!.tx!)) : "0 B/s")
-                    }
-                }
-                Spacer()
-            }
+            })
+            Spacer().frame(height: 90)
         }
     }
 }
