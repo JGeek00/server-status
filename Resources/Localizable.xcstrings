@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%@ GB" : {
       "localizations" : {
@@ -268,6 +275,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar instancia"
+          }
+        }
+      }
+    },
+    "Demo mode" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo de demostración"
           }
         }
       }

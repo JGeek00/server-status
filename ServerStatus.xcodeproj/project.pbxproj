@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D11EA9E2BA9E07900451321 /* StatusMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EA9D2BA9E07900451321 /* StatusMockData.swift */; };
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D11EA9D2BA9E07900451321 /* StatusMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMockData.swift; sourceTree = "<group>"; };
 		0DAD5E152BA6648E006D3F52 /* ServerStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStatusApp.swift; sourceTree = "<group>"; };
 		0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D11EA9C2BA9E06F00451321 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0D11EA9D2BA9E07900451321 /* StatusMockData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		0DAD5E0C2BA6648E006D3F52 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		0DAD5E172BA6648E006D3F52 /* ServerStatus */ = {
 			isa = PBXGroup;
 			children = (
+				0D11EA9C2BA9E06F00451321 /* Data */,
 				0DC4DBB92BA88ABE007A8328 /* Services */,
 				0DAD5E2D2BA66568006D3F52 /* Views */,
 				0DAD5E502BA68FE4006D3F52 /* Components */,
@@ -364,6 +375,7 @@
 				0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */,
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
 				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
+				0D11EA9E2BA9E07900451321 /* StatusMockData.swift in Sources */,
 				0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */,
 				0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */,
 				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,

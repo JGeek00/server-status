@@ -5,6 +5,7 @@ struct RootView: View {
     @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     @StateObject var welcomeSheetModel = WelcomeSheetViewModel()
+    @EnvironmentObject var statusModel: StatusViewModel
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -14,7 +15,7 @@ struct RootView: View {
     
     var body: some View {
         NavigationView {
-            if instances.isEmpty {
+            if instances.isEmpty && instancesModel.demoMode == false {
                 NoInstancesView()
             }
             else {

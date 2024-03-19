@@ -9,19 +9,18 @@ struct StatusView: View {
     
     var body: some View {
         VStack {
-            if statusModel.initialLoading {
+            if statusModel.initialLoading == true {
                 VStack {
                     ProgressView()
                 }
             }
-            else if statusModel.loadError {
+            else if statusModel.loadError == true {
                 VStack {
                     Image(systemName: "exclamationmark.circle")
                 }
             }
             else {
                 ScrollView {
-//                    Text(instancesModel.selectedInstance?.id ?? "")
                     if horizontalSizeClass == .regular {
                         TabletView(
                             instancesModel: _instancesModel,
@@ -77,7 +76,12 @@ private struct MobileView: View {
         let width =  UIScreen.main.bounds.width - 32
         let gaugeSize = (UIScreen.main.bounds.width*0.5)/2
         VStack(alignment: .leading) {
-            if instancesModel.selectedInstance != nil && appConfig.showUrlDetailsScreen {
+            if instancesModel.demoMode == true {
+                Text("Demo mode")
+                    .padding(.leading, 8)
+                    .foregroundColor(.gray)
+            }
+            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && appConfig.showUrlDetailsScreen {
                 Text(generateInstanceUrl(instance: instancesModel.selectedInstance!))
                     .padding(.leading, 8)
                     .foregroundColor(.gray)
@@ -118,7 +122,12 @@ private struct TabletView: View {
         let width = (UIScreen.main.bounds.width - 64)/2
         let gaugeSize = ((UIScreen.main.bounds.width/2)*0.5)/2
         VStack(alignment: .leading) {
-            if instancesModel.selectedInstance != nil && appConfig.showUrlDetailsScreen {
+            if instancesModel.demoMode == true {
+                Text("Demo mode")
+                    .padding(.leading, 20)
+                    .foregroundColor(.gray)
+            }
+            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && appConfig.showUrlDetailsScreen {
                 Text(generateInstanceUrl(instance: instancesModel.selectedInstance!))
                     .padding(.leading, 20)
                     .foregroundColor(.gray)

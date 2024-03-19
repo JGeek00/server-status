@@ -4,6 +4,7 @@ import CoreData
 class InstancesViewModel: ObservableObject {
     @Published var defaultServer = ""
     @Published var selectedInstance: ServerInstances?
+    @Published var demoMode = false
     
     init() {
         let def = UserDefaults.standard.object(forKey: StorageKeys.defaultServer) as? String ?? ""
@@ -57,6 +58,10 @@ class InstancesViewModel: ObservableObject {
         basicAuthUser: String?,
         basicAuthPassword: String?
     ) {
+        if demoMode == true {
+            return
+        }
+        
         let managedContext = persistenceController.container.viewContext
         let newInstance = ServerInstances(context: managedContext)
         newInstance.id = id
@@ -96,6 +101,10 @@ class InstancesViewModel: ObservableObject {
         basicAuthUser: String?,
         basicAuthPassword: String?
     ) {
+        if demoMode == true {
+            return
+        }
+        
         let managedContext = persistenceController.container.viewContext
         
         let fetchRequest: NSFetchRequest<ServerInstances> = ServerInstances.fetchRequest()
@@ -119,6 +128,10 @@ class InstancesViewModel: ObservableObject {
     }
     
     func deleteInstance(instance: ServerInstances, instancesModel: InstancesViewModel, statusModel: StatusViewModel) {
+        if demoMode == true {
+            return
+        }
+        
         let instanceId = instance.id!
         let managedContext = persistenceController.container.viewContext
         do {
@@ -149,6 +162,10 @@ class InstancesViewModel: ObservableObject {
     }
     
     func setDefaultInstance(instance: ServerInstances?) {
+        if demoMode == true {
+            return
+        }
+        
         DispatchQueue.main.async {
             self.defaultServer = instance != nil ? instance!.id! : ""
         }

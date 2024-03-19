@@ -2,6 +2,8 @@ import SwiftUI
 
 struct WelcomeSheetView: View { 
     @StateObject var welcomeSheetModel: WelcomeSheetViewModel
+    @EnvironmentObject var instancesModel: InstancesViewModel
+    @EnvironmentObject var statusModel: StatusViewModel
     
     var body: some View {
         GeometryReader(content: { geometry in
@@ -16,6 +18,14 @@ struct WelcomeSheetView: View {
                             .cornerRadius(8)
                             .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 0)
                             .padding(24)
+                            .gesture(
+                                LongPressGesture(minimumDuration: 10.0)
+                                    .onEnded { _ in
+                                        instancesModel.demoMode = true
+                                        statusModel.startDemoMode()
+                                        welcomeSheetModel.openSheet.toggle()
+                                    }
+                            )
                         VStack {
                             Text("Server Status")
                                 .font(.largeTitle)

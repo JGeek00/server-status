@@ -28,6 +28,20 @@ class StatusViewModel: ObservableObject {
         timer = nil
     }
     
+    func startDemoMode() {
+        if let jsonData = statusMockData.data(using: .utf8) {
+            do {
+                status = try JSONDecoder().decode([StatusModel].self, from: Data(jsonData))
+                initialLoading = false
+                loadError = false
+            } catch {
+                print("Error converting string to JSON: \(error.localizedDescription)")
+            }
+        } else {
+            print("Invalid JSON string")
+        }
+    }
+    
     func fetchStatus(serverInstance: ServerInstances, showError: Bool) async {
         let response = await ApiClient.status(
             baseUrl: generateInstanceUrl(instance: serverInstance),
