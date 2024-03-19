@@ -39,8 +39,8 @@ struct InstanceFormView: View {
                     }
                     Section("Connection details") {
                         Picker("Connection method", selection: $instanceFormModel.connectionMethod) {
-                            Text("HTTP").tag("http")
-                            Text("HTTPS").tag("https")
+                            Text("HTTP").tag("HTTP")
+                            Text("HTTPS").tag("HTTPS")
                         }
                         .disabled(instanceFormModel.isLoading)
                         TextField("IP address or domain", text: $instanceFormModel.ipDomain).keyboardType(.URL)
