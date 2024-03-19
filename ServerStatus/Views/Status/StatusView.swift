@@ -17,7 +17,22 @@ struct StatusView: View {
             else if statusModel.loadError == true {
                 VStack {
                     Image(systemName: "exclamationmark.circle")
-                }
+                        .font(.system(size: 40))
+                    Spacer().frame(height: 20)
+                    Text("An error occured while loading the data.")
+                        .font(.system(size: 24))
+                        .multilineTextAlignment(.center)
+                    Spacer().frame(height: 40)
+                    Button {
+                        guard let selectedInstance = instancesModel.selectedInstance else { return }
+                        Task { await statusModel.fetchStatus(serverInstance: selectedInstance, showError: true) }
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.counterclockwise")
+                            Text("Retry")
+                        }
+                    }
+                }.padding(.horizontal, 24)
             }
             else {
                 ScrollView {

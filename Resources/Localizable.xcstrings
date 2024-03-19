@@ -68,6 +68,16 @@
         }
       }
     },
+    "An error occured while loading the data." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocurrió un error al cargar los datos."
+          }
+        }
+      }
+    },
     "App settings" : {
       "localizations" : {
         "es" : {
@@ -521,6 +531,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Puerto"
+          }
+        }
+      }
+    },
+    "Retry" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
           }
         }
       }
