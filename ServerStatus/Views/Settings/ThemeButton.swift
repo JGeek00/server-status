@@ -1,10 +1,3 @@
-//
-//  ThemeButton.swift
-//  ServerStatus
-//
-//  Created by Juan Gilsanz Polo on 17/3/24.
-//
-
 import SwiftUI
 
 struct ThemeButton: View {
@@ -39,7 +32,7 @@ struct ThemeButton: View {
                     Image(systemName: data[0])
                         .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
                     Spacer().frame(width: 16)
-                    Text(data[1])
+                    Text(LocalizedStringKey(data[1]))
                         .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
                 }
                 Spacer()

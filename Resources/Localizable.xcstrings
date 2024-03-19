@@ -259,6 +259,17 @@
         }
       }
     },
+    "Dark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oscuro"
+          }
+        }
+      }
+    },
     "Default server" : {
       "localizations" : {
         "es" : {
@@ -416,6 +427,17 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "JGeek00"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claro"
           }
         }
       }
@@ -690,6 +712,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Almacenamiento"
+          }
+        }
+      }
+    },
+    "System defined" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definido por el sistema"
           }
         }
       }

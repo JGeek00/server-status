@@ -11,8 +11,7 @@ struct ServerStatusApp: App {
         WindowGroup {
             RootView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environment(\.locale, .init(identifier: "en"))
-                .environment(\.locale, .init(identifier: "es"))
+                .environment(\.locale, .init(identifier: Locale.current.identifier))
                 .environmentObject(instancesViewModel)
                 .environmentObject(appConfigViewModel)
                 .environmentObject(statusViewModel)
