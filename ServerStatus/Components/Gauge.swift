@@ -53,6 +53,12 @@ struct Gauge: View {
                                 endAngle = .degrees(percAngle)
                             }
                         }
+                        .onChange(of: percAngle) { oldValue, newValue in
+                            withAnimation(Animation.smooth(duration: 0.5)) {
+                                startAngle = .degrees(minimumAngle)
+                                endAngle = .degrees(newValue)
+                            }
+                        }
                         icon
                             .font(.system(size: geometry.size.width*0.25))
                     }.frame(width: geometry.size.width, height: geometry.size.height)
