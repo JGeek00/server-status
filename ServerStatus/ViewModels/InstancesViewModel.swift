@@ -27,6 +27,7 @@ class InstancesViewModel: ObservableObject {
     
     func switchInstance(instance: ServerInstances, statusModel: StatusViewModel) {
         selectedInstance = instance
+        statusModel.stopTimer()
         statusModel.initialLoading = true
         statusModel.loadError = false
         statusModel.status = nil
