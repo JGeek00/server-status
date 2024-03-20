@@ -578,6 +578,16 @@
         }
       }
     },
+    "Interface" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interfaz"
+          }
+        }
+      }
+    },
     "IP address or domain" : {
       "localizations" : {
         "en" : {
@@ -784,6 +794,16 @@
         }
       }
     },
+    "RX" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RX"
+          }
+        }
+      }
+    },
     "Save" : {
       "localizations" : {
         "en" : {
@@ -913,6 +933,16 @@
         }
       }
     },
+    "Speed" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocidad"
+          }
+        }
+      }
+    },
     "Status deployment instructions" : {
       "localizations" : {
         "es" : {
@@ -1018,6 +1048,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total"
+          }
+        }
+      }
+    },
+    "TX" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TX"
           }
         }
       }

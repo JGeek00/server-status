@@ -150,8 +150,8 @@ struct TabletView: View {
                         MemoryDetail()
                     case Enums.HardwareItem.storage:
                         StorageDetail()
-                    default:
-                        HStack {}
+                    case Enums.HardwareItem.network:
+                        NetworkDetail()
                 }
             }
         }

@@ -17,6 +17,7 @@
 		0D11EAB92BAB277800451321 /* ChartsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB82BAB277800451321 /* ChartsConfig.swift */; };
 		0D11EABB2BAB3E0900451321 /* MemoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EABA2BAB3E0900451321 /* MemoryDetail.swift */; };
 		0D11EABD2BAB43C900451321 /* StorageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EABC2BAB43C900451321 /* StorageDetail.swift */; };
+		0D11EABF2BAB4E1000451321 /* NetworkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EABE2BAB4E1000451321 /* NetworkDetail.swift */; };
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
@@ -68,6 +69,7 @@
 		0D11EAB82BAB277800451321 /* ChartsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsConfig.swift; sourceTree = "<group>"; };
 		0D11EABA2BAB3E0900451321 /* MemoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetail.swift; sourceTree = "<group>"; };
 		0D11EABC2BAB43C900451321 /* StorageDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDetail.swift; sourceTree = "<group>"; };
+		0D11EABE2BAB4E1000451321 /* NetworkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDetail.swift; sourceTree = "<group>"; };
 		0DAD5E152BA6648E006D3F52 /* ServerStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStatusApp.swift; sourceTree = "<group>"; };
 		0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				0D11EAB52BAB17E600451321 /* CpuChart.swift */,
 				0D11EABA2BAB3E0900451321 /* MemoryDetail.swift */,
 				0D11EABC2BAB43C900451321 /* StorageDetail.swift */,
+				0D11EABE2BAB4E1000451321 /* NetworkDetail.swift */,
 			);
 			path = Tablet;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				0D11EABB2BAB3E0900451321 /* MemoryDetail.swift in Sources */,
 				0D11EAB92BAB277800451321 /* ChartsConfig.swift in Sources */,
 				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,
+				0D11EABF2BAB4E1000451321 /* NetworkDetail.swift in Sources */,
 				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
 				0DC4DBBD2BA88F6A007A8328 /* BasicAuth.swift in Sources */,
 				0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */,
