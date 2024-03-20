@@ -72,13 +72,13 @@ struct TabletView: View {
                             if instancesModel.demoMode == true {
                                 Text("Demo mode")
                                     .padding(.leading, 17)
-                                    .padding(.bottom, 8)
+                                    .padding(.bottom, 10)
                                     .foregroundColor(.gray)
                             }
                             if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && appConfig.showUrlDetailsScreen {
                                 Text(generateInstanceUrl(instance: instancesModel.selectedInstance!))
                                     .padding(.leading, 17)
-                                    .padding(.bottom, 8)
+                                    .padding(.bottom, 10)
                                     .foregroundColor(.gray)
                             }
                             TabletViewHardwareEntry(
@@ -90,7 +90,6 @@ struct TabletView: View {
                                 value2: cpuMaxTemp != nil ? "\(String(describing: cpuMaxTemp!))ºC" : "N/A",
                                 value2Image: "thermometer.medium"
                             )
-                            Divider()
                             TabletViewHardwareEntry(
                                 image: "memorychip",
                                 label: "Memory",
@@ -100,7 +99,6 @@ struct TabletView: View {
                                 value2: nil,
                                 value2Image: nil
                             )
-                            Divider()
                             TabletViewHardwareEntry(
                                 image: "internaldrive",
                                 label: "Storage",
@@ -110,7 +108,6 @@ struct TabletView: View {
                                 value2: nil,
                                 value2Image: nil
                             )
-                            Divider()
                             TabletViewHardwareEntry(
                                 image: "network",
                                 label: "Network",
@@ -138,7 +135,14 @@ struct TabletView: View {
                 SettingsView(settingsModel: settingsModel)
             })
         } detail: {
-            Text(statusModel.selectedHardwareItem?.rawValue ?? "Not selected")
+            if statusModel.status != nil && statusModel.selectedHardwareItem != nil {
+                switch statusModel.selectedHardwareItem! {
+                    case Enums.HardwareItem.cpu:
+                        CpuDetail()
+                    default:
+                        HStack {}
+                }
+            }
         }
     }
 }

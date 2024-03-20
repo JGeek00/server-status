@@ -11,6 +11,16 @@
         }
       }
     },
+    "%@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
     "%@ GB" : {
       "localizations" : {
         "es" : {
@@ -27,6 +37,59 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ Gbit/s"
+          }
+        }
+      }
+    },
+    "%@ physical cores, %@ execution threads" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ physical cores, %2$@ execution threads"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ núcleos físicos, %2$@ hilos de ejecución"
+          }
+        }
+      }
+    },
+    "%@: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        }
+      }
+    },
+    "%lldºC" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lldºC"
           }
         }
       }
@@ -134,6 +197,16 @@
         }
       }
     },
+    "Cache" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caché"
+          }
+        }
+      }
+    },
     "cached" : {
       "localizations" : {
         "es" : {
@@ -202,6 +275,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Método de conexión"
+          }
+        }
+      }
+    },
+    "Core %lld" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Núcleo %lld"
+          }
+        }
+      }
+    },
+    "Core count" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cantidad de núcleos"
           }
         }
       }
@@ -340,6 +433,37 @@
         }
       }
     },
+    "Frequency" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frecuencia"
+          }
+        }
+      }
+    },
+    "Frequency (MHz)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frecuencia (MHz)"
+          }
+        }
+      }
+    },
+    "General status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado general"
+          }
+        }
+      }
+    },
     "Get started" : {
       "localizations" : {
         "es" : {
@@ -366,6 +490,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HTTPS"
+          }
+        }
+      }
+    },
+    "Information" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información"
           }
         }
       }
@@ -431,6 +565,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "Light" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -438,6 +575,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Claro"
+          }
+        }
+      }
+    },
+    "Load" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carga"
           }
         }
       }
@@ -459,6 +606,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Memoria (RAM)"
+          }
+        }
+      }
+    },
+    "Model" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelo"
           }
         }
       }
@@ -734,6 +891,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Definido por el sistema"
+          }
+        }
+      }
+    },
+    "Temperature" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatura"
+          }
+        }
+      }
+    },
+    "Temperature (ºC)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatura (ºC)"
           }
         }
       }

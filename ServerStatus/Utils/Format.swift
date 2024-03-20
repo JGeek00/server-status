@@ -5,6 +5,13 @@ func formatMemoryValue(value: Int?) -> String {
     return String(format: "%.1f", Double(v)/1048576.0)
 }
 
+func cacheValue(value: Int?) -> String {
+    guard let v = value else { return "N/A" }
+    let mb = Double(v)/1000.0
+    return "\(String(format: "%.2f", mb)) MB"
+}
+
+
 func storageValue(value: Double?) -> String {
     guard let v = value else { return "N/A" }
     if v/1000000000 > 1000 {

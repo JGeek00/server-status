@@ -12,6 +12,9 @@
 		0D11EAAC2BAA255300451321 /* TabletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAAB2BAA255300451321 /* TabletView.swift */; };
 		0D11EAAE2BAA2B7900451321 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAAD2BAA2B7900451321 /* Format.swift */; };
 		0D11EAB22BAA398600451321 /* TabletViewHardwareEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB12BAA398600451321 /* TabletViewHardwareEntry.swift */; };
+		0D11EAB42BAB113B00451321 /* CpuDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB32BAB113B00451321 /* CpuDetail.swift */; };
+		0D11EAB62BAB17E600451321 /* CpuChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB52BAB17E600451321 /* CpuChart.swift */; };
+		0D11EAB92BAB277800451321 /* ChartsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB82BAB277800451321 /* ChartsConfig.swift */; };
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
@@ -58,6 +61,9 @@
 		0D11EAAB2BAA255300451321 /* TabletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletView.swift; sourceTree = "<group>"; };
 		0D11EAAD2BAA2B7900451321 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		0D11EAB12BAA398600451321 /* TabletViewHardwareEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletViewHardwareEntry.swift; sourceTree = "<group>"; };
+		0D11EAB32BAB113B00451321 /* CpuDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuDetail.swift; sourceTree = "<group>"; };
+		0D11EAB52BAB17E600451321 /* CpuChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuChart.swift; sourceTree = "<group>"; };
+		0D11EAB82BAB277800451321 /* ChartsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsConfig.swift; sourceTree = "<group>"; };
 		0DAD5E152BA6648E006D3F52 /* ServerStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStatusApp.swift; sourceTree = "<group>"; };
 		0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -136,8 +142,18 @@
 			children = (
 				0D11EAAB2BAA255300451321 /* TabletView.swift */,
 				0D11EAB12BAA398600451321 /* TabletViewHardwareEntry.swift */,
+				0D11EAB32BAB113B00451321 /* CpuDetail.swift */,
+				0D11EAB52BAB17E600451321 /* CpuChart.swift */,
 			);
 			path = Tablet;
+			sourceTree = "<group>";
+		};
+		0D11EAB72BAB276E00451321 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				0D11EAB82BAB277800451321 /* ChartsConfig.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		0DAD5E0C2BA6648E006D3F52 = {
@@ -163,6 +179,7 @@
 		0DAD5E172BA6648E006D3F52 /* ServerStatus */ = {
 			isa = PBXGroup;
 			children = (
+				0D11EAB72BAB276E00451321 /* Config */,
 				0D11EA9C2BA9E06F00451321 /* Data */,
 				0DC4DBB92BA88ABE007A8328 /* Services */,
 				0DAD5E2D2BA66568006D3F52 /* Views */,
@@ -393,6 +410,7 @@
 				0D11EAAE2BAA2B7900451321 /* Format.swift in Sources */,
 				0DC4DB892BA7B205007A8328 /* WelcomeSheetView.swift in Sources */,
 				0DAD5E302BA6657E006D3F52 /* NoInstancesView.swift in Sources */,
+				0D11EAB62BAB17E600451321 /* CpuChart.swift in Sources */,
 				0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */,
 				0DC4DB7D2BA78366007A8328 /* StorageData.swift in Sources */,
 				0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */,
@@ -410,12 +428,14 @@
 				0D11EAAA2BAA253100451321 /* MobileView.swift in Sources */,
 				0D11EAAC2BAA255300451321 /* TabletView.swift in Sources */,
 				0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */,
+				0D11EAB92BAB277800451321 /* ChartsConfig.swift in Sources */,
 				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,
 				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
 				0DC4DBBD2BA88F6A007A8328 /* BasicAuth.swift in Sources */,
 				0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */,
 				0DC4DB772BA77AED007A8328 /* GaugeColors.swift in Sources */,
 				0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */,
+				0D11EAB42BAB113B00451321 /* CpuDetail.swift in Sources */,
 				0DC4DB752BA77032007A8328 /* StatusViewModel.swift in Sources */,
 				0DAD5E5D2BA69B53006D3F52 /* Urls.swift in Sources */,
 				0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */,
