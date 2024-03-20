@@ -119,6 +119,13 @@ struct TabletView: View {
                             )
                         }
                     }
+                    .refreshable {
+                        guard let selectedInstance = instancesModel.selectedInstance else { return }
+                        await statusModel.fetchStatus(
+                            serverInstance: selectedInstance,
+                            showError: false
+                        )
+                    }
                 }
             }
             .navigationTitle(instancesModel.selectedInstance?.name ?? "Server status")
@@ -139,6 +146,10 @@ struct TabletView: View {
                 switch statusModel.selectedHardwareItem! {
                     case Enums.HardwareItem.cpu:
                         CpuDetail()
+                    case Enums.HardwareItem.memory:
+                        MemoryDetail()
+                    case Enums.HardwareItem.storage:
+                        StorageDetail()
                     default:
                         HStack {}
                 }

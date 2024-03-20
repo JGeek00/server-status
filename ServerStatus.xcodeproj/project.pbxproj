@@ -15,6 +15,8 @@
 		0D11EAB42BAB113B00451321 /* CpuDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB32BAB113B00451321 /* CpuDetail.swift */; };
 		0D11EAB62BAB17E600451321 /* CpuChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB52BAB17E600451321 /* CpuChart.swift */; };
 		0D11EAB92BAB277800451321 /* ChartsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAB82BAB277800451321 /* ChartsConfig.swift */; };
+		0D11EABB2BAB3E0900451321 /* MemoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EABA2BAB3E0900451321 /* MemoryDetail.swift */; };
+		0D11EABD2BAB43C900451321 /* StorageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EABC2BAB43C900451321 /* StorageDetail.swift */; };
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
@@ -64,6 +66,8 @@
 		0D11EAB32BAB113B00451321 /* CpuDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuDetail.swift; sourceTree = "<group>"; };
 		0D11EAB52BAB17E600451321 /* CpuChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuChart.swift; sourceTree = "<group>"; };
 		0D11EAB82BAB277800451321 /* ChartsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsConfig.swift; sourceTree = "<group>"; };
+		0D11EABA2BAB3E0900451321 /* MemoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetail.swift; sourceTree = "<group>"; };
+		0D11EABC2BAB43C900451321 /* StorageDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDetail.swift; sourceTree = "<group>"; };
 		0DAD5E152BA6648E006D3F52 /* ServerStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStatusApp.swift; sourceTree = "<group>"; };
 		0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				0D11EAB12BAA398600451321 /* TabletViewHardwareEntry.swift */,
 				0D11EAB32BAB113B00451321 /* CpuDetail.swift */,
 				0D11EAB52BAB17E600451321 /* CpuChart.swift */,
+				0D11EABA2BAB3E0900451321 /* MemoryDetail.swift */,
+				0D11EABC2BAB43C900451321 /* StorageDetail.swift */,
 			);
 			path = Tablet;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 				0D11EAAA2BAA253100451321 /* MobileView.swift in Sources */,
 				0D11EAAC2BAA255300451321 /* TabletView.swift in Sources */,
 				0DC4DB7F2BA78436007A8328 /* NetworkData.swift in Sources */,
+				0D11EABB2BAB3E0900451321 /* MemoryDetail.swift in Sources */,
 				0D11EAB92BAB277800451321 /* ChartsConfig.swift in Sources */,
 				0DAD5E542BA690C9006D3F52 /* AppConfigViewModel.swift in Sources */,
 				0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */,
@@ -445,6 +452,7 @@
 				0DC4DB7B2BA782CF007A8328 /* RamData.swift in Sources */,
 				0DAD5E522BA68FF0006D3F52 /* Gauge.swift in Sources */,
 				0DAD5E4A2BA682AC006D3F52 /* Enums.swift in Sources */,
+				0D11EABD2BAB43C900451321 /* StorageDetail.swift in Sources */,
 				0DAD5E4D2BA684CF006D3F52 /* ThemeButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

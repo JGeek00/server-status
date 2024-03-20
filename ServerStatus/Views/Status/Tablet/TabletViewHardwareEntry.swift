@@ -30,7 +30,7 @@ struct TabletViewHardwareEntry: View {
                         .foregroundColor(foregroundColor)
                     Spacer().frame(width: 16)
                     VStack(alignment: .leading) {
-                        Text(label)
+                        Text(LocalizedStringKey(label))
                             .font(.system(size: 24))
                             .foregroundColor(foregroundColor)
                         Spacer().frame(height: 8)

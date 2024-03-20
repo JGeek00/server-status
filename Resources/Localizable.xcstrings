@@ -11,6 +11,16 @@
         }
       }
     },
+    "    %@ GB" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "    %@ GB"
+          }
+        }
+      }
+    },
     "%@" : {
       "localizations" : {
         "es" : {
@@ -181,6 +191,16 @@
         }
       }
     },
+    "Available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponible"
+          }
+        }
+      }
+    },
     "Basic authentication" : {
       "localizations" : {
         "en" : {
@@ -217,6 +237,16 @@
         }
       }
     },
+    "Cached" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En caché"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "en" : {
@@ -229,6 +259,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "Chart" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gráfico"
           }
         }
       }
@@ -590,12 +630,21 @@
       }
     },
     "Memory" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Memoria"
+          }
+        }
+      }
+    },
+    "Memory (GB)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memoria (GB)"
           }
         }
       }
@@ -884,6 +933,37 @@
         }
       }
     },
+    "Storage (GB)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almacenamiento (GB)"
+          }
+        }
+      }
+    },
+    "Swap available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap disponible"
+          }
+        }
+      }
+    },
+    "Swap total" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap total"
+          }
+        }
+      }
+    },
     "System defined" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -932,6 +1012,16 @@
         }
       }
     },
+    "Total" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        }
+      }
+    },
     "Unknown" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -961,6 +1051,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usar autenticación basic"
+          }
+        }
+      }
+    },
+    "Used" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En uso"
           }
         }
       }
