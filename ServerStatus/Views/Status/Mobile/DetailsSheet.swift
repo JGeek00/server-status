@@ -5,23 +5,17 @@ struct DetailsSheet: View {
     let onCloseSheet: () -> Void
     
     var body: some View {
-        switch hardwareItem {
-            case .cpu:
-                NavigationStack {
+        NavigationView {
+            switch hardwareItem {
+                case .cpu:
                     CpuDetail(onCloseSheet: onCloseSheet)
-                }
-            case .memory:
-                NavigationStack {
+                case .memory:
                     MemoryDetail(onCloseSheet: onCloseSheet)
-                }
-            case .storage:
-                NavigationStack {
+                case .storage:
                     StorageDetail(onCloseSheet: onCloseSheet)
-                }
-            case .network:
-                NavigationStack {
+                case .network:
                     NetworkDetail(onCloseSheet: onCloseSheet)
-                }
+            }
         }
     }
 }
