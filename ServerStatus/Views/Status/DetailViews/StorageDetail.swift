@@ -26,28 +26,33 @@ private struct StorageList: View {
     var body: some View {
         let data = statusModel.status?.last
         List {
-            Section("General status") {
-                HStack {
-                    Text("Total")
-                    Spacer()
-                    Text(storageValue(value: data?.storage?.home?.total))
-                }
-                HStack {
-                    Text("Used")
-                    Spacer()
-                    Text(
-                        data?.storage?.home?.total != nil && data?.storage?.home?.available != nil
-                        ? storageValue(value: data!.storage!.home!.total! - Double(data!.storage!.home!.available!))
-                            : "N/A"
-                    )
-                }
-                HStack {
-                    Text("Available")
-                    Spacer()
-                    Text(data?.storage?.home?.available != nil ? storageValue(value: Double(data!.storage!.home!.available!)) : "N/A")
+            if data?.storage != nil {
+                ForEach(data!.storage!.indices, id: \.self) { index in
+                    let entry = data!.storage![index]
+                    Section(entry.name ?? "") {
+                        HStack {
+                            Text("Total")
+                            Spacer()
+                            Text(storageValue(value: entry.total))
+                        }
+                        HStack {
+                            Text("Used")
+                            Spacer()
+                            Text(
+                                entry.total != nil && entry.available != nil
+                                    ? storageValue(value: entry.total! - Double(entry.available!))
+                                    : "N/A"
+                            )
+                        }
+                        HStack {
+                            Text("Available")
+                            Spacer()
+                            Text(entry.available != nil ? storageValue(value: Double(entry.available!)) : "N/A")
+                        }
+                        StorageChart(storageIndex: index)
+                    }
                 }
             }
-            StorageChart()
         }
         .navigationTitle("Storage")
         .background(appConfig.getTheme() == ColorScheme.dark ? Color.black : Color.white)
@@ -90,6 +95,8 @@ private class StorageChartData {
 }
 
 private struct StorageChart: View {
+    let storageIndex: Int
+    
     @EnvironmentObject var statusModel: StatusViewModel
     
     private func generateChartData() -> [StorageChartData]? {
@@ -104,8 +111,8 @@ private struct StorageChart: View {
         
         guard let last = reversedData.last else { return nil }
         
-        let unit = last?.storage?.home?.total != nil
-            ? last!.storage!.home!.total!/1000000000 > 1000
+        let unit = last?.storage?[storageIndex].total != nil
+            ? last!.storage![storageIndex].total!/1000000000 > 1000
                 ? "TB"
                 : "GB"
             : ""
@@ -113,10 +120,10 @@ private struct StorageChart: View {
         return reversedData.map() {
             return StorageChartData(
                 id: UUID().uuidString,
-                used: $0?.storage?.home?.total != nil && $0?.storage?.home?.available != nil
-                ? (Double($0!.storage!.home!.total!) - Double($0!.storage!.home!.available!))/(unit == "TB" ? 1000000000000 : 1000000000)
+                used: $0?.storage?[storageIndex].total != nil && $0?.storage?[storageIndex].available != nil
+                ? (Double($0!.storage![storageIndex].total!) - Double($0!.storage![storageIndex].available!))/(unit == "TB" ? 1000000000000 : 1000000000)
                     : nil,
-                total: $0?.storage?.home?.total != nil ? Double($0!.storage!.home!.total!)/(unit == "TB" ? 1000000000000 : 1000000000) : 0.0,
+                total: $0?.storage![storageIndex].total != nil ? Double($0!.storage![storageIndex].total!)/(unit == "TB" ? 1000000000000 : 1000000000) : 0.0,
                 unit: unit
             )
         }
@@ -126,21 +133,20 @@ private struct StorageChart: View {
         let chartData = generateChartData()
         let maxValue = chartData?.map() { return $0.total ?? 0 }.max() ?? 0
         if chartData != nil {
-            Section("Chart") {
-                Chart {
-                    ForEach(Array(chartData!.enumerated()), id: \.element.id) { index, item in
-                        LineMark(
-                            x: .value("", index),
-                            y: .value("Storage", (item.used ?? 0))
-                        )
-                    }
+            Chart {
+                ForEach(Array(chartData!.enumerated()), id: \.element.id) { index, item in
+                    LineMark(
+                        x: .value("", index),
+                        y: .value("Storage", (item.used ?? 0))
+                    )
                 }
-                .chartYScale(domain: 0...maxValue)
-                .chartYAxisLabel(LocalizedStringKey("Storage"))
-                .chartXAxis(Visibility.hidden)
-                .frame(height: 300)
-                .listRowSeparator(.hidden)
             }
+            .chartYScale(domain: 0...maxValue)
+            .chartYAxisLabel(LocalizedStringKey("Storage"))
+            .chartXAxis(Visibility.hidden)
+            .frame(height: 300)
+            .padding(.bottom, 16)
+            .listRowSeparator(.hidden)
         }
     }
 }

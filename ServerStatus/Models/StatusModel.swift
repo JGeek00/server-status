@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - Status
 struct StatusModel: Codable {
-    let storage: Storage?
+    let storage: [Storage]?
     let network: Network?
     let memory: Memory?
     let cpu: CPU?
@@ -59,20 +59,11 @@ struct Network: Codable {
 
 // MARK: - Storage
 struct Storage: Codable {
-    let home: Home?
-    
-    enum CodingKeys: String, CodingKey {
-        case home = "Home"
-    }
-}
-
-// MARK: - Home
-struct Home: Codable {
+    let name: String?
     let total: Double?
     let icon: String?
     let available: Int?
 }
-
 
 func transformStatusJSON(_ input: [String: Any]) -> [String: Any] {
     var output = input
@@ -100,6 +91,18 @@ func transformStatusJSON(_ input: [String: Any]) -> [String: Any] {
         ]) { (_, new) in new }
     }
     
+    if let storage = input["storage"] as? [String: [String: Any]] {
+        var convertedStorage: [Any] = []
+        
+        for (key, values) in storage {
+            var newValues: [String: Any] = values
+            newValues.merge(["name": key]) { (_, new) in new }
+            convertedStorage.append(newValues)
+        }
+        
+        output["storage"] = convertedStorage
+    }
+
     return output
 }
 

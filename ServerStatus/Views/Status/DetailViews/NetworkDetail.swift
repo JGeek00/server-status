@@ -104,7 +104,7 @@ private struct NetworkChart: View {
         }
         
         if networkData.count < ChartsConfig.points {
-            for item in 0..<(ChartsConfig.points-networkData.count) {
+            for _ in 0..<(ChartsConfig.points-networkData.count) {
                 networkData.append(NetworkChartData(id: UUID().uuidString, tx: 0, rx: 0))
             }
         }
@@ -161,6 +161,8 @@ private struct NetworkChart: View {
                         Spacer()
                     }
                 }
+                .padding(.top, 8)
+                .padding(.bottom, 12)
                 .listRowSeparator(.hidden)
             }
         }

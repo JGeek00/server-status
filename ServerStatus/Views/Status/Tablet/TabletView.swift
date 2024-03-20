@@ -21,8 +21,10 @@ struct TabletView: View {
         }
         
         func getStorageValue() -> String {
-            guard let available = data?.storage?.home?.available else { return "N/A" }
-            guard let total = data?.storage?.home?.total else { return "N/A" }
+            let a = data?.storage?.map() { $0.available ?? 0}.max()
+            let t = data?.storage?.map() { $0.total ?? 0}.max()
+            guard let available = a else { return "N/A" }
+            guard let total = t else { return "N/A" }
             let percent = 100.0-((Double(available)/Double(total))*100.0)
             return "\(Int(percent))%"
         }

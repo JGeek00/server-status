@@ -140,12 +140,14 @@ private struct CpuCharts: View {
         if chartData != nil {
             Section("Core \(index)") {
                 if inSheet {
-                    VStack {
-                        CpuChart(chartData: chartData!, maxValue: maxFrequency, type: "freq")
-                        Spacer().frame(width: 32)
-                        CpuChart(chartData: chartData!, maxValue: maxTemperature, type: "temp")
-                    }
-                    .listRowSeparator(.hidden)
+                    CpuChart(chartData: chartData!, maxValue: maxFrequency, type: "freq")
+                        .padding(.top, 8)
+                        .listRowSeparator(.hidden)
+                    HStack {}
+                    CpuChart(chartData: chartData!, maxValue: maxTemperature, type: "temp")
+                        .padding(.bottom, 16)
+                        .listRowSeparator(.hidden)
+                    
                 }
                 else {
                     HStack {

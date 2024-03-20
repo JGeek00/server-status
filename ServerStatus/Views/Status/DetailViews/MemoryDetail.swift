@@ -142,6 +142,8 @@ private struct MemoryChart: View {
                 .chartYAxisLabel(LocalizedStringKey("Memory (GB)"))
                 .chartXAxis(Visibility.hidden)
                 .frame(height: 300)
+                .padding(.top, 8)
+                .padding(.bottom, 16)
                 .listRowSeparator(.hidden)
             }
         }

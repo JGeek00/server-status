@@ -10,6 +10,8 @@ struct StorageData: View {
     
     var body: some View {
         let data = statusModel.status?.last
+        let total = data?.storage?.map() { $0.total ?? 0 }.max()
+        let available = data?.storage?.map() { $0.available ?? 0 }.max()
         VStack {
             HStack() {
                 Image(systemName: "internaldrive")
@@ -20,7 +22,7 @@ struct StorageData: View {
                     Text("Storage")
                         .font(.system(size: 24))
                     Spacer().frame(height: 4)
-                    Text(storageValue(value: data?.storage?.home?.total))
+                    Text(storageValue(value: total))
                         .font(.system(size: 16))
                 }
                 Spacer()
@@ -31,8 +33,8 @@ struct StorageData: View {
             Spacer().frame(height: 24)
             HStack {
                 Group {
-                    if data?.storage?.home?.available != nil && data?.storage?.home?.total != nil {
-                        let percent = 100.0-((Double(data!.storage!.home!.available!)/Double(data!.storage!.home!.total!))*100.0)
+                    if available != nil && total != nil {
+                        let percent = 100.0-((Double(available!)/Double(total!))*100.0)
                         Gauge(
                             value: "\(Int(percent))%",
                             percentage: percent,
@@ -46,7 +48,8 @@ struct StorageData: View {
                     VStack {
                         Spacer()
                         HStack {
-                            Text(storageValue(value: Double(data?.storage?.home?.available ?? 0)))
+                            let merged = data?.storage != nil ? data!.storage!.map() { $0.available ?? 0}.max() ?? 0 : 0
+                            Text(storageValue(value: Double(merged)))
                                 .fontWeight(.bold)
                             Text("available")
                         }.font(.system(size: 18))
