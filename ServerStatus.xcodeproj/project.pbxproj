@@ -72,6 +72,7 @@
 		0D11EABE2BAB4E1000451321 /* NetworkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDetail.swift; sourceTree = "<group>"; };
 		0D11EAC02BAB62AD00451321 /* DetailedViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewButton.swift; sourceTree = "<group>"; };
 		0D11EAC22BAB636100451321 /* DetailsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSheet.swift; sourceTree = "<group>"; };
+		0D11EAC82BAB964E00451321 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		0DAD5E152BA6648E006D3F52 /* ServerStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStatusApp.swift; sourceTree = "<group>"; };
 		0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		0DAD5E0C2BA6648E006D3F52 = {
 			isa = PBXGroup;
 			children = (
+				0D11EAC82BAB964E00451321 /* PrivacyInfo.xcprivacy */,
 				0DC4DB622BA6A358007A8328 /* Readme.md */,
 				0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */,
 				0DAD5E212BA6648F006D3F52 /* Assets.xcassets */,
