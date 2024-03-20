@@ -24,14 +24,14 @@ struct TabletViewHardwareEntry: View {
             } label: {
                 HStack {
                     Image(systemName: image)
-                        .font(.system(size: 34))
+                        .font(.system(size: 28))
                         .fontWeight(.medium)
-                        .frame(width: 38)
+                        .frame(width: 30)
                         .foregroundColor(foregroundColor)
                     Spacer().frame(width: 16)
                     VStack(alignment: .leading) {
                         Text(LocalizedStringKey(label))
-                            .font(.system(size: 24))
+                            .font(.system(size: 20))
                             .foregroundColor(foregroundColor)
                         Spacer().frame(height: 8)
                         HStack {
