@@ -145,13 +145,22 @@ struct TabletView: View {
             if statusModel.status != nil && statusModel.selectedHardwareItem != nil {
                 switch statusModel.selectedHardwareItem! {
                     case Enums.HardwareItem.cpu:
-                        CpuDetail()
+                        CpuDetail(onCloseSheet: nil)
                     case Enums.HardwareItem.memory:
-                        MemoryDetail()
+                        MemoryDetail(onCloseSheet: nil)
                     case Enums.HardwareItem.storage:
-                        StorageDetail()
+                        StorageDetail(onCloseSheet: nil)
                     case Enums.HardwareItem.network:
-                        NetworkDetail()
+                        NetworkDetail(onCloseSheet: nil)
+                }
+            }
+            else {
+                VStack {
+                    Image(systemName: "chart.bar")
+                        .font(.system(size: 40))
+                    Spacer().frame(height: 20)
+                    Text("Select a hardware item to show it's details.")
+                        .font(.system(size: 24))
                 }
             }
         }

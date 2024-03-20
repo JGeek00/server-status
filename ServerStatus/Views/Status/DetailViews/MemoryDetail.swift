@@ -1,19 +1,24 @@
 import SwiftUI
 import Charts
 
-private class MemoryChartData {
-    let id: String
-    let used: Int?
-    let total: Int?
+struct MemoryDetail: View {
+    let onCloseSheet: (() -> Void)?
     
-    init(id: String, used: Int?, total: Int?) {
-        self.id = id
-        self.used = used
-        self.total = total
+    var body: some View {
+        if onCloseSheet != nil {
+            MemoryList(onCloseSheet: onCloseSheet)
+                .listStyle(DefaultListStyle())
+        }
+        else {
+            MemoryList(onCloseSheet: onCloseSheet)
+                .listStyle(InsetListStyle())
+        }
     }
 }
 
-struct MemoryDetail: View {
+private struct MemoryList: View {
+    let onCloseSheet: (() -> Void)?
+    
     @EnvironmentObject var statusModel: StatusViewModel
     @EnvironmentObject var appConfig: AppConfigViewModel
     
@@ -59,12 +64,44 @@ struct MemoryDetail: View {
             MemoryChart()
         }
         .navigationTitle("Memory (RAM)")
-        .listStyle(InsetListStyle())
         .background(appConfig.getTheme() == ColorScheme.dark ? Color.black : Color.white)
+        .toolbar {
+            if onCloseSheet != nil {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        onCloseSheet!()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "xmark")
+                                .foregroundColor(.white)
+                                .font(.system(size: 10))
+                                .fontWeight(Font.Weight.bold)
+                        }
+                        
+                    }
+                    .frame(width: 28, height: 28)
+                    .background(Color.black.opacity(0.3))
+                    .cornerRadius(50)
+                }
+            }
+        }
     }
 }
 
-struct MemoryChart: View {
+private class MemoryChartData {
+    let id: String
+    let used: Int?
+    let total: Int?
+    
+    init(id: String, used: Int?, total: Int?) {
+        self.id = id
+        self.used = used
+        self.total = total
+    }
+}
+
+private struct MemoryChart: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
     private func generateChartData() -> [MemoryChartData]? {
@@ -112,5 +149,5 @@ struct MemoryChart: View {
 }
 
 #Preview {
-    MemoryDetail()
+    MemoryDetail(onCloseSheet: nil)
 }

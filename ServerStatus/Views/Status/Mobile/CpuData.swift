@@ -3,6 +3,8 @@ import SwiftUI
 struct CpuData: View {
     let gaugeSize: Double
     @EnvironmentObject var statusModel: StatusViewModel
+    
+    @State var showSheet = false
 
     var body: some View {
         let data = statusModel.status?.last
@@ -24,6 +26,9 @@ struct CpuData: View {
                         .font(.system(size: 16))
                 }
                 Spacer()
+                DetailedViewButton(onTap: {
+                    showSheet.toggle()
+                })
             }
             Spacer().frame(height: 24)
             HStack {
@@ -53,5 +58,8 @@ struct CpuData: View {
                 }
             }
         }
+        .sheet(isPresented: $showSheet, content: {
+            DetailsSheet(hardwareItem: Enums.HardwareItem.cpu, onCloseSheet: { showSheet.toggle() })
+        })
     }
 }

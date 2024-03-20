@@ -1,19 +1,25 @@
 import SwiftUI
 import Charts
 
-private class NetworkChartData {
-    let id: String
-    let tx: Double?
-    let rx: Double?
+struct NetworkDetail: View {
+    let onCloseSheet: (() -> Void)?
     
-    init(id: String, tx: Double?, rx: Double?) {
-        self.id = id
-        self.tx = tx
-        self.rx = rx
+    var body: some View {
+        if onCloseSheet != nil {
+            NetworkList(onCloseSheet: onCloseSheet)
+                .listStyle(DefaultListStyle())
+        }
+        else {
+            NetworkList(onCloseSheet: onCloseSheet)
+                .listStyle(InsetListStyle())
+        }
     }
 }
 
-struct NetworkDetail: View {
+
+private struct NetworkList: View {
+    let onCloseSheet: (() -> Void)?
+    
     @EnvironmentObject var statusModel: StatusViewModel
     @EnvironmentObject var appConfig: AppConfigViewModel
     
@@ -35,12 +41,44 @@ struct NetworkDetail: View {
             NetworkChart()
         }
         .navigationTitle("Network")
-        .listStyle(InsetListStyle())
         .background(appConfig.getTheme() == ColorScheme.dark ? Color.black : Color.white)
+        .toolbar {
+            if onCloseSheet != nil {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        onCloseSheet!()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "xmark")
+                                .foregroundColor(.white)
+                                .font(.system(size: 10))
+                                .fontWeight(Font.Weight.bold)
+                        }
+                        
+                    }
+                    .frame(width: 28, height: 28)
+                    .background(Color.black.opacity(0.3))
+                    .cornerRadius(50)
+                }
+            }
+        }
     }
 }
 
-struct NetworkChart: View {
+private class NetworkChartData {
+    let id: String
+    let tx: Double?
+    let rx: Double?
+    
+    init(id: String, tx: Double?, rx: Double?) {
+        self.id = id
+        self.tx = tx
+        self.rx = rx
+    }
+}
+
+private struct NetworkChart: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
     private func generateChartData() -> [NetworkChartData]? {
@@ -129,5 +167,5 @@ struct NetworkChart: View {
     }
 }
 #Preview {
-    NetworkDetail()
+    NetworkDetail(onCloseSheet: nil)
 }

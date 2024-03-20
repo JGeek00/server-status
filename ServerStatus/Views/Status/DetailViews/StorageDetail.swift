@@ -1,21 +1,25 @@
 import SwiftUI
 import Charts
 
-private class StorageChartData {
-    let id: String
-    let used: Double?
-    let total: Double?
-    let unit: String?
+struct StorageDetail: View {
+    let onCloseSheet: (() -> Void)?
     
-    init(id: String, used: Double?, total: Double?, unit: String?) {
-        self.id = id
-        self.used = used
-        self.total = total
-        self.unit = unit
+    var body: some View {
+        if onCloseSheet != nil {
+            StorageList(onCloseSheet: onCloseSheet)
+                .listStyle(DefaultListStyle())
+        }
+        else {
+            StorageList(onCloseSheet: onCloseSheet)
+                .listStyle(InsetListStyle())
+        }
     }
 }
 
-struct StorageDetail: View {
+
+private struct StorageList: View {
+    let onCloseSheet: (() -> Void)?
+    
     @EnvironmentObject var statusModel: StatusViewModel
     @EnvironmentObject var appConfig: AppConfigViewModel
     
@@ -46,12 +50,46 @@ struct StorageDetail: View {
             StorageChart()
         }
         .navigationTitle("Storage")
-        .listStyle(InsetListStyle())
         .background(appConfig.getTheme() == ColorScheme.dark ? Color.black : Color.white)
+        .toolbar {
+            if onCloseSheet != nil {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        onCloseSheet!()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "xmark")
+                                .foregroundColor(.white)
+                                .font(.system(size: 10))
+                                .fontWeight(Font.Weight.bold)
+                        }
+                        
+                    }
+                    .frame(width: 28, height: 28)
+                    .background(Color.black.opacity(0.3))
+                    .cornerRadius(50)
+                }
+            }
+        }
     }
 }
 
-struct StorageChart: View {
+private class StorageChartData {
+    let id: String
+    let used: Double?
+    let total: Double?
+    let unit: String?
+    
+    init(id: String, used: Double?, total: Double?, unit: String?) {
+        self.id = id
+        self.used = used
+        self.total = total
+        self.unit = unit
+    }
+}
+
+private struct StorageChart: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
     private func generateChartData() -> [StorageChartData]? {
@@ -108,5 +146,5 @@ struct StorageChart: View {
 }
 
 #Preview {
-    StorageDetail()
+    StorageDetail(onCloseSheet: nil)
 }

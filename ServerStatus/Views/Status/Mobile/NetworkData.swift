@@ -3,6 +3,8 @@ import SwiftUI
 struct NetworkData: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
+    @State var showSheet = false
+    
     var body: some View {
         let data = statusModel.status?.last
         let previous = statusModel.status != nil ? statusModel.status!.count > 1 ? statusModel.status![statusModel.status!.count-2] : nil : nil
@@ -20,6 +22,9 @@ struct NetworkData: View {
                         .font(.system(size: 16))
                 }
                 Spacer()
+                DetailedViewButton(onTap: {
+                    showSheet.toggle()
+                })
             }
             Spacer().frame(height: 24)
             GeometryReader(content: { geometry in
@@ -50,5 +55,8 @@ struct NetworkData: View {
             })
             Spacer().frame(height: 90)
         }
+        .sheet(isPresented: $showSheet, content: {
+            DetailsSheet(hardwareItem: Enums.HardwareItem.network, onCloseSheet: { showSheet.toggle() })
+        })
     }
 }
