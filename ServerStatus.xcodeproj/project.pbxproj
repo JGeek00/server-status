@@ -60,6 +60,7 @@
 		0DD98CD72BAC945100804BE7 /* Pods_ServerStatus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B58BD14A9B7634A758CDFB /* Pods_ServerStatus.framework */; };
 		0DD98CDC2BAC996400804BE7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98CDB2BAC996400804BE7 /* .gitignore */; };
 		0DD98CDD2BAC9B7600804BE7 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98CDA2BAC993200804BE7 /* Secrets.plist */; };
+		0DD98CDF2BAC9F4300804BE7 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CDE2BAC9F4300804BE7 /* Sentry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
 		0DD98CDA2BAC993200804BE7 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Secrets.plist; sourceTree = "<group>"; };
 		0DD98CDB2BAC996400804BE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0DD98CDE2BAC9F4300804BE7 /* Sentry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentry.swift; sourceTree = "<group>"; };
 		384804D3A1DDC1A5B5F03C95 /* Pods-ServerStatus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServerStatus.debug.xcconfig"; path = "Target Support Files/Pods-ServerStatus/Pods-ServerStatus.debug.xcconfig"; sourceTree = "<group>"; };
 		53D1F4F4A89A114B50D691BF /* Pods-ServerStatus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServerStatus.release.xcconfig"; path = "Target Support Files/Pods-ServerStatus/Pods-ServerStatus.release.xcconfig"; sourceTree = "<group>"; };
 		F1B58BD14A9B7634A758CDFB /* Pods_ServerStatus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ServerStatus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +311,7 @@
 				0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */,
 				0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */,
 				0D11EAAD2BAA2B7900451321 /* Format.swift */,
+				0DD98CDE2BAC9F4300804BE7 /* Sentry.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				0DC4DB8B2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift in Sources */,
 				0DAD5E382BA667FD006D3F52 /* InstanceFormViewModel.swift in Sources */,
 				0DC4DBBB2BA88AC8007A8328 /* ApiClient.swift in Sources */,
+				0DD98CDF2BAC9F4300804BE7 /* Sentry.swift in Sources */,
 				0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */,
 				0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */,
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
@@ -746,6 +750,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

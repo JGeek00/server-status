@@ -9,14 +9,7 @@ struct ServerStatusApp: App {
     let statusViewModel = StatusViewModel()
     
     init() {
-        guard let path = Bundle.main.path(forResource: "Secrets", ofType: "plist") else { return }
-        guard let configDict = NSDictionary(contentsOfFile: path) else { return }
-        guard let dsn = configDict["SENTRY_DSN"] else { return }
-        SentrySDK.start { options in
-            options.dsn = dsn as? String
-            options.debug = false
-            options.enableTracing = false
-        }
+        startSentry()
     }
 
     var body: some Scene {

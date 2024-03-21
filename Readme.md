@@ -3,5 +3,8 @@ Server Status is a client for [Status](https://github.com/dani3l0/Status), a ser
 
 ### Development environment
 1. Get into the project directory and run ``pod install``.
-2. Create a file called ``Secrets.plist`` on the root directory.
-3. Add to that file a variable called ``SENTRY_DSN``, and assign it's value.
+2. Create a file called ``Secrets.plist`` on the root directory, with the following structure.
+- Root
+    - SENTRY_DSN: sentry dsn
+    - ENABLE_SENTRY: false
+3. Select this file, open the inspectors, and check the mark on the Target Membership section.
