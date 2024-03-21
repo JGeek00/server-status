@@ -84,6 +84,9 @@
         }
       }
     },
+    "%lld" : {
+
+    },
     "%lld%%" : {
       "localizations" : {
         "es" : {
@@ -450,6 +453,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VISTA DETALLADA"
+          }
+        }
+      }
+    },
+    "DETAILS" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DETALLES"
           }
         }
       }
@@ -1124,6 +1137,16 @@
         }
       }
     },
+    "used" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en uso"
+          }
+        }
+      }
+    },
     "Used" : {
       "localizations" : {
         "es" : {
@@ -1146,6 +1169,33 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre de usuario"
+          }
+        }
+      }
+    },
+    "volume" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "volume"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "volumen"
+          }
+        }
+      }
+    },
+    "volumes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "volúmenes"
           }
         }
       }

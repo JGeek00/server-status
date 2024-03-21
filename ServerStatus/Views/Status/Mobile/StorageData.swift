@@ -29,6 +29,7 @@ struct StorageData: View {
                 DetailedViewButton(onTap: {
                     showSheet.toggle()
                 })
+                .padding(.trailing, 8)
             }
             Spacer().frame(height: 24)
             HStack {
@@ -48,11 +49,17 @@ struct StorageData: View {
                     VStack {
                         Spacer()
                         HStack {
+                            Text("\(data?.storage?.count ?? 0)")
+                                .fontWeight(.bold)
+                            Text(data?.storage?.count == 1 ? "volume" : "volumes")
+                        }.font(.system(size: 16))
+                        Spacer().frame(height: 16)
+                        HStack {
                             let merged = data?.storage != nil ? data!.storage!.map() { $0.available ?? 0}.max() ?? 0 : 0
                             Text(storageValue(value: Double(merged)))
                                 .fontWeight(.bold)
                             Text("available")
-                        }.font(.system(size: 18))
+                        }.font(.system(size: 16))
                         Spacer()
                     }
                     Spacer()

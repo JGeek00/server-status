@@ -28,6 +28,7 @@ struct RamData: View {
                 DetailedViewButton(onTap: {
                     showSheet.toggle()
                 })
+                .padding(.trailing, 8)
             }
             Spacer().frame(height: 24)
             HStack {
@@ -51,21 +52,30 @@ struct RamData: View {
                             Text("\(String(describing: formatMemoryValue(value: data?.memory?.available))) GB")
                                 .fontWeight(.bold)
                             Text("available")
-                        }.font(.system(size: 18))
+                        }.font(.system(size: 16))
                         Spacer()
+                        if data?.memory?.total != nil && data?.memory?.available != nil {
+                            HStack {
+                                Text("\(String(describing: formatMemoryValue(value: data!.memory!.total! - data!.memory!.available!))) GB")
+                                    .fontWeight(.bold)
+                                Text("used")
+                            }.font(.system(size: 16))
+                            Spacer()
+                        }
+                        Divider().padding(.vertical, 6)
                         if (data?.memory?.swapAvailable != nil && data?.memory?.swapTotal != nil) {
                             HStack {
                                 Text("\(String(describing: formatMemoryValue(value: data!.memory!.swapTotal! - data!.memory!.swapAvailable!))) GB")
                                     .fontWeight(.bold)
                                 Text("on swap")
-                            }.font(.system(size: 14))
+                            }.font(.system(size: 12))
                             Spacer()
                         }
                         HStack {
                             Text("\(String(describing: formatMemoryValue(value: data?.memory?.cached))) GB")
                                 .fontWeight(.bold)
                             Text("cached")
-                        }.font(.system(size: 14))
+                        }.font(.system(size: 12))
                         Spacer()
                     }
                     Spacer()

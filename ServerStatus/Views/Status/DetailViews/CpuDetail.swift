@@ -36,6 +36,7 @@ private struct CpuList: View {
                     Text("Core count")
                     Spacer()
                     Text("\(data?.cpu?.cores != nil ? String(data!.cpu!.cores!) : "N/A") physical cores, \(data?.cpu?.count != nil ? String(data!.cpu!.count!) : "N/A") execution threads")
+                        .multilineTextAlignment(.trailing)
                 }
                 HStack {
                     Text("Cache")

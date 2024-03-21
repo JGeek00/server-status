@@ -29,6 +29,7 @@ struct CpuData: View {
                 DetailedViewButton(onTap: {
                     showSheet.toggle()
                 })
+                .padding(.trailing, 8)
             }
             Spacer().frame(height: 24)
             HStack {

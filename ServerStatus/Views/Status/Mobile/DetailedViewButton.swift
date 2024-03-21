@@ -7,7 +7,7 @@ struct DetailedViewButton: View {
         Button {
             onTap()
         } label: {
-            Text(LocalizedStringKey("DETAILED VIEW"))
+            Text(LocalizedStringKey("DETAILS"))
                 .foregroundStyle(Color.white)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
