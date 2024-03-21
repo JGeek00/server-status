@@ -62,13 +62,14 @@ let statusMockData = """
                 "swap_available": 4294963,
                 "processes": 220
             },
-            "storage": {
-                "Home": {
+            "storage": [
+                {
+                    "name": "Home",
                     "icon": "folder",
                     "total": 511392781107.2,
                     "available": 447323279360
                 }
-            },
+            ],
             "network": {
                 "interface": "enp1s0",
                 "speed": 1000,
@@ -78,7 +79,7 @@ let statusMockData = """
             "host": {
                 "uptime": 1040164.13,
                 "os": "Ubuntu 22.04.4 LTS",
-                "hostname": "jgeek00-server",
+                "hostname": "server",
                 "app_memory": "13488",
                 "loadavg": [
                     0.1,
@@ -147,13 +148,14 @@ let statusMockData = """
                 "swap_available": 4294963,
                 "processes": 220
             },
-            "storage": {
-                "Home": {
+            "storage": [
+                {
+                    "name": "Home",
                     "icon": "folder",
                     "total": 511392781107.2,
                     "available": 447323275264
                 }
-            },
+            ],
             "network": {
                 "interface": "enp1s0",
                 "speed": 1000,
@@ -163,7 +165,7 @@ let statusMockData = """
             "host": {
                 "uptime": 1040165.66,
                 "os": "Ubuntu 22.04.4 LTS",
-                "hostname": "jgeek00-server",
+                "hostname": "server",
                 "app_memory": "13488",
                 "loadavg": [
                     0.1,
@@ -232,13 +234,14 @@ let statusMockData = """
                 "swap_available": 4294963,
                 "processes": 220
             },
-            "storage": {
-                "Home": {
+            "storage": [
+                {
+                    "name": "Home",
                     "icon": "folder",
                     "total": 511392781107.2,
                     "available": 447323271168
                 }
-            },
+            ],
             "network": {
                 "interface": "enp1s0",
                 "speed": 1000,
@@ -248,7 +251,7 @@ let statusMockData = """
             "host": {
                 "uptime": 1040167.13,
                 "os": "Ubuntu 22.04.4 LTS",
-                "hostname": "jgeek00-server",
+                "hostname": "server",
                 "app_memory": "13488",
                 "loadavg": [
                     0.09,
@@ -317,13 +320,14 @@ let statusMockData = """
                 "swap_available": 4294963,
                 "processes": 220
             },
-            "storage": {
-                "Home": {
+            "storage": [
+                {
+                    "name": "Home",
                     "icon": "folder",
                     "total": 511392781107.2,
                     "available": 447323271168
                 }
-            },
+            ],
             "network": {
                 "interface": "enp1s0",
                 "speed": 1000,
@@ -333,7 +337,7 @@ let statusMockData = """
             "host": {
                 "uptime": 1040168.64,
                 "os": "Ubuntu 22.04.4 LTS",
-                "hostname": "jgeek00-server",
+                "hostname": "server",
                 "app_memory": "13488",
                 "loadavg": [
                     0.09,
@@ -402,13 +406,14 @@ let statusMockData = """
                 "swap_available": 4294963,
                 "processes": 220
             },
-            "storage": {
-                "Home": {
+            "storage": [
+                {
+                    "name": "Home",
                     "icon": "folder",
                     "total": 511392781107.2,
                     "available": 447323271168
                 }
-            },
+            ],
             "network": {
                 "interface": "enp1s0",
                 "speed": 1000,
@@ -418,7 +423,7 @@ let statusMockData = """
             "host": {
                 "uptime": 1040170.14,
                 "os": "Ubuntu 22.04.4 LTS",
-                "hostname": "jgeek00-server",
+                "hostname": "server",
                 "app_memory": "13488",
                 "loadavg": [
                     0.09,
