@@ -2,22 +2,20 @@ import Foundation
 import Sentry
 
 func startSentry() {
-    guard let path = Bundle.main.path(forResource: "Secrets", ofType: "plist") else { return }
-    guard let configDict = NSDictionary(contentsOfFile: path) else { return }
-    guard let dsn = configDict["SENTRY_DSN"] else { return }
-    
-    if (configDict["ENABLE_SENTRY"] as? Bool) == true {
-        startSentry()
+    if SentryConfig.enabled == true {
+        loadSentry()
     }
     else {
         #if RELEASE
-            startSentry()
+            loadSentry()
         #endif
     }
     
-    SentrySDK.start { options in
-        options.dsn = dsn as? String
-        options.debug = false
-        options.enableTracing = false
+    func loadSentry() {
+        SentrySDK.start { options in
+            options.dsn = SentryConfig.dsn
+            options.debug = false
+            options.enableTracing = false
+        }
     }
 }

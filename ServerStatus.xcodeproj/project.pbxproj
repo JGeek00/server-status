@@ -58,9 +58,8 @@
 		0DC4DBBB2BA88AC8007A8328 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */; };
 		0DC4DBBD2BA88F6A007A8328 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */; };
 		0DD98CD72BAC945100804BE7 /* Pods_ServerStatus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B58BD14A9B7634A758CDFB /* Pods_ServerStatus.framework */; };
-		0DD98CDC2BAC996400804BE7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98CDB2BAC996400804BE7 /* .gitignore */; };
-		0DD98CDD2BAC9B7600804BE7 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DD98CDA2BAC993200804BE7 /* Secrets.plist */; };
 		0DD98CDF2BAC9F4300804BE7 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CDE2BAC9F4300804BE7 /* Sentry.swift */; };
+		0DD98CE12BACA94E00804BE7 /* SentryConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CE02BACA94E00804BE7 /* SentryConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,9 +116,8 @@
 		0DC4DBB52BA8845F007A8328 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
 		0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
-		0DD98CDA2BAC993200804BE7 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Secrets.plist; sourceTree = "<group>"; };
-		0DD98CDB2BAC996400804BE7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0DD98CDE2BAC9F4300804BE7 /* Sentry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentry.swift; sourceTree = "<group>"; };
+		0DD98CE02BACA94E00804BE7 /* SentryConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryConfig.swift; sourceTree = "<group>"; };
 		384804D3A1DDC1A5B5F03C95 /* Pods-ServerStatus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServerStatus.debug.xcconfig"; path = "Target Support Files/Pods-ServerStatus/Pods-ServerStatus.debug.xcconfig"; sourceTree = "<group>"; };
 		53D1F4F4A89A114B50D691BF /* Pods-ServerStatus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServerStatus.release.xcconfig"; path = "Target Support Files/Pods-ServerStatus/Pods-ServerStatus.release.xcconfig"; sourceTree = "<group>"; };
 		F1B58BD14A9B7634A758CDFB /* Pods_ServerStatus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ServerStatus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				0D11EAB82BAB277800451321 /* ChartsConfig.swift */,
+				0DD98CE02BACA94E00804BE7 /* SentryConfig.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -190,8 +189,6 @@
 		0DAD5E0C2BA6648E006D3F52 = {
 			isa = PBXGroup;
 			children = (
-				0DD98CDB2BAC996400804BE7 /* .gitignore */,
-				0DD98CDA2BAC993200804BE7 /* Secrets.plist */,
 				0D11EAC82BAB964E00451321 /* PrivacyInfo.xcprivacy */,
 				0DC4DB622BA6A358007A8328 /* Readme.md */,
 				0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */,
@@ -439,11 +436,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD98CDC2BAC996400804BE7 /* .gitignore in Resources */,
 				0DAD5E262BA6648F006D3F52 /* Preview Assets.xcassets in Resources */,
 				0DAD5E222BA6648F006D3F52 /* Assets.xcassets in Resources */,
 				0DC4DB632BA6A358007A8328 /* Readme.md in Resources */,
-				0DD98CDD2BAC9B7600804BE7 /* Secrets.plist in Resources */,
 				0DAD5E412BA67A06006D3F52 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +512,7 @@
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
 				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
 				0D11EA9E2BA9E07900451321 /* StatusMockData.swift in Sources */,
+				0DD98CE12BACA94E00804BE7 /* SentryConfig.swift in Sources */,
 				0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */,
 				0D11EAAA2BAA253100451321 /* MobileView.swift in Sources */,
 				0D11EAAC2BAA255300451321 /* TabletView.swift in Sources */,
