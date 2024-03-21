@@ -11,12 +11,17 @@ struct StatusModel: Codable {
 
 // MARK: - CPU
 struct CPU: Codable {
-    let temperatures: [[Int]]?
     let count: Int?
     let utilisation: Double?
     let model: String?
     let cores, cache: Int?
-    let frequencies: [Frequency]?
+    let cpuCores: [CPUCore]?
+}
+
+// MARK: - CPU Core
+struct CPUCore: Codable {
+    let temperatures: [Int]?
+    let frequencies: Frequency?
 }
 
 // MARK: - Frequency
@@ -65,30 +70,37 @@ struct Storage: Codable {
     let available: Int?
 }
 
+
 func transformStatusJSON(_ input: [String: Any]) -> [String: Any] {
     var output = input
     
     if let cpu = input["cpu"] as? [String: Any] {
+        var coresData: [[String: Any]] = []
+        
         let temperatures = cpu["temperatures"] as? [String: [Double]]
         let frequencies = cpu["frequencies"] as? [String: [String: Int]]
         
-        
-        var convertedTemperatures: Any = []
-        if temperatures != nil {
-            convertedTemperatures = temperatures!.values.map { $0 }
-        }
-        
         var convertedFrequencies = [[String: Int]]()
         if frequencies != nil {
-            for (_, values) in frequencies! {
+            for (index, values) in frequencies! {
+                var coreData: [String: Any] = [:]
+                if temperatures?["Core \(index.replacingOccurrences(of: "cpu", with: ""))"] != nil {
+                    coreData = coreData.merging([
+                        "temperatures": (temperatures!["Core \(index.replacingOccurrences(of: "cpu", with: ""))"]) as Any,
+                        "frequencies": values
+                    ]) { (_, new) in new }
+                }
+                else {
+                    coreData = coreData.merging([
+                        "frequencies": values
+                    ]) { (_, new) in new }
+                }
+                coresData.append(coreData)
                 convertedFrequencies.append(values)
             }
         }
-        
-        output["cpu"] = cpu.merging([
-            "temperatures": convertedTemperatures,
-            "frequencies": convertedFrequencies
-        ]) { (_, new) in new }
+
+        output["cpu"] = cpu.merging(["cpuCores": coresData]) { (_, new) in new }
     }
     
     if let storage = input["storage"] as? [String: [String: Any]] {
@@ -105,28 +117,6 @@ func transformStatusJSON(_ input: [String: Any]) -> [String: Any] {
 
     return output
 }
-
-
-//func transformStatusJSON(_ input: [String: Any]) -> [String: Any] {
-//    var output = input
-//    
-//    // Convert temperatures
-//    if let cpu = input["cpu"] as? [String: Any], let temperatures = cpu["temperatures"] as? [String: [Double]] {
-//        let convertedTemperatures = temperatures.values.map { $0 }
-//        output["cpu"] = cpu.merging(["temperatures": convertedTemperatures]) { (_, new) in new }
-//    }
-//    
-//    // Convert frequencies
-//    if let cpu = input["cpu"] as? [String: Any], let frequencies = cpu["frequencies"] as? [String: [String: Int]] {
-//        var convertedFrequencies = [[String: Int]]()
-//        for (_, values) in frequencies {
-//            convertedFrequencies.append(values)
-//        }
-//        output["cpu"] = cpu.merging(["frequencies": convertedFrequencies]) { (_, new) in new }
-//    }
-//    
-//    return output
-//}
 
 
 class StatusResponse {

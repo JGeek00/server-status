@@ -24,7 +24,7 @@ private struct CpuList: View {
     
     var body: some View {
         let data = statusModel.status?.last
-        let cpuMaxTemp = data?.cpu?.temperatures?.map({ return $0.first ?? 0 }).max()
+        let cpuMaxTemp = data?.cpu?.cpuCores?.map({ return $0.temperatures?.first ?? 0 }).max()
         List {
             Section("Information") {
                 HStack {
@@ -48,7 +48,7 @@ private struct CpuList: View {
                 HStack {
                     Text("Load")
                     Spacer()
-                    Text(data?.cpu?.utilisation != nil ? "\(Int(data!.cpu!.utilisation!))%" : "N/A")
+                    Text(data?.cpu?.utilisation != nil ? "\(Int(data!.cpu!.utilisation!*100))%" : "N/A")
                 }
                 HStack {
                     Text("Temperature")
@@ -56,8 +56,8 @@ private struct CpuList: View {
                     Text(cpuMaxTemp != nil ? "\(cpuMaxTemp!)ºC" : "N/A")
                 }
             }
-            if data?.cpu?.frequencies != nil {
-                ForEach(data!.cpu!.frequencies!.indices, id: \.self) { index in
+            if data?.cpu?.cpuCores != nil {
+                ForEach(data!.cpu!.cpuCores!.indices, id: \.self) { index in
                     CpuCharts(index: index, inSheet: onCloseSheet != nil)
                 }
             }
@@ -125,11 +125,11 @@ private struct CpuCharts: View {
         return reversedData.map() {
             return CpuChartData(
                 id: UUID().uuidString,
-                frequency: $0?.cpu?.frequencies?[index].now ?? 0,
-                minFrequency: $0?.cpu?.frequencies?[index].min ?? 0,
-                maxFrequency: $0?.cpu?.frequencies?[index].max ?? 0,
-                temperature: $0?.cpu?.temperatures?[index][0] ?? 0,
-                maxTemperature: $0?.cpu?.temperatures?[index][1] ?? 0
+                frequency: $0?.cpu?.cpuCores?[index].frequencies?.now ?? 0,
+                minFrequency: $0?.cpu?.cpuCores?[index].frequencies?.min ?? 0,
+                maxFrequency: $0?.cpu?.cpuCores?[index].frequencies?.max ?? 0,
+                temperature: $0?.cpu?.cpuCores?[index].temperatures?[0] ?? 0,
+                maxTemperature: $0?.cpu?.cpuCores?[index].temperatures?[1] ?? 0
             )
         }
     }

@@ -10,7 +10,7 @@ struct TabletView: View {
         let data = statusModel.status?.last
         let previous = statusModel.status != nil ? statusModel.status!.count > 1 ? statusModel.status![statusModel.status!.count-2] : nil : nil
         
-        let cpuMaxTemp = data?.cpu?.temperatures?.map({ return $0.first ?? 0 }).max()
+        let cpuMaxTemp = data?.cpu?.cpuCores?.map({ return $0.temperatures?.first ?? 0 }).max()
         
         func getMemoryValue() -> String {
             guard let total = data?.memory?.total else { return "N/A" }
