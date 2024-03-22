@@ -4,10 +4,24 @@ struct TipsView: View {
     @EnvironmentObject private var tipsModel: TipsViewModel
     
     var body: some View {
-        List($tipsModel.allProducts, id: \.self) { item in
-            TipItem(contributionProduct: item.wrappedValue) {
-                if let product = tipsModel.product(for: item.wrappedValue.id) {
-                    tipsModel.purchaseProduct(product: product)
+        Group {
+            if !tipsModel.allProducts.isEmpty {
+                VStack {
+                    Image(systemName: "nosign")
+                        .font(.system(size: 40))
+                    Spacer().frame(height: 20)
+                    Text("Currently there are no options available.")
+                        .font(.system(size: 24))
+                        .multilineTextAlignment(.center)
+                }
+            }
+            else {
+                List($tipsModel.allProducts, id: \.self) { item in
+                    TipItem(contributionProduct: item.wrappedValue) {
+                        if let product = tipsModel.product(for: item.wrappedValue.id) {
+                            tipsModel.purchaseProduct(product: product)
+                        }
+                    }
                 }
             }
         }

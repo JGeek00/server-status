@@ -395,6 +395,16 @@
         }
       }
     },
+    "Currently there are no options available." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualmente no hay opciones disponibles."
+          }
+        }
+      }
+    },
     "Dark" : {
       "extractionState" : "manual",
       "localizations" : {
