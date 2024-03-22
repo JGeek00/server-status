@@ -55,3 +55,10 @@ func formatBytes(value: Int?) -> String {
     }
     return "N/A"
 }
+
+func formatPrice(value: NSDecimalNumber, locale: Locale) -> String? {
+    let nf = NumberFormatter()
+    nf.numberStyle = .currency
+    nf.locale = locale
+    return nf.string(from: value)
+}

@@ -9,79 +9,88 @@ struct SettingsView: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
     var body: some View {
-        NavigationView {
-            List {
-                ServersInstancesList(instanceFormModel: instanceFormModel, settingsModel: settingsModel)
-                Section("Theme") {
-                    ThemeButton(
-                        thisOption: Enums.Theme.system,
-                        selectedOption: $appConfig.theme,
-                        onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
-                    )
-                    ThemeButton(
-                        thisOption: Enums.Theme.light,
-                        selectedOption: $appConfig.theme,
-                        onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
-                    )
-                    ThemeButton(
-                        thisOption: Enums.Theme.dark,
-                        selectedOption: $appConfig.theme,
-                        onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
-                    )
-                }
-                Section("App settings") {
-                    Toggle("Show server URL on details screen", isOn: $appConfig.showUrlDetailsScreen)
-                        .onChange(of: appConfig.showUrlDetailsScreen) { oldValue, newValue in
-                            appConfig.updateSettingsToggle(key: StorageKeys.showServerUrlDetails, value: newValue)
-                        }
-                }
-                Section("About the app") {
-                    Button {
-                        settingsModel.safariOpen.toggle()
-                    } label: {
-                        HStack {
-                            Text("Check \"Status\" repository")
-                                .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
-                            Spacer()
-                            Image(systemName: "link")
-                                .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
-                        }
+        NavigationStack {
+            VStack {
+                List {
+                    ServersInstancesList(instanceFormModel: instanceFormModel, settingsModel: settingsModel)
+                    Section("Theme") {
+                        ThemeButton(
+                            thisOption: Enums.Theme.system,
+                            selectedOption: $appConfig.theme,
+                            onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
+                        )
+                        ThemeButton(
+                            thisOption: Enums.Theme.light,
+                            selectedOption: $appConfig.theme,
+                            onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
+                        )
+                        ThemeButton(
+                            thisOption: Enums.Theme.dark,
+                            selectedOption: $appConfig.theme,
+                            onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
+                        )
                     }
-                    HStack {
-                        Text("App version")
-                        Spacer()
-                        Text(
-                            Bundle.main.infoDictionary?["CFBundleShortVersionString"] != nil
+                    Section("App settings") {
+                        Toggle("Show server URL on details screen", isOn: $appConfig.showUrlDetailsScreen)
+                            .onChange(of: appConfig.showUrlDetailsScreen) { oldValue, newValue in
+                                appConfig.updateSettingsToggle(key: StorageKeys.showServerUrlDetails, value: newValue)
+                            }
+                    }
+                    Section("About the app") {
+                        NavigationLink("Give a tip to the developer", value: Routes.SettingsRoutes.tips)
+                        Button {
+                            settingsModel.safariOpen.toggle()
+                        } label: {
+                            HStack {
+                                Text("Check \"Status\" repository")
+                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                Spacer()
+                                Image(systemName: "link")
+                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                            }
+                        }
+                        HStack {
+                            Text("App version")
+                            Spacer()
+                            Text(
+                                Bundle.main.infoDictionary?["CFBundleShortVersionString"] != nil
                                 ? Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
                                 : "Unknown"
-                        )
-                        
-                    }
-                    HStack {
-                        Text("Created by")
-                        Spacer()
-                        Text(Strings.creator)
+                            )
+                            
+                        }
+                        HStack {
+                            Text("Created by")
+                            Spacer()
+                            Text(Strings.creator)
+                        }
                     }
                 }
-            }
-            .navigationTitle("Settings")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        settingsModel.modalOpen.toggle()
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "xmark")
-                                .foregroundColor(.white)
-                                .font(.system(size: 10))
-                                .fontWeight(Font.Weight.bold)
-                        }
+                .navigationTitle("Settings")
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            settingsModel.modalOpen.toggle()
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 10))
+                                    .fontWeight(Font.Weight.bold)
+                            }
                             
-                    }
+                        }
                         .frame(width: 28, height: 28)
                         .background(Color.black.opacity(0.3))
                         .cornerRadius(50)
+                    }
+                }
+            }
+            .navigationDestination(for: Routes.SettingsRoutes.self) { item in
+                switch item {
+                    case .tips:
+                        TipsView()
                 }
             }
         }

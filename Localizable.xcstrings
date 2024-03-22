@@ -538,6 +538,16 @@
         }
       }
     },
+    "Give a tip to the developer" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Darle una propina al desarrollador"
+          }
+        }
+      }
+    },
     "HTTP" : {
       "localizations" : {
         "es" : {
@@ -816,6 +826,26 @@
         }
       }
     },
+    "Purchase completed successfully" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra completada correctamente"
+          }
+        }
+      }
+    },
+    "Purchase failed or cancelled" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra fallida o cancelada"
+          }
+        }
+      }
+    },
     "Retry" : {
       "localizations" : {
         "es" : {
@@ -1068,6 +1098,26 @@
         }
       }
     },
+    "The purchase could not be completed. An error occured on the process or it has been cancelled by the user." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La compra no pudo ser completada. Ocurrió un error en el proceso o ha sido cancelada por el usuario."
+          }
+        }
+      }
+    },
+    "The purchase has been completed. Thank you for contributing with the development and mantenience of this application." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La compra se ha completado. Gracias por contribuir con el desarrollo y el mantenimiento de esta aplicación."
+          }
+        }
+      }
+    },
     "Theme" : {
       "localizations" : {
         "en" : {
@@ -1080,6 +1130,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tema"
+          }
+        }
+      }
+    },
+    "Tips" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propinas"
           }
         }
       }

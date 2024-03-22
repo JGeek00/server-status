@@ -7,6 +7,7 @@ struct ServerStatusApp: App {
     let instancesViewModel = InstancesViewModel()
     let appConfigViewModel = AppConfigViewModel()
     let statusViewModel = StatusViewModel()
+    let tipsViewModel = TipsViewModel()
     
     init() {
         startSentry()
@@ -20,6 +21,7 @@ struct ServerStatusApp: App {
                 .environmentObject(instancesViewModel)
                 .environmentObject(appConfigViewModel)
                 .environmentObject(statusViewModel)
+                .environmentObject(tipsViewModel)
         }
     }
 }

@@ -1,0 +1,170 @@
+{
+  "identifier" : "2C75F6B0",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "6.99",
+      "familyShareable" : false,
+      "internalID" : "6479884222",
+      "localizations" : [
+        {
+          "description" : "Give a big tip to the developer.",
+          "displayName" : "Big contribution",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Darle una gran propina al desarrollador.",
+          "displayName" : "Contribución grande",
+          "locale" : "es_ES"
+        }
+      ],
+      "productID" : "com.jgeek00.ServerStatus.BigContribution",
+      "referenceName" : "Big contribution",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "17.99",
+      "familyShareable" : false,
+      "internalID" : "6479883555",
+      "localizations" : [
+        {
+          "description" : "Darle una propina gloriosa al desarrollador.",
+          "displayName" : "Propina gloriosa",
+          "locale" : "es_ES"
+        },
+        {
+          "description" : "Give a glorious tip to the developer.",
+          "displayName" : "Glorious tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.jgeek00.com.ServerStatus.GloriousTip",
+      "referenceName" : "Glorious contribution",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "6479883274",
+      "localizations" : [
+        {
+          "description" : "Give a medium tip to the developer.",
+          "displayName" : "Medium contribution",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Darle una propina mediana al desarrollador.",
+          "displayName" : "Contribución mediana",
+          "locale" : "es_ES"
+        }
+      ],
+      "productID" : "com.jgeek00.ServerStatus.MediumContribution",
+      "referenceName" : "Medium contribution",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "6479883296",
+      "localizations" : [
+        {
+          "description" : "Darle una pequeña propina al desarrollador.",
+          "displayName" : "Contribución pequeña",
+          "locale" : "es_ES"
+        },
+        {
+          "description" : "Give a small tip to the developer.",
+          "displayName" : "Small contribution",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.jgeek00.ServerStatus.SmallContribution",
+      "referenceName" : "Small contribution",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "11.99",
+      "familyShareable" : false,
+      "internalID" : "6479883502",
+      "localizations" : [
+        {
+          "description" : "Darle una propina muy grande al desarrollador",
+          "displayName" : "Contribución muy grande",
+          "locale" : "es_ES"
+        },
+        {
+          "description" : "Give a very big tip to the developer.",
+          "displayName" : "Very big contribution",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.jgeek00.ServerStatus.VeryBigTip",
+      "referenceName" : "Very big contribution",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6479648296",
+    "_developerTeamID" : "38Z3B9TJTR",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 732808486.87999499,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
