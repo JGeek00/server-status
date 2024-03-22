@@ -5,7 +5,7 @@ struct TipsView: View {
     
     var body: some View {
         Group {
-            if !tipsModel.allProducts.isEmpty {
+            if tipsModel.allProducts.isEmpty {
                 VStack {
                     Image(systemName: "nosign")
                         .font(.system(size: 40))
