@@ -11,11 +11,11 @@ class TipsViewModel: NSObject, ObservableObject {
     @Published var successfulPurchase = false
     
     private let allIdentifiers = Set([
-        "com.jgeek00.ServerStatus.SmallContribution",
-        "com.jgeek00.ServerStatus.MediumContribution",
-        "com.jgeek00.ServerStatus.BigContribution",
-        "com.jgeek00.ServerStatus.VeryBigContribution",
-        "com.jgeek00.ServerStatus.GloriousContribution"
+        "com.jgeek00.ServerStatus.SmallTip",
+        "com.jgeek00.ServerStatus.MediumTip",
+        "com.jgeek00.ServerStatus.BigTip",
+        "com.jgeek00.ServerStatus.VeryBigTip",
+        "com.jgeek00.ServerStatus.GloriousTip"
     ])
 
     private var productsRequest: SKProductsRequest?
