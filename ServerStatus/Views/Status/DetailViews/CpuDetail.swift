@@ -21,6 +21,7 @@ private struct CpuList: View {
     
     @EnvironmentObject var statusModel: StatusViewModel
     @EnvironmentObject var appConfig: AppConfigViewModel
+    @EnvironmentObject var instancesModel: InstancesViewModel
     
     var body: some View {
         let data = statusModel.status?.last
@@ -82,6 +83,14 @@ private struct CpuList: View {
                     .frame(width: 28, height: 28)
                     .background(Color.black.opacity(0.3))
                     .cornerRadius(50)
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    guard let instance = instancesModel.selectedInstance else { return }
+                    Task { await statusModel.fetchStatus(serverInstance: instance, showError: false) }
+                } label: {
+                    Image(systemName: "arrow.clockwise")
                 }
             }
         }
