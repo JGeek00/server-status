@@ -46,21 +46,9 @@ private struct NetworkList: View {
         .toolbar {
             if onCloseSheet != nil {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
+                    CloseButton(onClose: {
                         onCloseSheet!()
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "xmark")
-                                .foregroundColor(.white)
-                                .font(.system(size: 10))
-                                .fontWeight(Font.Weight.bold)
-                        }
-                        
-                    }
-                    .frame(width: 28, height: 28)
-                    .background(Color.black.opacity(0.3))
-                    .cornerRadius(50)
+                    })
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
