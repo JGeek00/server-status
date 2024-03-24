@@ -87,30 +87,23 @@ extension TipsViewModel : SKPaymentTransactionObserver {
             switch transaction.transactionState {
                 case .purchased, .restored:
                     self.successfulPurchase = true
-                    self.purchaseInProgress = false
                     finishTransaction = true
                 case .failed:
                     self.failedPurchase = true
-                    self.purchaseInProgress = false
                     finishTransaction = true
                 case .deferred, .purchasing:
-                    self.purchaseInProgress = true
                     break
                 @unknown default:
-                    self.purchaseInProgress = false
                     break
             }
             
             if finishTransaction {
                 SKPaymentQueue.default().finishTransaction(transaction)
                 DispatchQueue.main.async {
+                    self.purchaseInProgress = false
                     self.purchasesCompleteHandler?(transaction)
                     self.purchasesCompleteHandler = nil
                 }
-            }
-            
-            DispatchQueue.main.async {
-                self.purchaseInProgress = false
             }
         }
     }
@@ -122,6 +115,7 @@ extension TipsViewModel {
     }
     
     func purchaseProduct(product: SKProduct){
+        self.purchaseInProgress = true
         startObservingPayment()
         buy(product) { _ in }
     }
