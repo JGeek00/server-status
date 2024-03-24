@@ -16,10 +16,18 @@ struct TipsView: View {
                 }
             }
             else {
-                List($tipsModel.allProducts, id: \.self) { item in
-                    TipItem(contributionProduct: item.wrappedValue) {
-                        if let product = tipsModel.product(for: item.wrappedValue.id) {
-                            tipsModel.purchaseProduct(product: product)
+                List {
+                    Section("A message from the developer") {
+                        Text("Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the AppStore I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you.")
+                        
+                    }
+                    Section("Donation options") {
+                        ForEach($tipsModel.allProducts, id: \.self) { item in
+                            TipItem(contributionProduct: item.wrappedValue) {
+                                if let product = tipsModel.product(for: item.wrappedValue.id) {
+                                    tipsModel.purchaseProduct(product: product)
+                                }
+                            }
                         }
                     }
                 }

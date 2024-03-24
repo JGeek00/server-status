@@ -107,6 +107,16 @@
         }
       }
     },
+    "A message from the developer" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un mensaje del desarrollador"
+          }
+        }
+      }
+    },
     "About the app" : {
       "localizations" : {
         "es" : {
@@ -477,6 +487,16 @@
         }
       }
     },
+    "Donation options" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones de donación"
+          }
+        }
+      }
+    },
     "Edit" : {
       "localizations" : {
         "es" : {
@@ -554,6 +574,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Darle una propina al desarrollador"
+          }
+        }
+      }
+    },
+    "Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the AppStore I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hola, soy el desarrollador de Server Status.\nServer Status es gratuito y quiero que siga siéndolo, pero al ofrecer esta aplicación en la AppStore me encuentro con algunos costes, como la licencia de desarrollador de Apple. Agradecería mucho cualquier donación para ayudarme a pagar estos costes.\nMuchas gracias."
           }
         }
       }
