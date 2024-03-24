@@ -56,7 +56,7 @@ struct WelcomeSheetView: View {
                         }
                         .frame(
                             width: geometry.size.width,
-                            height: 110
+                            height: geometry.safeAreaInsets.bottom + 80
                         )
                         .background(.ultraThinMaterial)
                         Button {
@@ -70,7 +70,7 @@ struct WelcomeSheetView: View {
                         }
                         .background(Color.blue)
                         .cornerRadius(8)
-                        .padding(.bottom, 24)
+                        .padding(.bottom, geometry.safeAreaInsets.bottom/2)
                     }
                 }
                 .edgesIgnoringSafeArea(.bottom)
