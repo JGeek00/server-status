@@ -21,6 +21,7 @@
 		0D11EAC32BAB636100451321 /* DetailsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAC22BAB636100451321 /* DetailsSheet.swift */; };
 		0D88524C2BB06BCB0049FE7A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D88524B2BB06BCA0049FE7A /* StoreKit.framework */; };
 		0D88524E2BB0951E0049FE7A /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88524D2BB0951E0049FE7A /* CloseButton.swift */; };
+		0D8852502BB0F4FB0049FE7A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0D11EAC82BAB964E00451321 /* PrivacyInfo.xcprivacy */; };
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
@@ -460,6 +461,7 @@
 				0DAD5E262BA6648F006D3F52 /* Preview Assets.xcassets in Resources */,
 				0DAD5E222BA6648F006D3F52 /* Assets.xcassets in Resources */,
 				0DC4DB632BA6A358007A8328 /* Readme.md in Resources */,
+				0D8852502BB0F4FB0049FE7A /* PrivacyInfo.xcprivacy in Resources */,
 				0DAD5E412BA67A06006D3F52 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
