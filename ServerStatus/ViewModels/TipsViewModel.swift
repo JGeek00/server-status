@@ -1,5 +1,6 @@
 import Foundation
 import StoreKit
+import Sentry
 
 typealias FetchCompleteHandler = (([SKProduct]) -> Void)
 typealias PurchasesCompleteHandler = ((SKPaymentTransaction) -> Void)
@@ -58,12 +59,12 @@ class TipsViewModel: NSObject, ObservableObject {
 extension TipsViewModel: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let loadedProducts = response.products
-        let invalidProductos = response.invalidProductIdentifiers
+        let invalidProducts = response.invalidProductIdentifiers
         
         guard !loadedProducts.isEmpty else{
-            print("No se pueden cargar los productos")
-            if !invalidProductos.isEmpty {
-                print("productos invalidos encontrados: \(invalidProductos)")
+            if !invalidProducts.isEmpty {
+                SentrySDK.capture(message: "Cannot load products: \(invalidProducts)")
+                print("Cannot load products: \(invalidProducts)")
             }
             productsRequest = nil
             return
