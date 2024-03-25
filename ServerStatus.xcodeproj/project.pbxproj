@@ -22,6 +22,7 @@
 		0D88524C2BB06BCB0049FE7A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D88524B2BB06BCA0049FE7A /* StoreKit.framework */; };
 		0D88524E2BB0951E0049FE7A /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88524D2BB0951E0049FE7A /* CloseButton.swift */; };
 		0D8852502BB0F4FB0049FE7A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0D11EAC82BAB964E00451321 /* PrivacyInfo.xcprivacy */; };
+		0D8852692BB1B2980049FE7A /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 0D8852682BB1B2980049FE7A /* Sentry */; };
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
@@ -60,7 +61,6 @@
 		0DC4DBB62BA8845F007A8328 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBB52BA8845F007A8328 /* StatusModel.swift */; };
 		0DC4DBBB2BA88AC8007A8328 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */; };
 		0DC4DBBD2BA88F6A007A8328 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */; };
-		0DD98CD72BAC945100804BE7 /* Pods_ServerStatus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B58BD14A9B7634A758CDFB /* Pods_ServerStatus.framework */; };
 		0DD98CDF2BAC9F4300804BE7 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CDE2BAC9F4300804BE7 /* Sentry.swift */; };
 		0DD98CE12BACA94E00804BE7 /* SentryConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CE02BACA94E00804BE7 /* SentryConfig.swift */; };
 		0DD98CE42BAD937100804BE7 /* ContributionProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CE32BAD937100804BE7 /* ContributionProduct.swift */; };
@@ -132,9 +132,6 @@
 		0DD98CE52BAD970C00804BE7 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		0DD98CE72BAD981400804BE7 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		0DD98CE92BAD991500804BE7 /* TipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewModel.swift; sourceTree = "<group>"; };
-		384804D3A1DDC1A5B5F03C95 /* Pods-ServerStatus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServerStatus.debug.xcconfig"; path = "Target Support Files/Pods-ServerStatus/Pods-ServerStatus.debug.xcconfig"; sourceTree = "<group>"; };
-		53D1F4F4A89A114B50D691BF /* Pods-ServerStatus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServerStatus.release.xcconfig"; path = "Target Support Files/Pods-ServerStatus/Pods-ServerStatus.release.xcconfig"; sourceTree = "<group>"; };
-		F1B58BD14A9B7634A758CDFB /* Pods_ServerStatus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ServerStatus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +139,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD98CD72BAC945100804BE7 /* Pods_ServerStatus.framework in Frameworks */,
 				0D88524C2BB06BCB0049FE7A /* StoreKit.framework in Frameworks */,
+				0D8852692BB1B2980049FE7A /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +209,6 @@
 				0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */,
 				0DAD5E172BA6648E006D3F52 /* ServerStatus */,
 				0DAD5E162BA6648E006D3F52 /* Products */,
-				3D16A94540362D9425EA7C03 /* Pods */,
 				140CD56573C69376D21BFA7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -383,18 +379,8 @@
 			isa = PBXGroup;
 			children = (
 				0D88524B2BB06BCA0049FE7A /* StoreKit.framework */,
-				F1B58BD14A9B7634A758CDFB /* Pods_ServerStatus.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3D16A94540362D9425EA7C03 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				384804D3A1DDC1A5B5F03C95 /* Pods-ServerStatus.debug.xcconfig */,
-				53D1F4F4A89A114B50D691BF /* Pods-ServerStatus.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,17 +390,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DAD5E292BA6648F006D3F52 /* Build configuration list for PBXNativeTarget "ServerStatus" */;
 			buildPhases = (
-				DCF8082E3A6C7959A47ED1A3 /* [CP] Check Pods Manifest.lock */,
 				0DAD5E112BA6648E006D3F52 /* Sources */,
 				0DAD5E122BA6648E006D3F52 /* Frameworks */,
 				0DAD5E132BA6648E006D3F52 /* Resources */,
-				37D5242394C983B790DA772C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ServerStatus;
+			packageProductDependencies = (
+				0D8852682BB1B2980049FE7A /* Sentry */,
+			);
 			productName = ServerStatus;
 			productReference = 0DAD5E152BA6648E006D3F52 /* ServerStatus.app */;
 			productType = "com.apple.product-type.application";
@@ -444,6 +431,9 @@
 				es,
 			);
 			mainGroup = 0DAD5E0C2BA6648E006D3F52;
+			packageReferences = (
+				0D8852672BB1B2980049FE7A /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+			);
 			productRefGroup = 0DAD5E162BA6648E006D3F52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -467,48 +457,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		37D5242394C983B790DA772C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ServerStatus/Pods-ServerStatus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ServerStatus/Pods-ServerStatus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ServerStatus/Pods-ServerStatus-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DCF8082E3A6C7959A47ED1A3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ServerStatus-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0DAD5E112BA6648E006D3F52 /* Sources */ = {
@@ -690,7 +638,6 @@
 		};
 		0DAD5E2A2BA6648F006D3F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 384804D3A1DDC1A5B5F03C95 /* Pods-ServerStatus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -736,7 +683,6 @@
 		};
 		0DAD5E2B2BA6648F006D3F52 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53D1F4F4A89A114B50D691BF /* Pods-ServerStatus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -803,6 +749,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D8852672BB1B2980049FE7A /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.22.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0D8852682BB1B2980049FE7A /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D8852672BB1B2980049FE7A /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */ = {
