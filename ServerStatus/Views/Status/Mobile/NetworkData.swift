@@ -18,7 +18,7 @@ struct NetworkData: View {
                     Text("Network")
                         .font(.system(size: 24))
                     Spacer().frame(height: 4)
-                    Text(data?.network?.speed != nil ? "\(String(format: "%.1f", Double(data!.network!.speed!/1000))) Gbit/s" : "N/A")
+                    Text(data?.network?.speed != nil ? "\(formatNumber(value: NSNumber(value: data!.network!.speed!/1000), digits: 1) ?? String(format: "%.1f", Double(data!.network!.speed!/1000))) Gbit/s" : "N/A")
                         .font(.system(size: 16))
                 }
                 Spacer()
