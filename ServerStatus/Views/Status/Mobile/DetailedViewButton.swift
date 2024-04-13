@@ -8,14 +8,13 @@ struct DetailedViewButton: View {
             onTap()
         } label: {
             Text(LocalizedStringKey("DETAILS"))
-                .foregroundStyle(Color.white)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
                 .font(.system(size: 12))
                 .fontWeight(.bold)
         }
-        .background(Color.blue)
-        .cornerRadius(50)
+        .buttonStyle(.borderedProminent)
+        .cornerRadius(20)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 5)
     }
 }
 
