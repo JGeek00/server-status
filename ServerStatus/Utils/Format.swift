@@ -74,3 +74,26 @@ func formatPrice(value: NSDecimalNumber, locale: Locale) -> String? {
     nf.locale = locale
     return nf.string(from: value)
 }
+
+func formatDuration(timestamp: TimeInterval) -> String {
+    let duration = Int(timestamp)
+    let days = duration / (3600 * 24)
+    let hours = (duration % (3600 * 24)) / 3600
+    let minutes = (duration % 3600) / 60
+    let seconds = duration % 60
+    
+    var durationString = ""
+    
+    if days > 0 {
+        durationString += "\(days) d, "
+    }
+    if hours > 0 {
+        durationString += "\(hours) h, "
+    }
+    if minutes > 0 {
+        durationString += "\(minutes) m, "
+    }
+    durationString += "\(seconds) s"
+    
+    return durationString
+}

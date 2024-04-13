@@ -6,6 +6,8 @@ struct TabletView: View {
     @EnvironmentObject var statusModel: StatusViewModel
     @StateObject var settingsModel = SettingsViewModel()
     
+    @State var showSystemInfoSheet = false
+    
     var body: some View {
         let data = statusModel.status?.last
         let previous = statusModel.status != nil ? statusModel.status!.count > 1 ? statusModel.status![statusModel.status!.count-2] : nil : nil
@@ -133,10 +135,22 @@ struct TabletView: View {
             .navigationTitle(instancesModel.selectedInstance?.name ?? "Server status")
             .toolbar(content: {
                 ToolbarItem {
-                    Button {
-                        settingsModel.modalOpen.toggle()
-                    } label: {
-                        Image(systemName: "gear")
+                    HStack {
+                        if statusModel.status?.isEmpty == false && statusModel.status?[0].host != nil {
+                            Button {
+                                showSystemInfoSheet.toggle()
+                            } label: {
+                                Image(systemName: "info.circle")
+                            }
+                            .sheet(isPresented: $showSystemInfoSheet, content: {
+                                DetailsSheet(hardwareItem: Enums.HardwareItem.systemInfo, onCloseSheet: { showSystemInfoSheet.toggle() })
+                            })
+                        }
+                        Button {
+                            settingsModel.modalOpen.toggle()
+                        } label: {
+                            Image(systemName: "gear")
+                        }
                     }
                 }
             })
@@ -146,14 +160,16 @@ struct TabletView: View {
         } detail: {
             if statusModel.status != nil && statusModel.selectedHardwareItem != nil {
                 switch statusModel.selectedHardwareItem! {
-                    case Enums.HardwareItem.cpu:
+                    case .cpu:
                         CpuDetail(onCloseSheet: nil)
-                    case Enums.HardwareItem.memory:
+                    case .memory:
                         MemoryDetail(onCloseSheet: nil)
-                    case Enums.HardwareItem.storage:
+                    case .storage:
                         StorageDetail(onCloseSheet: nil)
-                    case Enums.HardwareItem.network:
+                    case .network:
                         NetworkDetail(onCloseSheet: nil)
+                    case .systemInfo:
+                        SystemDetail(onCloseSheet: nil)
                 }
             }
             else {

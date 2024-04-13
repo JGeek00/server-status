@@ -15,6 +15,8 @@ struct DetailsSheet: View {
                     StorageDetail(onCloseSheet: onCloseSheet)
                 case .network:
                     NetworkDetail(onCloseSheet: onCloseSheet)
+                case .systemInfo:
+                    SystemDetail(onCloseSheet: onCloseSheet)
             }
         }
     }

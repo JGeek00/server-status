@@ -85,7 +85,14 @@
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%lld%%" : {
       "localizations" : {
@@ -160,6 +167,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ocurrió un error al cargar los datos."
+          }
+        }
+      }
+    },
+    "App memory" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memoria de la app"
           }
         }
       }
@@ -487,6 +504,16 @@
         }
       }
     },
+    "Device name" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del dispositivo"
+          }
+        }
+      }
+    },
     "Donation options" : {
       "localizations" : {
         "es" : {
@@ -721,6 +748,16 @@
         }
       }
     },
+    "Load averages" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Media de carga"
+          }
+        }
+      }
+    },
     "Memory" : {
       "localizations" : {
         "es" : {
@@ -814,6 +851,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "en swap"
+          }
+        }
+      }
+    },
+    "Operating system" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistema operativo"
           }
         }
       }
@@ -1117,6 +1164,16 @@
         }
       }
     },
+    "System details" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles del sistema"
+          }
+        }
+      }
+    },
     "Temperature" : {
       "localizations" : {
         "es" : {
@@ -1217,6 +1274,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desconocido"
+          }
+        }
+      }
+    },
+    "Uptime" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo activo"
           }
         }
       }

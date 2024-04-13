@@ -23,5 +23,6 @@ class Enums {
         case memory
         case storage
         case network
+        case systemInfo
     }
 }

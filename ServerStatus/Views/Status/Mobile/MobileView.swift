@@ -6,6 +6,8 @@ struct MobileView: View {
     @StateObject var settingsModel = SettingsViewModel()
     @EnvironmentObject var statusModel: StatusViewModel
     
+    @State var showSystemInfoSheet = false
+    
     var body: some View {
         VStack {
             if statusModel.initialLoading == true {
@@ -86,10 +88,22 @@ struct MobileView: View {
         .navigationTitle(instancesModel.selectedInstance?.name ?? "Server status")
         .toolbar(content: {
             ToolbarItem {
-                Button {
-                    settingsModel.modalOpen.toggle()
-                } label: {
-                    Image(systemName: "gear")
+                HStack {
+                    if statusModel.status?.isEmpty == false && statusModel.status?[0].host != nil {
+                        Button {
+                            showSystemInfoSheet.toggle()
+                        } label: {
+                            Image(systemName: "info.circle")
+                        }
+                        .sheet(isPresented: $showSystemInfoSheet, content: {
+                            DetailsSheet(hardwareItem: Enums.HardwareItem.systemInfo, onCloseSheet: { showSystemInfoSheet.toggle() })
+                        })
+                    }
+                    Button {
+                        settingsModel.modalOpen.toggle()
+                    } label: {
+                        Image(systemName: "gear")
+                    }
                 }
             }
         })
