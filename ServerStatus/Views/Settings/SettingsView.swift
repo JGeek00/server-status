@@ -9,6 +9,7 @@ struct SettingsView: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
     var body: some View {
+        let valueColor = appConfig.getTheme() == ColorScheme.dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
         NavigationStack {
             VStack {
                 List {
@@ -46,7 +47,7 @@ struct SettingsView: View {
                                     .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
                                 Spacer()
                                 Image(systemName: "link")
-                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                    .foregroundColor(valueColor)
                             }
                         }
                         HStack {
@@ -57,12 +58,14 @@ struct SettingsView: View {
                                 ? Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
                                 : "Unknown"
                             )
+                                .foregroundColor(valueColor)
                             
                         }
                         HStack {
                             Text("Created by")
                             Spacer()
                             Text(Strings.creator)
+                                .foregroundColor(valueColor)
                         }
                     }
                 }
