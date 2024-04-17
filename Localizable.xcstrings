@@ -293,6 +293,27 @@
         }
       }
     },
+    "Cannot reach the server." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede alcanzar el servidor."
+          }
+        }
+      }
+    },
+    "Cannot reach the server. Check the connection data and make sure to have a valid certificate if you are using HTTPS." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede alcanzar el servidor. Comprueba los datos de conexión y asegúrate de tener un certificado válido en caso de usar HTTPS."
+          }
+        }
+      }
+    },
     "Chart" : {
       "localizations" : {
         "es" : {
@@ -631,6 +652,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HTTPS"
+          }
+        }
+      }
+    },
+    "Incorrect basic authentication data." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credenciales de autenticación basic incorrectas."
           }
         }
       }
@@ -1274,6 +1305,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desconocido"
+          }
+        }
+      }
+    },
+    "Unknown error." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error desconocido."
           }
         }
       }

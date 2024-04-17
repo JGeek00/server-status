@@ -105,15 +105,15 @@ class InstanceFormViewModel: ObservableObject {
                     return
                 }
                 if response.statusCode == nil {
-                    self.error = "Cannot reach the server."
+                    self.error = NSLocalizedString("Cannot reach the server. Check the connection data and make sure to have a valid certificate if you are using HTTPS.", comment: "")
                     self.showError.toggle()
                 }
                 else if response.statusCode == 401 {
-                    self.error = "Incorrect basic authentication data."
+                    self.error = NSLocalizedString("Incorrect basic authentication data.", comment: "")
                     self.showError.toggle()
                 }
                 else {
-                    self.error = "Unknown error."
+                    self.error = NSLocalizedString("Unknown error.", comment: "")
                     self.showError.toggle()
                 }
             }
