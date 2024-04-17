@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import Sentry
 
 class StatusViewModel: ObservableObject {
     @Published var status: [StatusModel]?
@@ -36,10 +37,10 @@ class StatusViewModel: ObservableObject {
                 initialLoading = false
                 loadError = false
             } catch {
-                print("Error converting string to JSON: \(error.localizedDescription)")
+                SentrySDK.capture(error: error)
             }
         } else {
-            print("Invalid JSON string")
+            SentrySDK.capture(message: "Invalid JSON data on demo mode")
         }
     }
     
@@ -48,10 +49,6 @@ class StatusViewModel: ObservableObject {
             baseUrl: generateInstanceUrl(instance: serverInstance),
             token: serverInstance.useBasicAuth ? encodeCredentialsBasicAuth(username: serverInstance.basicAuthUser!, password: serverInstance.basicAuthPassword!) : nil
         )
-        
-        DispatchQueue.main.async {
-            self.initialLoading = false
-        }
         
         if response.successful == true && response.data != nil {
             do {
@@ -69,7 +66,12 @@ class StatusViewModel: ObservableObject {
                     self.loadError = false
                 }
             } catch let error as NSError {
-                print(error.localizedDescription)
+                SentrySDK.capture(error: error)
+                if showError == true {
+                    DispatchQueue.main.async {
+                        self.loadError = true
+                    }
+                }
             }
         }
         else {
@@ -78,6 +80,10 @@ class StatusViewModel: ObservableObject {
                     self.loadError = true
                 }
             }
+        }
+        
+        DispatchQueue.main.async {
+            self.initialLoading = false
         }
     }
 }
