@@ -67,23 +67,6 @@
         }
       }
     },
-    "%@: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@: %2$@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@: %2$@"
-          }
-        }
-      }
-    },
     "%lld" : {
       "localizations" : {
         "es" : {
@@ -293,17 +276,6 @@
         }
       }
     },
-    "Cannot reach the server." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se puede alcanzar el servidor."
-          }
-        }
-      }
-    },
     "Cannot reach the server. Check the connection data and make sure to have a valid certificate if you are using HTTPS." : {
       "localizations" : {
         "es" : {
@@ -433,12 +405,12 @@
         }
       }
     },
-    "Created by" : {
+    "Created on 🇪🇸 by JGeek00" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Creado por"
+            "value" : "Creado en 🇪🇸 por JGeek00"
           }
         }
       }
@@ -626,12 +598,12 @@
         }
       }
     },
-    "Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the AppStore I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you." : {
+    "Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the App Store I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hola, soy el desarrollador de Server Status.\nServer Status es gratuito y quiero que siga siéndolo, pero al ofrecer esta aplicación en la AppStore me encuentro con algunos costes, como la licencia de desarrollador de Apple. Agradecería mucho cualquier donación para ayudarme a pagar estos costes.\nMuchas gracias."
+            "value" : "Hola, soy el desarrollador de Server Status.\nServer Status es gratuito y quiero que siga siéndolo, pero al ofrecer esta aplicación en la App Store me encuentro con algunos costes, como la licencia de desarrollador de Apple. Agradecería mucho cualquier donación para ayudarme a pagar estos costes.\nMuchas gracias."
           }
         }
       }
@@ -732,17 +704,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dirección IP o dominio"
-          }
-        }
-      }
-    },
-    "JGeek00" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "JGeek00"
           }
         }
       }
@@ -1040,17 +1001,6 @@
         }
       }
     },
-    "Server status" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estado del servidor"
-          }
-        }
-      }
-    },
     "Server Status" : {
       "localizations" : {
         "es" : {
@@ -1149,17 +1099,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Almacenamiento"
-          }
-        }
-      }
-    },
-    "Storage (GB)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almacenamiento (GB)"
           }
         }
       }

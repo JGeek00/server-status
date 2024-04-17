@@ -11,7 +11,7 @@ struct SettingsView: View {
     var body: some View {
         let valueColor = appConfig.getTheme() == ColorScheme.dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
         NavigationStack {
-            VStack {
+            Group {
                 List {
                     ServersInstancesList(instanceFormModel: instanceFormModel, settingsModel: settingsModel)
                     Section("Theme") {
@@ -37,7 +37,7 @@ struct SettingsView: View {
                                 appConfig.updateSettingsToggle(key: StorageKeys.showServerUrlDetails, value: newValue)
                             }
                     }
-                    Section("About the app") {
+                    Section {
                         NavigationLink("Give a tip to the developer", value: Routes.SettingsRoutes.tips)
                         Button {
                             settingsModel.safariOpen.toggle()
@@ -58,16 +58,21 @@ struct SettingsView: View {
                                 ? Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
                                 : "Unknown"
                             )
-                                .foregroundColor(valueColor)
-                            
+                            .foregroundColor(valueColor)
                         }
+                    } header: {
+                        Text("About the app")
+                    } footer: {
                         HStack {
-                            Text("Created by")
                             Spacer()
-                            Text(Strings.creator)
-                                .foregroundColor(valueColor)
+                            Text("Created on 🇪🇸 by JGeek00")
+                                .multilineTextAlignment(.center)
+                                .font(.system(size: 16))
+                            Spacer()
                         }
+                        .padding(.top, 8)
                     }
+
                 }
                 .navigationTitle("Settings")
                 .toolbar {

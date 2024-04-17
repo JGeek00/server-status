@@ -18,7 +18,7 @@ struct TipsView: View {
             else {
                 List {
                     Section("A message from the developer") {
-                        Text("Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the AppStore I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you.")
+                        Text("Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the App Store I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you.")
                         
                     }
                     Section("Donation options") {
