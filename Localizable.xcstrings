@@ -1083,6 +1083,16 @@
         }
       }
     },
+    "Status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado"
+          }
+        }
+      }
+    },
     "Status deployment instructions" : {
       "localizations" : {
         "es" : {

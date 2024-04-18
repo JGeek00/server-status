@@ -14,15 +14,27 @@ struct RootView: View {
     ) var instances: FetchedResults<ServerInstances>
     
     var body: some View {
-        NavigationView {
-            if instances.isEmpty && instancesModel.demoMode == false {
-                NoInstancesView()
+        TabView {
+            NavigationStack {
+                if instances.isEmpty && instancesModel.demoMode == false {
+                    NoInstancesView()
+                }
+                else {
+                    StatusView()
+                }
             }
-            else {
-                StatusView()
+            .tabItem {
+                Image(systemName: "chart.pie.fill")
+                Text("Status")
             }
+            .tag(0)
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
+                .tag(1)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .preferredColorScheme(appConfig.getTheme())
         .sheet(isPresented: $welcomeSheetModel.openSheet) {
             WelcomeSheetView(welcomeSheetModel: welcomeSheetModel)

@@ -4,7 +4,7 @@ import SafariServices
 struct SettingsView: View {
     @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
-    @ObservedObject var settingsModel: SettingsViewModel
+    @StateObject var settingsModel = SettingsViewModel()
     @StateObject var instanceFormModel = InstanceFormViewModel()
     @EnvironmentObject var statusModel: StatusViewModel
     
@@ -75,13 +75,6 @@ struct SettingsView: View {
 
                 }
                 .navigationTitle("Settings")
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        CloseButton(onClose: {
-                            settingsModel.modalOpen.toggle()
-                        })
-                    }
-                }
             }
             .navigationDestination(for: Routes.SettingsRoutes.self) { item in
                 switch item {

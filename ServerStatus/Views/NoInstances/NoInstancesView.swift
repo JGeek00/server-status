@@ -2,7 +2,6 @@ import SwiftUI
 
 struct NoInstancesView: View {
     @StateObject var instanceFormModel = InstanceFormViewModel()
-    @StateObject var settingsModel = SettingsViewModel()
     
     var body: some View {
         VStack {
@@ -26,25 +25,14 @@ struct NoInstancesView: View {
                 }
 
             }
-            .padding(10)
-            .background(Color.blue)
+            .buttonStyle(.borderedProminent)
             .cornerRadius(50)
+            .padding(10)
         }
         .navigationTitle("Instances")
-        .toolbar(content: {
-            ToolbarItem {
-                Button {
-                    settingsModel.modalOpen.toggle()
-                } label: {
-                    Image(systemName: "gear")
-                }
-            }
-        })
         .padding()
         .sheet(isPresented: $instanceFormModel.modalOpen, content: {
             InstanceFormView(instanceFormModel: instanceFormModel)
-        }).sheet(isPresented: $settingsModel.modalOpen, content: {
-            SettingsView(settingsModel: settingsModel)
         })
     }
 }

@@ -4,7 +4,6 @@ struct TabletView: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
     @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var statusModel: StatusViewModel
-    @StateObject var settingsModel = SettingsViewModel()
     
     @State var showSystemInfoSheet = false
     
@@ -43,7 +42,7 @@ struct TabletView: View {
             return formatBits(value: abs(current - previous))
         }
         
-        return NavigationSplitView {
+        return NavigationSplitView(columnVisibility: .constant(.all)) {
             VStack {
                 if statusModel.initialLoading == true {
                     VStack {
@@ -146,17 +145,10 @@ struct TabletView: View {
                                 DetailsSheet(hardwareItem: Enums.HardwareItem.systemInfo, onCloseSheet: { showSystemInfoSheet.toggle() })
                             })
                         }
-                        Button {
-                            settingsModel.modalOpen.toggle()
-                        } label: {
-                            Image(systemName: "gear")
-                        }
                     }
                 }
             })
-            .sheet(isPresented: $settingsModel.modalOpen, content: {
-                SettingsView(settingsModel: settingsModel)
-            })
+            
         } detail: {
             if statusModel.status != nil && statusModel.selectedHardwareItem != nil {
                 switch statusModel.selectedHardwareItem! {
@@ -182,5 +174,6 @@ struct TabletView: View {
                 }
             }
         }
+        .navigationSplitViewStyle(.balanced)
     }
 }

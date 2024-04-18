@@ -3,7 +3,6 @@ import SwiftUI
 struct MobileView: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
     @EnvironmentObject var appConfig: AppConfigViewModel
-    @StateObject var settingsModel = SettingsViewModel()
     @EnvironmentObject var statusModel: StatusViewModel
     
     @State var showSystemInfoSheet = false
@@ -99,16 +98,8 @@ struct MobileView: View {
                             DetailsSheet(hardwareItem: Enums.HardwareItem.systemInfo, onCloseSheet: { showSystemInfoSheet.toggle() })
                         })
                     }
-                    Button {
-                        settingsModel.modalOpen.toggle()
-                    } label: {
-                        Image(systemName: "gear")
-                    }
                 }
             }
-        })
-        .sheet(isPresented: $settingsModel.modalOpen, content: {
-            SettingsView(settingsModel: settingsModel)
         })
     }
 }
