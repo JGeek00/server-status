@@ -2,6 +2,8 @@ import SwiftUI
 import SafariServices
 
 struct SettingsView: View {
+    var onCloseSheet: (() -> Void)?
+    
     @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     @StateObject var settingsModel = SettingsViewModel()
@@ -75,6 +77,15 @@ struct SettingsView: View {
 
                 }
                 .navigationTitle("Settings")
+                .toolbar {
+                    if onCloseSheet != nil {
+                        ToolbarItem(placement: .topBarLeading) {
+                            CloseButton {
+                                onCloseSheet!()
+                            }
+                        }
+                    }
+                }
             }
             .navigationDestination(for: Routes.SettingsRoutes.self) { item in
                 switch item {

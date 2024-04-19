@@ -3,6 +3,8 @@ import SwiftUI
 struct NoInstancesView: View {
     @StateObject var instanceFormModel = InstanceFormViewModel()
     
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     var body: some View {
         VStack {
             Text("No instances available")
@@ -34,6 +36,17 @@ struct NoInstancesView: View {
         .sheet(isPresented: $instanceFormModel.modalOpen, content: {
             InstanceFormView(instanceFormModel: instanceFormModel)
         })
+        .toolbar {
+            ToolbarItem(placement: .secondaryAction) {
+                if horizontalSizeClass == .regular {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "gear")
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -5,7 +5,10 @@ struct TabletView: View {
     @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var statusModel: StatusViewModel
     
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     @State var showSystemInfoSheet = false
+    @State var showSettingsSheet = false
     
     var body: some View {
         let data = statusModel.status?.last
@@ -145,10 +148,21 @@ struct TabletView: View {
                                 DetailsSheet(hardwareItem: Enums.HardwareItem.systemInfo, onCloseSheet: { showSystemInfoSheet.toggle() })
                             })
                         }
+                        if horizontalSizeClass == .regular {
+                            Button {
+                                showSettingsSheet.toggle()
+                            } label: {
+                                Image(systemName: "gear")
+                            }
+                        }
                     }
                 }
             })
-            
+            .sheet(isPresented: $showSettingsSheet, content: {
+                SettingsView {
+                    showSettingsSheet.toggle()
+                }
+            })
         } detail: {
             if statusModel.status != nil && statusModel.selectedHardwareItem != nil {
                 switch statusModel.selectedHardwareItem! {
