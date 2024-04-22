@@ -7,20 +7,21 @@ class AppConfigViewModel: ObservableObject {
     @Published var showUrlDetailsScreen = true
     
     init() {
-        let storageTheme = UserDefaults.standard.object(forKey: StorageKeys.theme) as? String
+        let userDefaults = UserDefaults(suiteName: groupId)
+        let storageTheme = userDefaults?.object(forKey: StorageKeys.theme) as? String
         if storageTheme != nil {
             self.theme = Enums.Theme(stringValue: storageTheme!) ?? Enums.Theme.system
         }
-        showUrlDetailsScreen = UserDefaults.standard.object(forKey: StorageKeys.showServerUrlDetails) as? Bool ?? true
+        showUrlDetailsScreen = userDefaults?.object(forKey: StorageKeys.showServerUrlDetails) as? Bool ?? true
     }
     
     func updateTheme(selectedTheme: Enums.Theme) {
         theme = selectedTheme
-        UserDefaults.standard.setValue(selectedTheme.rawValue, forKey: StorageKeys.theme)
+        UserDefaults(suiteName: groupId)?.setValue(selectedTheme.rawValue, forKey: StorageKeys.theme)
     }
     
     func updateSettingsToggle(key: String, value: Bool) {
-        UserDefaults.standard.setValue(value, forKey: key)
+        UserDefaults(suiteName: groupId)?.setValue(value, forKey: key)
     }
     
     func getTheme() -> ColorScheme {

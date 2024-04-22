@@ -11,9 +11,42 @@ struct Provider: AppIntentTimelineProvider {
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<WidgetEntry> {
+        let nilEntry = WidgetEntry(date: Date(), configuration: configuration, data: nil)
         
-        let entry = WidgetEntry(date: Date(), configuration: configuration, data: mockData())
+        guard let instance = fetchDefaultInstanceCoreData() else { return
+            Timeline(entries: [nilEntry], policy: .atEnd)
+        }
+        
+        let fetchedData = await fetchStatus(serverInstance: instance)
+        guard let data = fetchedData else { return
+            Timeline(entries: [nilEntry], policy: .atEnd)
+
+        }
+        
+        let entry = WidgetEntry(date: Date(), configuration: configuration, data: data)
         return Timeline(entries: [entry], policy: .atEnd)
+    }
+}
+
+func fetchStatus(serverInstance: ServerInstances) async -> StatusModel? {
+    let response = await ApiClient.status(
+        baseUrl: generateInstanceUrl(instance: serverInstance),
+        token: serverInstance.useBasicAuth ? encodeCredentialsBasicAuth(username: serverInstance.basicAuthUser!, password: serverInstance.basicAuthPassword!) : nil
+    )
+    
+    if response.successful == true && response.data != nil {
+        do {
+            let jsonDictionary = try JSONSerialization.jsonObject(with: response.data!, options: []) as? [String: Any]
+            let jsonData = try JSONSerialization.data(withJSONObject: transformStatusJSON(jsonDictionary!), options: [])
+            let data = try JSONDecoder().decode(StatusModel.self, from: Data(jsonData))
+            
+            return data
+        } catch {
+            return nil
+        }
+    }
+    else {
+        return nil
     }
 }
 
@@ -36,9 +69,9 @@ struct CpuWidgetEntryView : View {
                 Text("CPU")
                     .font(.system(size: 20))
                     .fontWeight(.bold)
-                Spacer()
-                    .frame(height: 4)
                 if entry.data?.cpu?.model != nil {
+                    Spacer()
+                        .frame(height: 4)
                     Text(entry.data!.cpu!.model!)
                         .font(.system(size: 12))
                 }
@@ -53,27 +86,45 @@ struct CpuWidgetEntryView : View {
                         .foregroundStyle(.gray)
                 }
                 Spacer()
-                HStack {
-                    if entry.data?.cpu?.utilisation != nil {
-                        Gauge(
-                            value: "\(String(describing: Int(entry.data!.cpu!.utilisation!*100)))%",
-                            percentage: entry.data!.cpu!.utilisation!*100,
-                            icon: Image(systemName: "cpu"),
-                            colors: gaugeColors
-                        )
-                        .frame(width: width/2, height: width/2)
+                if entry.data != nil {
+                    HStack {
+                        if entry.data?.cpu?.utilisation != nil {
+                            Gauge(
+                                value: "\(String(describing: Int(entry.data!.cpu!.utilisation!*100)))%",
+                                percentage: entry.data!.cpu!.utilisation!*100,
+                                icon: Image(systemName: "cpu"),
+                                colors: gaugeColors
+                            )
+                            .frame(width: width/2, height: width/2)
+                        }
+                        Spacer()
+                        if cpuMaxTemp != nil {
+                            Gauge(
+                                value: "\(String(describing: cpuMaxTemp!))ºC",
+                                percentage: Double((cpuMaxTemp! * cpuMaxTempLimit!)/100),
+                                icon: Image(systemName: "thermometer.medium"),
+                                colors: gaugeColors
+                            )
+                            .frame(width: width/2, height: width/2)
+                        }
+                        
                     }
-                    Spacer()
-                    if cpuMaxTemp != nil {
-                        Gauge(
-                            value: "\(String(describing: cpuMaxTemp!))ºC",
-                            percentage: Double((cpuMaxTemp! * cpuMaxTempLimit!)/100),
-                            icon: Image(systemName: "thermometer.medium"),
-                            colors: gaugeColors
-                        )
-                        .frame(width: width/2, height: width/2)
+                }
+                else {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .center) {
+                            Image(systemName: "exclamationmark.circle")
+                                .font(.system(size: 24))
+                            Spacer()
+                                .frame(height: 4)
+                            Text("Cannot update status")
+                                .multilineTextAlignment(.center)
+                                .font(.system(size: 14))
+                                .fontWeight(.bold)
+                        }
+                        Spacer()
                     }
-                    
                 }
             }
         })

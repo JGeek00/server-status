@@ -7,4 +7,7 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 
     @Parameter(title: "Show updated time", default: true)
     var showUpdatedTime: Bool
+    
+    @Parameter(title: "Refresh time", default: 30)
+    var refreshTime: Int
 }

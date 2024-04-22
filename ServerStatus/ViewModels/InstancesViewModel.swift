@@ -7,7 +7,7 @@ class InstancesViewModel: ObservableObject {
     @Published var demoMode = false
     
     init() {
-        let def = UserDefaults.standard.object(forKey: StorageKeys.defaultServer) as? String ?? ""
+        let def = UserDefaults(suiteName: groupId)?.string(forKey: StorageKeys.defaultServer) ?? ""
         defaultServer = def
         if def != "" {
             let instances = fetchInstances(instanceId: def)
@@ -170,6 +170,6 @@ class InstancesViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.defaultServer = instance != nil ? instance!.id! : ""
         }
-        UserDefaults.standard.setValue(instance != nil ? instance!.id : nil, forKey: StorageKeys.defaultServer)
+        UserDefaults(suiteName: groupId)?.setValue(instance != nil ? instance!.id : nil, forKey: StorageKeys.defaultServer)
     }
 }
