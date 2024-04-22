@@ -42,14 +42,16 @@ struct CpuWidgetEntryView : View {
                     Text(entry.data!.cpu!.model!)
                         .font(.system(size: 12))
                 }
-                Spacer()
-                    .frame(height: 4)
-                Text("Updated at ")
-                    .font(.system(size: 10))
-                    .foregroundStyle(.gray)
-                + Text(entry.date, format: Date.FormatStyle().hour().minute())
-                    .font(.system(size: 10))
-                    .foregroundStyle(.gray)
+                if entry.configuration.showUpdatedTime == true {
+                    Spacer()
+                        .frame(height: 4)
+                    Text("Updated at ")
+                        .font(.system(size: 10))
+                        .foregroundStyle(.gray)
+                    + Text(entry.date, format: Date.FormatStyle().hour().minute())
+                        .font(.system(size: 10))
+                        .foregroundStyle(.gray)
+                }
                 Spacer()
                 HStack {
                     if entry.data?.cpu?.utilisation != nil {
@@ -93,15 +95,15 @@ struct CpuWidget: Widget {
 }
 
 extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
+    fileprivate static var enabledUpdatedTime: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
+        intent.showUpdatedTime = true
         return intent
     }
     
-    fileprivate static var starEyes: ConfigurationAppIntent {
+    fileprivate static var disabledUpdatedTime: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
+        intent.showUpdatedTime = false
         return intent
     }
 }
@@ -109,6 +111,6 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     CpuWidget()
 } timeline: {
-    WidgetEntry(date: .now, configuration: .smiley, data: mockData())
-    WidgetEntry(date: .now, configuration: .starEyes, data: mockData())
+    WidgetEntry(date: .now, configuration: .enabledUpdatedTime, data: mockData())
+    WidgetEntry(date: .now, configuration: .disabledUpdatedTime, data: mockData())
 }
