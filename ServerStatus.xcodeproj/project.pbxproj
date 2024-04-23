@@ -41,6 +41,7 @@
 		0D16EF932BD6B9A800A779DD /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D16EF922BD6B9A800A779DD /* UserDefaultsManager.swift */; };
 		0D16EF952BD6BEDE00A779DD /* GroupId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D16EF942BD6BEDE00A779DD /* GroupId.swift */; };
 		0D16EF962BD6BEDE00A779DD /* GroupId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D16EF942BD6BEDE00A779DD /* GroupId.swift */; };
+		0D16EF972BD7B3FE00A779DD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */; };
 		0D4DB7B92BCA081B005ADE68 /* SystemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DB7B82BCA081B005ADE68 /* SystemDetails.swift */; };
 		0D88524C2BB06BCB0049FE7A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D88524B2BB06BCA0049FE7A /* StoreKit.framework */; };
 		0D88524E2BB0951E0049FE7A /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88524D2BB0951E0049FE7A /* CloseButton.swift */; };
@@ -571,6 +572,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D16EF972BD7B3FE00A779DD /* Localizable.xcstrings in Resources */,
 				0D16EF742BD68E1800A779DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

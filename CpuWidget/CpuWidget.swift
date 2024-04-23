@@ -13,18 +13,18 @@ struct Provider: AppIntentTimelineProvider {
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<WidgetEntry> {
         let nilEntry = WidgetEntry(date: Date(), configuration: configuration, data: nil)
         
-        guard let instance = fetchDefaultInstanceCoreData() else { return
-            Timeline(entries: [nilEntry], policy: .atEnd)
+        guard let update = Calendar.current.date(byAdding: .minute, value: configuration.refreshTime.value, to: Date()) else { return
+            Timeline(entries: [nilEntry], policy: .never)
         }
-        
-        let fetchedData = await fetchStatus(serverInstance: instance)
-        guard let data = fetchedData else { return
-            Timeline(entries: [nilEntry], policy: .atEnd)
 
-        }
+        let fetchedData = await fetchStatus(serverInstance: configuration.serverInstance.value)
         
+        guard let data = fetchedData else { return
+            Timeline(entries: [nilEntry], policy: .after(update))
+        }
+       
         let entry = WidgetEntry(date: Date(), configuration: configuration, data: data)
-        return Timeline(entries: [entry], policy: .atEnd)
+        return Timeline(entries: [entry], policy: .after(update))
     }
 }
 
