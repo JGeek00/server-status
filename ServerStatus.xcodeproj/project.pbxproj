@@ -297,13 +297,13 @@
 		0DAD5E0C2BA6648E006D3F52 = {
 			isa = PBXGroup;
 			children = (
-				0D16EF7D2BD68E3000A779DD /* CpuWidgetExtension.entitlements */,
 				0DD98CE22BAD8EAE00804BE7 /* Server Status - Server monitor.storekit */,
 				0D11EAC82BAB964E00451321 /* PrivacyInfo.xcprivacy */,
 				0DC4DB622BA6A358007A8328 /* Readme.md */,
 				0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */,
 				0DAD5E212BA6648F006D3F52 /* Assets.xcassets */,
 				0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */,
+				0D16EF7D2BD68E3000A779DD /* CpuWidgetExtension.entitlements */,
 				0DAD5E172BA6648E006D3F52 /* ServerStatus */,
 				0D16EF6C2BD68E1700A779DD /* CpuWidget */,
 				0DAD5E162BA6648E006D3F52 /* Products */,
