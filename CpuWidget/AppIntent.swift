@@ -60,19 +60,20 @@ struct Instances: AppEntity {
     var displayRepresentation: DisplayRepresentation {
         DisplayRepresentation(title: "\(label)")
     }
-    
-    static let serverInstances: [Instances] = fetchInstancesCoreData() != nil
-        ? fetchInstancesCoreData()!.map() { Instances(id: $0.id!, value: $0, label: $0.name!) }
-        : []
 }
 
 struct ServerInstancesQuery: EntityQuery {
+    func getInstances() -> [ServerInstances] {
+        guard let instances = fetchInstancesCoreData() else { return [] }
+        return instances.filter() { $0.id != nil && $0.name != nil && $0.ipDomain != nil }
+    }
+    
     func entities(for identifiers: [Instances.ID]) async throws -> [Instances] {
-        Instances.serverInstances.filter { identifiers.contains($0.id) }
+        return getInstances().map() { Instances(id: $0.id!, value: $0, label: $0.name!) }.filter { identifiers.contains($0.id) }
     }
     
     func suggestedEntities() async throws -> [Instances] {
-        Instances.serverInstances
+        return getInstances().map() { Instances(id: $0.id!, value: $0, label: $0.name!) }
     }
     
     func defaultResult() async -> Instances? {

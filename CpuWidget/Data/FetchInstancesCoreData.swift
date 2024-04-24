@@ -8,9 +8,6 @@ func fetchInstancesCoreData() -> [ServerInstances]? {
     
     do {
         let instances = try persistenceController.fetch(fetchRequest)
-        for instance in instances {
-            print(instance)
-        }
         return instances
     } catch {
         return nil
