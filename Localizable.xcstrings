@@ -356,6 +356,16 @@
         }
       }
     },
+    "Configure the storage widget." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura el widget de almacenamiento."
+          }
+        }
+      }
+    },
     "Connection details" : {
       "localizations" : {
         "en" : {
@@ -1199,6 +1209,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Almacenamiento"
+          }
+        }
+      }
+    },
+    "Storage status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de almacenamiento"
           }
         }
       }

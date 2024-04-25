@@ -34,20 +34,23 @@ struct WidgetEntry: TimelineEntry {
     let data: StatusModel?
 }
 
-struct MemoryWidgetEntryView : View {
+struct StorageWidgetEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
+        let total = entry.data?.storage?.map() { $0.total ?? 0 }.max()
+        let available = entry.data?.storage?.map() { $0.available ?? 0 }.max()
+        
         GeometryReader(content: { geometry in
             let width = geometry.size.width - 16
             VStack(alignment: .leading) {
-                Text("Memory")
+                Text("Storage")
                     .font(.system(size: 20))
                     .fontWeight(.bold)
-                if entry.data?.memory?.total != nil {
+                if total != nil {
                     Spacer()
                         .frame(height: 4)
-                    Text("\(String(describing: formatMemoryValue(value: entry.data!.memory!.total))) GB")
+                    Text(storageValue(value: total))
                         .font(.system(size: 12))
                 }
                 if entry.configuration.showUpdatedTime == true {
@@ -60,21 +63,19 @@ struct MemoryWidgetEntryView : View {
                 Spacer()
                 if entry.data != nil {
                     HStack {
-                        if entry.data?.memory?.total != nil && entry.data?.memory?.available != nil {
-                            let used = entry.data!.memory!.total! - entry.data!.memory!.available!
-                            let perc = (Double(used)/Double(entry.data!.memory!.total!))*100.0
+                        if available != nil && total != nil {
+                            let percent = 100.0-((Double(available!)/Double(total!))*100.0)
                             Gauge(
-                                value: "\(Int(perc))%",
-                                percentage: perc,
-                                icon: Image(systemName: "memorychip"),
+                                value: "\(Int(percent))%",
+                                percentage: percent,
+                                icon: Image(systemName: "internaldrive"),
                                 colors: gaugeColors
-                            )
-                            .frame(width: width/2, height: width/2)
+                            ).frame(width: width/2, height: width/2)
                         }
                         Spacer()
-                        if entry.data?.memory?.available != nil {
+                        if available != nil {
                             VStack(alignment: .center) {
-                                Text("\(String(describing: formatMemoryValue(value: entry.data!.memory!.available))) GB")
+                                Text(storageValue(value: Double(available!)))
                                     .font(.system(size: 12))
                                     .fontWeight(.bold)
                                 Spacer()
@@ -107,16 +108,16 @@ struct MemoryWidgetEntryView : View {
     }
 }
 
-struct MemoryWidget: Widget {
-    let kind: String = "MemoryWidget"
+struct StorageWidget: Widget {
+    let kind: String = "StorageWidget"
     
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            MemoryWidgetEntryView(entry: entry)
+            StorageWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .description("Memory status")
-        .configurationDisplayName("Memory")
+        .description("Storage status")
+        .configurationDisplayName("Storage")
         .supportedFamilies([.systemSmall])
     }
 }
@@ -136,7 +137,7 @@ extension ConfigurationAppIntent {
 }
 
 #Preview(as: .systemSmall) {
-    MemoryWidget()
+    StorageWidget()
 } timeline: {
     WidgetEntry(date: .now, configuration: .enabledUpdatedTime, data: mockData())
     WidgetEntry(date: .now, configuration: .disabledUpdatedTime, data: mockData())
