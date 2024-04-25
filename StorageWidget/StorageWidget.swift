@@ -84,7 +84,6 @@ struct StorageWidgetEntryView : View {
                                     .font(.system(size: 12))
                             }
                         }
-                        
                     }
                 }
                 else {

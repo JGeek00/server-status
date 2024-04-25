@@ -83,7 +83,6 @@ struct MemoryWidgetEntryView : View {
                                     .font(.system(size: 12))
                             }
                         }
-                        
                     }
                 }
                 else {

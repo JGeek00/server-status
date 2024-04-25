@@ -346,6 +346,16 @@
         }
       }
     },
+    "Configure the general widget." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura el widget general."
+          }
+        }
+      }
+    },
     "Configure the memory widget." : {
       "localizations" : {
         "es" : {
@@ -634,6 +644,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estado general"
+          }
+        }
+      }
+    },
+    "General system status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado general del sistema"
           }
         }
       }
