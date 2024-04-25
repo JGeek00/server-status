@@ -346,6 +346,16 @@
         }
       }
     },
+    "Configure the memory widget." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura el widget de memoria."
+          }
+        }
+      }
+    },
     "Connection details" : {
       "localizations" : {
         "en" : {
@@ -816,6 +826,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Memoria (RAM)"
+          }
+        }
+      }
+    },
+    "Memory status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de memoria"
           }
         }
       }
@@ -1338,12 +1358,12 @@
         }
       }
     },
-    "Updated at " : {
+    "Updated at %@" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Actualizado a las"
+            "value" : "Actualizado a las %@"
           }
         }
       }
