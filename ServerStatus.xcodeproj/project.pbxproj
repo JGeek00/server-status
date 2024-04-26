@@ -1092,7 +1092,7 @@
 				INFOPLIST_FILE = CpuWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CpuWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1123,7 +1123,7 @@
 				INFOPLIST_FILE = CpuWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CpuWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1264,7 +1264,7 @@
 				CODE_SIGN_ENTITLEMENTS = ServerStatus/ServerStatus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"ServerStatus/Preview Content\"";
 				DEVELOPMENT_TEAM = 38Z3B9TJTR;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1310,7 +1310,7 @@
 				CODE_SIGN_ENTITLEMENTS = ServerStatus/ServerStatus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"ServerStatus/Preview Content\"";
 				DEVELOPMENT_TEAM = 38Z3B9TJTR;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1362,7 +1362,7 @@
 				INFOPLIST_FILE = MemoryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MemoryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1393,7 +1393,7 @@
 				INFOPLIST_FILE = MemoryWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MemoryWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1425,7 +1425,7 @@
 				INFOPLIST_FILE = StorageWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StorageWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1456,7 +1456,7 @@
 				INFOPLIST_FILE = StorageWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StorageWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1488,7 +1488,7 @@
 				INFOPLIST_FILE = GeneralWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GeneralWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1519,7 +1519,7 @@
 				INFOPLIST_FILE = GeneralWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GeneralWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
