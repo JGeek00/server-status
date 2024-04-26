@@ -48,14 +48,17 @@ struct GeneralWidgetEntryView : View {
             VStack(alignment: .leading) {
                 // CPU
                 Group {
-                    Text("CPU")
-                        .font(.system(size: 14))
-                        .fontWeight(.bold)
-                    if entry.data?.cpu?.model != nil {
+                    HStack {
+                        Text("CPU")
+                            .font(.system(size: 14))
+                            .fontWeight(.bold)
                         Spacer()
-                            .frame(height: 4)
-                        Text(entry.data!.cpu!.model!)
-                            .font(.system(size: 12))
+                        if entry.data?.cpu?.model != nil {
+                            Spacer()
+                                .frame(height: 4)
+                            Text(entry.data!.cpu!.model!)
+                                .font(.system(size: 12))
+                        }
                     }
                     Spacer()
                         .frame(height: 12)
@@ -87,17 +90,21 @@ struct GeneralWidgetEntryView : View {
                 }
                 
                 Spacer()
+                    .frame(height: 16)
                 
                 // MEMORY
                 Group {
-                    Text("Memory")
-                        .font(.system(size: 14))
-                        .fontWeight(.bold)
-                    if entry.data?.memory?.total != nil {
+                    HStack {
+                        Text("Memory")
+                            .font(.system(size: 14))
+                            .fontWeight(.bold)
                         Spacer()
-                            .frame(height: 4)
-                        Text("\(String(describing: formatMemoryValue(value: entry.data!.memory!.total))) GB")
-                            .font(.system(size: 12))
+                        if entry.data?.memory?.total != nil {
+                            Spacer()
+                                .frame(height: 4)
+                            Text("\(String(describing: formatMemoryValue(value: entry.data!.memory!.total))) GB")
+                                .font(.system(size: 12))
+                        }
                     }
                     Spacer()
                         .frame(height: 12)
@@ -132,16 +139,22 @@ struct GeneralWidgetEntryView : View {
                     })
                 }
                 
+                Spacer()
+                    .frame(height: 16)
+                
                 // STORAGE
                 Group {
-                    Text("Storage")
-                        .font(.system(size: 14))
-                        .fontWeight(.bold)
-                    if total != nil {
+                    HStack {
+                        Text("Storage")
+                            .font(.system(size: 14))
+                            .fontWeight(.bold)
                         Spacer()
-                            .frame(height: 4)
-                        Text(storageValue(value: total))
-                            .font(.system(size: 12))
+                        if total != nil {
+                            Spacer()
+                                .frame(height: 4)
+                            Text(storageValue(value: total))
+                                .font(.system(size: 12))
+                        }
                     }
                     Spacer()
                         .frame(height: 12)
@@ -177,6 +190,7 @@ struct GeneralWidgetEntryView : View {
                 if entry.configuration.showUpdatedTime == true {
                     HStack {
                         Spacer()
+                            .frame(height: 16)
                         Text("Updated at \(Text(entry.date, format: Date.FormatStyle().hour().minute()))")
                             .font(.system(size: 10))
                             .foregroundStyle(.gray)
