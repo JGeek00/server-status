@@ -7,8 +7,11 @@ struct PersistenceController {
 
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "ServerStatus")
+        let sharedStoreURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupId)!.appending(path: "ServerStatus.sqlite")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+        } else {
+            container.persistentStoreDescriptions.first!.url = sharedStoreURL
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

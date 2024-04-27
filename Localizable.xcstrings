@@ -286,6 +286,16 @@
         }
       }
     },
+    "Cannot update status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido actualizar el estado"
+          }
+        }
+      }
+    },
     "Chart" : {
       "localizations" : {
         "es" : {
@@ -312,6 +322,56 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "Configuration" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración"
+          }
+        }
+      }
+    },
+    "Configure the CPU widget." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura el widget de CPU"
+          }
+        }
+      }
+    },
+    "Configure the general widget." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura el widget general."
+          }
+        }
+      }
+    },
+    "Configure the memory widget." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura el widget de memoria."
+          }
+        }
+      }
+    },
+    "Configure the storage widget." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura el widget de almacenamiento."
           }
         }
       }
@@ -368,6 +428,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CPU"
+          }
+        }
+      }
+    },
+    "CPU status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de CPU"
           }
         }
       }
@@ -578,6 +648,16 @@
         }
       }
     },
+    "General system status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado general del sistema"
+          }
+        }
+      }
+    },
     "Get started" : {
       "localizations" : {
         "es" : {
@@ -780,6 +860,16 @@
         }
       }
     },
+    "Memory status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de memoria"
+          }
+        }
+      }
+    },
     "Model" : {
       "localizations" : {
         "es" : {
@@ -925,6 +1015,16 @@
         }
       }
     },
+    "Refresh time" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo de refresco"
+          }
+        }
+      }
+    },
     "Retry" : {
       "localizations" : {
         "es" : {
@@ -977,6 +1077,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles del servidor"
+          }
+        }
+      }
+    },
+    "Server instance" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instancia de servidor"
           }
         }
       }
@@ -1057,6 +1167,16 @@
         }
       }
     },
+    "Show updated time" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar tiempo de actualización"
+          }
+        }
+      }
+    },
     "Some of the values are missing or invalid" : {
       "localizations" : {
         "en" : {
@@ -1109,6 +1229,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Almacenamiento"
+          }
+        }
+      }
+    },
+    "Storage status" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de almacenamiento"
           }
         }
       }
@@ -1264,6 +1394,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Error desconocido."
+          }
+        }
+      }
+    },
+    "Updated at %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizado a las %@"
           }
         }
       }
