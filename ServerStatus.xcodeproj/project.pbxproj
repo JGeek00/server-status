@@ -1264,7 +1264,7 @@
 				CODE_SIGN_ENTITLEMENTS = ServerStatus/ServerStatus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"ServerStatus/Preview Content\"";
 				DEVELOPMENT_TEAM = 38Z3B9TJTR;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1310,7 +1310,7 @@
 				CODE_SIGN_ENTITLEMENTS = ServerStatus/ServerStatus.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"ServerStatus/Preview Content\"";
 				DEVELOPMENT_TEAM = 38Z3B9TJTR;
 				ENABLE_HARDENED_RUNTIME = YES;
