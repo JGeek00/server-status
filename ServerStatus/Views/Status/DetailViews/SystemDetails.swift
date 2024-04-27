@@ -57,6 +57,7 @@ struct SystemList: View {
                     .foregroundColor(valueColor)
             }
         }
+        .contentMargins(.top, 16)
         .navigationTitle("System details")
         .toolbar {
             if onCloseSheet != nil {
