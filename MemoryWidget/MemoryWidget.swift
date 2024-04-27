@@ -67,9 +67,9 @@ struct MemoryWidgetEntryView : View {
                                 value: "\(Int(perc))%",
                                 percentage: perc,
                                 icon: Image(systemName: "memorychip"),
-                                colors: gaugeColors
+                                colors: gaugeColors,
+                                size: width/2
                             )
-                            .frame(width: width/2, height: width/2)
                         }
                         Spacer()
                         if entry.data?.memory?.available != nil {

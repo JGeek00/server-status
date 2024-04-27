@@ -40,8 +40,9 @@ struct StorageData: View {
                             value: "\(Int(percent))%",
                             percentage: percent,
                             icon: Image(systemName: "internaldrive"),
-                            colors: gaugeColors
-                        ).frame(width: gaugeSize, height: gaugeSize)
+                            colors: gaugeColors,
+                            size: gaugeSize
+                        )
                     }
                 }.frame(width: containerWidth/2)
                 HStack {

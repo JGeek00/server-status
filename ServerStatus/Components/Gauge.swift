@@ -8,6 +8,7 @@ struct Gauge: View {
     let percentage: Double
     let icon: Image
     let colors: [Color]
+    let size: Double
     
     @State private var startAngle = Angle(degrees: minimumAngle)
     @State private var endAngle = Angle(degrees: minimumAngle)
@@ -29,46 +30,44 @@ struct Gauge: View {
         let perc = percentage > 100 ? 100 : percentage < 0 ? 0 : percentage
         let percAngle = ((maximumAngle - minimumAngle) * perc/100) + minimumAngle
         let color = getColor(percentage: percentage)
-        GeometryReader(content: { geometry in
-            VStack {
-                ZStack(alignment: .bottom) {
-                    ZStack {
-                        RoundedArc(
-                            startAngle: .degrees(minimumAngle),
-                            endAngle: .degrees(maximumAngle),
-                            lineWidth: geometry.size.width*0.075
-                        )
-                        .foregroundColor(color.opacity(0.3))
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        RoundedArc(
-                            startAngle: startAngle,
-                            endAngle: endAngle,
-                            lineWidth: geometry.size.width*0.075
-                        )
-                        .foregroundColor(color)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        .onAppear {
-                            withAnimation(Animation.smooth(duration: 0.5)) {
-                                startAngle = .degrees(minimumAngle)
-                                endAngle = .degrees(percAngle)
-                            }
+        VStack {
+            ZStack(alignment: .bottom) {
+                ZStack {
+                    RoundedArc(
+                        startAngle: .degrees(minimumAngle),
+                        endAngle: .degrees(maximumAngle),
+                        lineWidth: size*0.075
+                    )
+                    .foregroundColor(color.opacity(0.3))
+                    .frame(width: size, height: size)
+                    RoundedArc(
+                        startAngle: startAngle,
+                        endAngle: endAngle,
+                        lineWidth: size*0.075
+                    )
+                    .foregroundColor(color)
+                    .frame(width: size, height: size)
+                    .onAppear {
+                        withAnimation(Animation.smooth(duration: 0.5)) {
+                            startAngle = .degrees(minimumAngle)
+                            endAngle = .degrees(percAngle)
                         }
-                        .onChange(of: percAngle) { oldValue, newValue in
-                            withAnimation(Animation.smooth(duration: 0.5)) {
-                                startAngle = .degrees(minimumAngle)
-                                endAngle = .degrees(newValue)
-                            }
+                    }
+                    .onChange(of: percAngle) { oldValue, newValue in
+                        withAnimation(Animation.smooth(duration: 0.5)) {
+                            startAngle = .degrees(minimumAngle)
+                            endAngle = .degrees(newValue)
                         }
-                        icon
-                            .font(.system(size: geometry.size.width*0.25))
-                    }.frame(width: geometry.size.width, height: geometry.size.height)
-                    Text(value)
-                        .font(.system(size: geometry.size.width*0.13))
-                        .fontWeight(.medium)
-                        .multilineTextAlignment(.center)
-                }
+                    }
+                    icon
+                        .font(.system(size: size*0.25))
+                }.frame(width: size, height: size)
+                Text(value)
+                    .font(.system(size: size*0.13))
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
             }
-        })
+        }
     }
 }
 
@@ -108,6 +107,7 @@ private struct RoundedArc: Shape {
         value: "30%",
         percentage: 30.0,
         icon: Image(systemName: "cpu"),
-        colors: [Color.blue, Color.green, Color.yellow, Color.orange, Color.red]
-    ).frame(width: 160, height: 160)
+        colors: [Color.blue, Color.green, Color.yellow, Color.orange, Color.red],
+        size: 160
+    )
 }

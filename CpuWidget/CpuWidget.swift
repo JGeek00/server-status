@@ -68,9 +68,9 @@ struct CpuWidgetEntryView : View {
                                 value: "\(String(describing: Int(entry.data!.cpu!.utilisation!*100)))%",
                                 percentage: entry.data!.cpu!.utilisation!*100,
                                 icon: Image(systemName: "cpu"),
-                                colors: gaugeColors
+                                colors: gaugeColors,
+                                size: width/2
                             )
-                            .frame(width: width/2, height: width/2)
                         }
                         Spacer()
                         if cpuMaxTemp != nil {
@@ -78,9 +78,9 @@ struct CpuWidgetEntryView : View {
                                 value: "\(String(describing: cpuMaxTemp!))ºC",
                                 percentage: Double((cpuMaxTemp! * cpuMaxTempLimit!)/100),
                                 icon: Image(systemName: "thermometer.medium"),
-                                colors: gaugeColors
+                                colors: gaugeColors,
+                                size: width/2
                             )
-                            .frame(width: width/2, height: width/2)
                         }
                         
                     }

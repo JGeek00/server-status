@@ -69,8 +69,9 @@ struct StorageWidgetEntryView : View {
                                 value: "\(Int(percent))%",
                                 percentage: percent,
                                 icon: Image(systemName: "internaldrive"),
-                                colors: gaugeColors
-                            ).frame(width: width/2, height: width/2)
+                                colors: gaugeColors,
+                                size: width/2
+                            )
                         }
                         Spacer()
                         if available != nil {

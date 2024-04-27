@@ -70,9 +70,9 @@ struct GeneralWidgetEntryView : View {
                                     value: "\(String(describing: Int(entry.data!.cpu!.utilisation!*100)))%",
                                     percentage: entry.data!.cpu!.utilisation!*100,
                                     icon: Image(systemName: "cpu"),
-                                    colors: gaugeColors
+                                    colors: gaugeColors,
+                                    size: geometry.size.height
                                 )
-                                .frame(width: geometry.size.height, height: geometry.size.height)
                             }
                             Spacer()
                             if cpuMaxTemp != nil {
@@ -80,9 +80,9 @@ struct GeneralWidgetEntryView : View {
                                     value: "\(String(describing: cpuMaxTemp!))ºC",
                                     percentage: Double((cpuMaxTemp! * cpuMaxTempLimit!)/100),
                                     icon: Image(systemName: "thermometer.medium"),
-                                    colors: gaugeColors
+                                    colors: gaugeColors,
+                                    size: geometry.size.height
                                 )
-                                .frame(width: geometry.size.height, height: geometry.size.height)
                                 Spacer()
                             }
                         }
@@ -118,9 +118,9 @@ struct GeneralWidgetEntryView : View {
                                     value: "\(Int(perc))%",
                                     percentage: perc,
                                     icon: Image(systemName: "memorychip"),
-                                    colors: gaugeColors
+                                    colors: gaugeColors,
+                                    size: geometry.size.height
                                 )
-                                .frame(width: geometry.size.height, height: geometry.size.height)
                             }
                             Spacer()
                             if entry.data?.memory?.available != nil {
@@ -167,8 +167,9 @@ struct GeneralWidgetEntryView : View {
                                     value: "\(Int(percent))%",
                                     percentage: percent,
                                     icon: Image(systemName: "internaldrive"),
-                                    colors: gaugeColors
-                                ).frame(width: geometry.size.height, height: geometry.size.height)
+                                    colors: gaugeColors,
+                                    size: geometry.size.height
+                                )
                             }
                             Spacer()
                             if available != nil {

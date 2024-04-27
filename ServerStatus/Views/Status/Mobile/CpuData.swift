@@ -40,8 +40,9 @@ struct CpuData: View {
                             value: "\(String(describing: Int(data!.cpu!.utilisation!*100)))%",
                             percentage: data!.cpu!.utilisation!*100,
                             icon: Image(systemName: "cpu"),
-                            colors: gaugeColors
-                        ).frame(width: gaugeSize, height: gaugeSize)
+                            colors: gaugeColors,
+                            size: gaugeSize
+                        )
                     }
                     Spacer()
                 }
@@ -52,8 +53,9 @@ struct CpuData: View {
                             value: "\(String(describing: cpuMaxTemp!))ºC",
                             percentage: Double((cpuMaxTemp! * cpuMaxTempLimit!)/100),
                             icon: Image(systemName: "thermometer.medium"),
-                            colors: gaugeColors
-                        ).frame(width: gaugeSize, height: gaugeSize)
+                            colors: gaugeColors,
+                            size: gaugeSize
+                        )
                     }
                     Spacer()
                 }

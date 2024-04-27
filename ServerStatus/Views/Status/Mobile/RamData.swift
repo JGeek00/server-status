@@ -40,8 +40,9 @@ struct RamData: View {
                             value: "\(Int(perc))%",
                             percentage: perc,
                             icon: Image(systemName: "memorychip"),
-                            colors: gaugeColors
-                        ).frame(width: gaugeSize, height: gaugeSize)
+                            colors: gaugeColors,
+                            size: gaugeSize
+                        )
                     }
                 }.frame(width: containerWidth/2)
                 HStack {

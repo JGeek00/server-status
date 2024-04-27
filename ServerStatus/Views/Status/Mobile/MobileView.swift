@@ -8,7 +8,7 @@ struct MobileView: View {
     @State var showSystemInfoSheet = false
     
     var body: some View {
-        VStack {
+        Group {
             if statusModel.initialLoading == true {
                 VStack {
                     ProgressView()
