@@ -25,7 +25,7 @@ class InstancesViewModel: ObservableObject {
     
     private let persistenceController = PersistenceController.shared
     
-    func switchInstance(instance: ServerInstances, statusModel: StatusViewModel, interval: Double) {
+    func switchInstance(instance: ServerInstances, statusModel: StatusViewModel, interval: String) {
         selectedInstance = instance
         statusModel.stopTimer()
         statusModel.initialLoading = true
@@ -128,7 +128,7 @@ class InstancesViewModel: ObservableObject {
         }
     }
     
-    func deleteInstance(instance: ServerInstances, instancesModel: InstancesViewModel, statusModel: StatusViewModel, interval: Double) {
+    func deleteInstance(instance: ServerInstances, instancesModel: InstancesViewModel, statusModel: StatusViewModel, interval: String) {
         if demoMode == true {
             return
         }

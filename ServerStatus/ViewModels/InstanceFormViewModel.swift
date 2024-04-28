@@ -88,7 +88,7 @@ class InstanceFormViewModel: ObservableObject {
         }
     }
     
-    func saveInstance(instancesModel: InstancesViewModel, statusModel: StatusViewModel, interval: Double) {
+    func saveInstance(instancesModel: InstancesViewModel, statusModel: StatusViewModel, interval: String) {
         Task {
             DispatchQueue.main.async {
                 self.isLoading = true

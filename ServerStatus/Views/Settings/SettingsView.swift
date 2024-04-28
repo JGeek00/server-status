@@ -39,10 +39,10 @@ struct SettingsView: View {
                                 appConfig.updateSettingsToggle(key: StorageKeys.showServerUrlDetails, value: newValue)
                             }
                         Picker(selection: $appConfig.refreshTime) {
-                            Text("1 second").tag(1.0)
-                            Text("2 seconds").tag(2.0)
-                            Text("5 seconds").tag(5.0)
-                            Text("10 seconds").tag(10.0)
+                            Text("1 second").tag("1")
+                            Text("2 seconds").tag("2")
+                            Text("5 seconds").tag("5")
+                            Text("10 seconds").tag("10")
                         } label: {
                             Text("Refresh time")
                         }
