@@ -38,14 +38,39 @@ struct SettingsView: View {
                             .onChange(of: appConfig.showUrlDetailsScreen) { oldValue, newValue in
                                 appConfig.updateSettingsToggle(key: StorageKeys.showServerUrlDetails, value: newValue)
                             }
+                        Picker(selection: $appConfig.refreshTime) {
+                            Text("1 second").tag(1.0)
+                            Text("2 seconds").tag(2.0)
+                            Text("5 seconds").tag(5.0)
+                            Text("10 seconds").tag(10.0)
+                        } label: {
+                            Text("Refresh time")
+                        }
+                        .onChange(of: appConfig.refreshTime) { _, newValue in
+                            appConfig.updateRefreshTime(value: newValue)
+                            statusModel.changeInterval(instance: instancesModel.selectedInstance, newInterval: newValue)
+                        }
+                    }
+                    Section("Status API") {
+                        Button {
+                            settingsModel.statusRepoSafariOpen.toggle()
+                        } label: {
+                            HStack {
+                                Text("Check \"Status\" repository")
+                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                Spacer()
+                                Image(systemName: "link")
+                                    .foregroundColor(valueColor)
+                            }
+                        }
                     }
                     Section {
                         NavigationLink("Give a tip to the developer", value: Routes.SettingsRoutes.tips)
                         Button {
-                            settingsModel.safariOpen.toggle()
+                            settingsModel.appRepoSafariOpen.toggle()
                         } label: {
                             HStack {
-                                Text("Check \"Status\" repository")
+                                Text("Check this application repository")
                                     .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
                                 Spacer()
                                 Image(systemName: "link")
@@ -95,8 +120,11 @@ struct SettingsView: View {
             }
         }
         .preferredColorScheme(appConfig.getTheme())
-        .fullScreenCover(isPresented: $settingsModel.safariOpen, content: {
+        .fullScreenCover(isPresented: $settingsModel.statusRepoSafariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.statusRepo)!).ignoresSafeArea()
+        })
+        .fullScreenCover(isPresented: $settingsModel.appRepoSafariOpen, content: {
+            SFSafariViewWrapper(url: URL(string: Urls.appRepo)!).ignoresSafeArea()
         })
         .sheet(isPresented: $instanceFormModel.modalOpen, content: {
             InstanceFormView(instanceFormModel: instanceFormModel)
@@ -106,7 +134,8 @@ struct SettingsView: View {
                 instancesModel.deleteInstance(
                     instance: settingsModel.selectedItemDelete!,
                     instancesModel: instancesModel,
-                    statusModel: statusModel
+                    statusModel: statusModel,
+                    interval: appConfig.refreshTime
                 )
                 settingsModel.selectedItemDelete = nil
             } label: {

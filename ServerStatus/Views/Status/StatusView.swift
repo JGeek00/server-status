@@ -5,6 +5,7 @@ struct StatusView: View {
     
     @EnvironmentObject var instancesModel: InstancesViewModel
     @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var appConfig: AppConfigViewModel
     
     var body: some View {
         VStack {
@@ -18,7 +19,7 @@ struct StatusView: View {
         .onAppear(perform: {
             guard let selectedInstance = instancesModel.selectedInstance else { return }
             if statusModel.timer == nil {
-                statusModel.startTimer(serverInstance: selectedInstance)
+                statusModel.startTimer(serverInstance: selectedInstance, interval: appConfig.refreshTime)
             }
         })
     }

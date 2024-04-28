@@ -3,4 +3,5 @@ class StorageKeys {
     public static let defaultServer = "DEFAULT_SERVER"
     public static let showServerUrlDetails = "SHOW_SERVER_URL_DETAILS"
     public static let welcomeSheetDismissed = "WELCOME_SHEET_DISMISSED"
+    public static let refreshTime = "REFRESH_TIME"
 }

@@ -5,6 +5,7 @@ import SwiftUI
 class AppConfigViewModel: ObservableObject {
     @Published var theme: Enums.Theme = Enums.Theme.system
     @Published var showUrlDetailsScreen = true
+    @Published var refreshTime: Double = 2.0
     
     init() {
         let userDefaults = UserDefaults(suiteName: groupId)
@@ -13,6 +14,7 @@ class AppConfigViewModel: ObservableObject {
             self.theme = Enums.Theme(stringValue: storageTheme!) ?? Enums.Theme.system
         }
         showUrlDetailsScreen = userDefaults?.object(forKey: StorageKeys.showServerUrlDetails) as? Bool ?? true
+        refreshTime = userDefaults?.double(forKey: StorageKeys.refreshTime) ?? 2.0
     }
     
     func updateTheme(selectedTheme: Enums.Theme) {
@@ -22,6 +24,10 @@ class AppConfigViewModel: ObservableObject {
     
     func updateSettingsToggle(key: String, value: Bool) {
         UserDefaults(suiteName: groupId)?.setValue(value, forKey: key)
+    }
+    
+    func updateRefreshTime(value: Double) {
+        UserDefaults(suiteName: groupId)?.setValue(value, forKey: StorageKeys.refreshTime)
     }
     
     func getTheme() -> ColorScheme {

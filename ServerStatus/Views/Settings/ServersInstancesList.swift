@@ -17,7 +17,7 @@ struct ServersInstancesList: View {
         Section("Server instances") {
             ForEach(instances) {
                 item in Button {
-                    instancesModel.switchInstance(instance: item, statusModel: statusModel)
+                    instancesModel.switchInstance(instance: item, statusModel: statusModel, interval: appConfig.refreshTime)
                 } label: {
                     HStack {
                         HStack {

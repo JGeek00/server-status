@@ -88,7 +88,7 @@ class InstanceFormViewModel: ObservableObject {
         }
     }
     
-    func saveInstance(instancesModel: InstancesViewModel, statusModel: StatusViewModel) {
+    func saveInstance(instancesModel: InstancesViewModel, statusModel: StatusViewModel, interval: Double) {
         Task {
             DispatchQueue.main.async {
                 self.isLoading = true
@@ -160,7 +160,7 @@ class InstanceFormViewModel: ObservableObject {
             do {
                 let data = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
                 guard let instance = data.first else { return }
-                statusModel.startTimer(serverInstance: instance)
+                statusModel.startTimer(serverInstance: instance, interval: interval)
             } catch {
                 print("Error fetching data: \(error.localizedDescription)")
             }

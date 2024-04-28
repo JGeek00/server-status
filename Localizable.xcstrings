@@ -97,6 +97,46 @@
         }
       }
     },
+    "1 second" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 segundo"
+          }
+        }
+      }
+    },
+    "2 seconds" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 segundos"
+          }
+        }
+      }
+    },
+    "5 seconds" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 segundos"
+          }
+        }
+      }
+    },
+    "10 seconds" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 segundos"
+          }
+        }
+      }
+    },
     "A message from the developer" : {
       "localizations" : {
         "es" : {
@@ -312,6 +352,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comprueba el repositorio de \"Status\""
+          }
+        }
+      }
+    },
+    "Check this application repository" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprueba el repositorio de esta aplicación"
           }
         }
       }
@@ -1209,6 +1259,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estado"
+          }
+        }
+      }
+    },
+    "Status API" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status API"
           }
         }
       }

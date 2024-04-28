@@ -9,9 +9,9 @@ class StatusViewModel: ObservableObject {
     @Published var timer: Timer?
     @Published var selectedHardwareItem: Enums.HardwareItem?
     
-    func startTimer(serverInstance: ServerInstances) {
+    func startTimer(serverInstance: ServerInstances, interval: Double) {
         DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { timer in
+            self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
                 Task {
                     await self.fetchStatus(
                         serverInstance: serverInstance,
@@ -28,6 +28,12 @@ class StatusViewModel: ObservableObject {
         guard let t = timer else { return }
         t.invalidate()
         timer = nil
+    }
+    
+    func changeInterval(instance: ServerInstances?, newInterval: Double) {
+        guard let ins = instance else { return }
+        stopTimer()
+        startTimer(serverInstance: ins, interval: newInterval)
     }
     
     func startDemoMode() {

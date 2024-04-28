@@ -4,6 +4,7 @@ struct InstanceFormView: View {
     @ObservedObject var instanceFormModel: InstanceFormViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var appConfig: AppConfigViewModel
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -103,7 +104,8 @@ struct InstanceFormView: View {
                         Button {
                             instanceFormModel.saveInstance(
                                 instancesModel: instancesModel,
-                                statusModel: statusModel
+                                statusModel: statusModel,
+                                interval: appConfig.refreshTime
                             )
                         } label: {
                             Text("Save")
