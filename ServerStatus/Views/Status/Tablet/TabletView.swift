@@ -5,6 +5,7 @@ struct TabletView: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.colorScheme) var scheme
     
     @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults(suiteName: groupId)) private var showServerUrlDetails: Bool = true
     
@@ -160,7 +161,7 @@ struct TabletView: View {
                 }
             })
             .sheet(isPresented: $showSettingsSheet, content: {
-                SettingsView {
+                SettingsView(scheme: scheme) {
                     showSettingsSheet.toggle()
                 }
             })

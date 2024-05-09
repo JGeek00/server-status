@@ -7,6 +7,7 @@ struct RootView: View {
     @EnvironmentObject var statusModel: StatusViewModel
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.colorScheme) var scheme
     
     @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
     
@@ -46,7 +47,7 @@ struct RootView: View {
                     Text("Status")
                 }
                 .tag(0)
-                SettingsView()
+                SettingsView(scheme: scheme, onCloseSheet: nil)
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Settings")

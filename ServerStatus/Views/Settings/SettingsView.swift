@@ -2,6 +2,7 @@ import SwiftUI
 import SafariServices
 
 struct SettingsView: View {
+    var scheme: ColorScheme
     var onCloseSheet: (() -> Void)?
     
     @EnvironmentObject var instancesModel: InstancesViewModel
@@ -12,6 +13,11 @@ struct SettingsView: View {
     @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
     @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults(suiteName: groupId)) private var showServerUrlDetails: Bool = true
     @AppStorage(StorageKeys.refreshTime, store: UserDefaults(suiteName: groupId)) private var refreshTime: String = "2"
+    
+    init(scheme: ColorScheme, onCloseSheet: (() -> Void)?) {
+        self.scheme = scheme
+        self.onCloseSheet = onCloseSheet
+    }
     
     var body: some View {
         let valueColor = theme == .dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
@@ -128,5 +134,6 @@ struct SettingsView: View {
         }, message: {
             Text("Are you sure you want to delete this instance?")
         })
+        .environment(\.colorScheme, scheme)
     }
 }
