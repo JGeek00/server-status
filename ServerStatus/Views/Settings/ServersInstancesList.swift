@@ -4,8 +4,9 @@ struct ServersInstancesList: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
     @ObservedObject var instanceFormModel: InstanceFormViewModel
     @ObservedObject var settingsModel: SettingsViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var statusModel: StatusViewModel
+    
+    @AppStorage(StorageKeys.refreshTime, store: UserDefaults(suiteName: groupId)) private var refreshTime: String = "2"
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -17,20 +18,20 @@ struct ServersInstancesList: View {
         Section("Server instances") {
             ForEach(instances) {
                 item in Button {
-                    instancesModel.switchInstance(instance: item, statusModel: statusModel, interval: appConfig.refreshTime)
+                    instancesModel.switchInstance(instance: item, statusModel: statusModel)
                 } label: {
                     HStack {
                         HStack {
                             Image(systemName: "server.rack")
-                                .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                .foregroundColor(.foreground)
                             Spacer().frame(width: 16)
                             VStack(alignment: .leading) {
                                 Text(item.name ?? "")
-                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                    .foregroundColor(.foreground)
                                 Spacer().frame(height: 4)
                                 Text(generateInstanceUrl(instance: item))
                                     .font(.system(size: 14))
-                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                    .foregroundColor(.foreground)
                             }
                             if item.id == instancesModel.selectedInstance?.id {
                                 Spacer()

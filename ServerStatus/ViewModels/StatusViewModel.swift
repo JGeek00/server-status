@@ -11,6 +11,7 @@ class StatusViewModel: ObservableObject {
     
     func startTimer(serverInstance: ServerInstances, interval: String) {
         DispatchQueue.main.async {
+            self.timer?.invalidate()
             self.timer = Timer.scheduledTimer(withTimeInterval: Double(interval) ?? 2.0, repeats: true) { timer in
                 Task {
                     await self.fetchStatus(
@@ -19,20 +20,14 @@ class StatusViewModel: ObservableObject {
                     )
                 }
             }
+
             guard let t = self.timer else { return }
             RunLoop.current.add(t, forMode: .common)
         }
     }
     
-    func stopTimer() {
-        guard let t = timer else { return }
-        t.invalidate()
-        timer = nil
-    }
-    
     func changeInterval(instance: ServerInstances?, newInterval: String) {
         guard let ins = instance else { return }
-        stopTimer()
         startTimer(serverInstance: ins, interval: newInterval)
     }
     
@@ -51,10 +46,15 @@ class StatusViewModel: ObservableObject {
     }
     
     func fetchStatus(serverInstance: ServerInstances, showError: Bool) async {
+        let instance = serverInstance.self
         let response = await ApiClient.status(
             baseUrl: generateInstanceUrl(instance: serverInstance),
             token: serverInstance.useBasicAuth ? encodeCredentialsBasicAuth(username: serverInstance.basicAuthUser!, password: serverInstance.basicAuthPassword!) : nil
         )
+
+        if instance.id != serverInstance.id {
+            return
+        }
         
         if response.successful == true && response.data != nil {
             do {

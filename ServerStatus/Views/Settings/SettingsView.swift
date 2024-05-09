@@ -4,14 +4,17 @@ import SafariServices
 struct SettingsView: View {
     var onCloseSheet: (() -> Void)?
     
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     @StateObject var settingsModel = SettingsViewModel()
     @StateObject var instanceFormModel = InstanceFormViewModel()
     @EnvironmentObject var statusModel: StatusViewModel
     
+    @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
+    @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults(suiteName: groupId)) private var showServerUrlDetails: Bool = true
+    @AppStorage(StorageKeys.refreshTime, store: UserDefaults(suiteName: groupId)) private var refreshTime: String = "2"
+    
     var body: some View {
-        let valueColor = appConfig.getTheme() == ColorScheme.dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
+        let valueColor = theme == .dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
         NavigationStack {
             Group {
                 List {
@@ -19,26 +22,23 @@ struct SettingsView: View {
                     Section("Theme") {
                         ThemeButton(
                             thisOption: Enums.Theme.system,
-                            selectedOption: $appConfig.theme,
-                            onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
+                            selectedOption: $theme,
+                            onSelect: { value in theme = .system}
                         )
                         ThemeButton(
                             thisOption: Enums.Theme.light,
-                            selectedOption: $appConfig.theme,
-                            onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
+                            selectedOption: $theme,
+                            onSelect: { value in theme = .light}
                         )
                         ThemeButton(
                             thisOption: Enums.Theme.dark,
-                            selectedOption: $appConfig.theme,
-                            onSelect: { value in appConfig.updateTheme(selectedTheme: value)}
+                            selectedOption: $theme,
+                            onSelect: { value in theme = .dark}
                         )
                     }
                     Section("App settings") {
-                        Toggle("Show server URL on details screen", isOn: $appConfig.showUrlDetailsScreen)
-                            .onChange(of: appConfig.showUrlDetailsScreen) { oldValue, newValue in
-                                appConfig.updateSettingsToggle(key: StorageKeys.showServerUrlDetails, value: newValue)
-                            }
-                        Picker(selection: $appConfig.refreshTime) {
+                        Toggle("Show server URL on details screen", isOn: $showServerUrlDetails)
+                        Picker(selection: $refreshTime) {
                             Text("1 second").tag("1")
                             Text("2 seconds").tag("2")
                             Text("5 seconds").tag("5")
@@ -46,8 +46,7 @@ struct SettingsView: View {
                         } label: {
                             Text("Refresh time")
                         }
-                        .onChange(of: appConfig.refreshTime) { _, newValue in
-                            appConfig.updateRefreshTime(value: newValue)
+                        .onChange(of: refreshTime) { _, newValue in
                             statusModel.changeInterval(instance: instancesModel.selectedInstance, newInterval: newValue)
                         }
                     }
@@ -57,7 +56,7 @@ struct SettingsView: View {
                         } label: {
                             HStack {
                                 Text("Check \"Status\" repository")
-                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                                    .foregroundColor(.foreground)
                                 Spacer()
                                 Image(systemName: "link")
                                     .foregroundColor(valueColor)
@@ -108,7 +107,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .preferredColorScheme(appConfig.getTheme())
+        .preferredColorScheme(getColorScheme(theme: theme))
         .fullScreenCover(isPresented: $settingsModel.statusRepoSafariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.statusRepo)!).ignoresSafeArea()
         })
@@ -120,8 +119,7 @@ struct SettingsView: View {
                 instancesModel.deleteInstance(
                     instance: settingsModel.selectedItemDelete!,
                     instancesModel: instancesModel,
-                    statusModel: statusModel,
-                    interval: appConfig.refreshTime
+                    statusModel: statusModel
                 )
                 settingsModel.selectedItemDelete = nil
             } label: {

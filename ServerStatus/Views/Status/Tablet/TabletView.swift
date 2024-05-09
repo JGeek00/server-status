@@ -2,10 +2,11 @@ import SwiftUI
 
 struct TabletView: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var statusModel: StatusViewModel
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults(suiteName: groupId)) private var showServerUrlDetails: Bool = true
     
     @State var showSystemInfoSheet = false
     @State var showSettingsSheet = false
@@ -81,7 +82,7 @@ struct TabletView: View {
                                     .padding(.bottom, 10)
                                     .foregroundColor(.gray)
                             }
-                            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && appConfig.showUrlDetailsScreen {
+                            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && showServerUrlDetails {
                                 Text(generateInstanceUrl(instance: instancesModel.selectedInstance!))
                                     .padding(.leading, 17)
                                     .padding(.bottom, 10)

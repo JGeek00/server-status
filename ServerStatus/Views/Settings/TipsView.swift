@@ -54,7 +54,6 @@ private struct TipItem: View {
     let contributionProduct: ContributionProduct
     let action: () -> Void
     
-    @EnvironmentObject private var appConfig: AppConfigViewModel
     @EnvironmentObject private var tipsModel: TipsViewModel
     
     var body: some View {
@@ -63,7 +62,7 @@ private struct TipItem: View {
         } label: {
             HStack {
                 Text(contributionProduct.title)
-                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                    .foregroundColor(.foreground)
                 Spacer()
                 if let price = contributionProduct.price {
                     Text(price)

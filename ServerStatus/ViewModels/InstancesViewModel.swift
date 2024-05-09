@@ -25,13 +25,15 @@ class InstancesViewModel: ObservableObject {
     
     private let persistenceController = PersistenceController.shared
     
-    func switchInstance(instance: ServerInstances, statusModel: StatusViewModel, interval: String) {
-        selectedInstance = instance
-        statusModel.stopTimer()
+    func switchInstance(instance: ServerInstances, statusModel: StatusViewModel) {
         statusModel.initialLoading = true
         statusModel.loadError = false
         statusModel.status = nil
-        statusModel.startTimer(serverInstance: instance, interval: interval)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250), execute: {
+            self.selectedInstance = instance
+            statusModel.startTimer(serverInstance: instance, interval: getRefreshTime())
+        })
     }
     
     private func fetchInstances(instanceId: String?) -> [ServerInstances] {
@@ -128,7 +130,7 @@ class InstancesViewModel: ObservableObject {
         }
     }
     
-    func deleteInstance(instance: ServerInstances, instancesModel: InstancesViewModel, statusModel: StatusViewModel, interval: String) {
+    func deleteInstance(instance: ServerInstances, instancesModel: InstancesViewModel, statusModel: StatusViewModel) {
         if demoMode == true {
             return
         }
@@ -141,21 +143,19 @@ class InstancesViewModel: ObservableObject {
             
             let instances = fetchInstances(instanceId: nil)
             if instances.isEmpty {
-                statusModel.stopTimer()
-                statusModel.status = nil
                 statusModel.initialLoading = true
                 statusModel.loadError = false
+                statusModel.status = nil
                 setDefaultInstance(instance: nil)
                 instancesModel.selectedInstance = nil
             }
             else if instanceId == defaultServer {
-                statusModel.stopTimer()
-                statusModel.status = nil
                 statusModel.initialLoading = true
                 statusModel.loadError = false
+                statusModel.status = nil
                 setDefaultInstance(instance: instances[0])
                 instancesModel.selectedInstance = instances[0]
-                statusModel.startTimer(serverInstance: instances[0], interval: interval)
+                statusModel.startTimer(serverInstance: instances[0], interval: getRefreshTime())
             }
         } catch let error as NSError {
             print("Failed to delete entity: \(error)")

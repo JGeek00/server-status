@@ -21,7 +21,6 @@ private struct StorageList: View {
     let onCloseSheet: (() -> Void)?
     
     @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     
     var body: some View {
@@ -56,7 +55,7 @@ private struct StorageList: View {
             }
         }
         .navigationTitle("Storage")
-        .background(appConfig.getTheme() == ColorScheme.dark ? Color.black : Color.white)
+        .background(Color.foreground)
         .toolbar {
             if onCloseSheet != nil {
                 ToolbarItem(placement: .topBarLeading) {

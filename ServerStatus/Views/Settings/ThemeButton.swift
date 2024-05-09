@@ -5,8 +5,6 @@ struct ThemeButton: View {
     @Binding var selectedOption: Enums.Theme
     let onSelect: (Enums.Theme) -> Void
     
-    @EnvironmentObject private var appConfig: AppConfigViewModel
-    
     func labelIcon() -> [String] {
         if (thisOption == Enums.Theme.system) {
             return ["iphone", "System defined"]
@@ -30,10 +28,10 @@ struct ThemeButton: View {
             HStack {
                 HStack {
                     Image(systemName: data[0])
-                        .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                        .foregroundColor(.foreground)
                     Spacer().frame(width: 16)
                     Text(LocalizedStringKey(data[1]))
-                        .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
+                        .foregroundColor(.foreground)
                 }
                 Spacer()
                 if selectedOption == thisOption {

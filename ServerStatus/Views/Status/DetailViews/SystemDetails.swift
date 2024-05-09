@@ -19,12 +19,13 @@ struct SystemList: View {
     let onCloseSheet: (() -> Void)?
     
     @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
+    
+    @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
     
     var body: some View {
         let data = statusModel.status?.last
-        let valueColor = appConfig.getTheme() == ColorScheme.dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
+        let valueColor = theme == .dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
         List {
             HStack {
                 Text("Device name")

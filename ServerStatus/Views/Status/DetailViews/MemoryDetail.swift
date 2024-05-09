@@ -20,7 +20,6 @@ private struct MemoryList: View {
     let onCloseSheet: (() -> Void)?
     
     @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     
     var body: some View {
@@ -65,7 +64,7 @@ private struct MemoryList: View {
             MemoryChart()
         }
         .navigationTitle("Memory (RAM)")
-        .background(appConfig.getTheme() == ColorScheme.dark ? Color.black : Color.white)
+        .background(Color.foreground)
         .toolbar {
             if onCloseSheet != nil {
                 ToolbarItem(placement: .topBarLeading) {

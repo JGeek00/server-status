@@ -21,7 +21,6 @@ private struct NetworkList: View {
     let onCloseSheet: (() -> Void)?
     
     @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     
     var body: some View {
@@ -42,7 +41,7 @@ private struct NetworkList: View {
             NetworkChart()
         }
         .navigationTitle("Network")
-        .background(appConfig.getTheme() == ColorScheme.dark ? Color.black : Color.white)
+        .background(Color.foreground)
         .toolbar {
             if onCloseSheet != nil {
                 ToolbarItem(placement: .topBarLeading) {

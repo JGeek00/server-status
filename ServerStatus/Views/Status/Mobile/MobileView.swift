@@ -2,10 +2,11 @@ import SwiftUI
 
 struct MobileView: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var statusModel: StatusViewModel
     
     @State var showSystemInfoSheet = false
+    
+    @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults(suiteName: groupId)) private var showServerUrlDetails: Bool = true
     
     var body: some View {
         Group {
@@ -45,7 +46,7 @@ struct MobileView: View {
                                     .padding(.leading, 4)
                                     .foregroundColor(.gray)
                             }
-                            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && appConfig.showUrlDetailsScreen {
+                            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && showServerUrlDetails {
                                 Text(generateInstanceUrl(instance: instancesModel.selectedInstance!))
                                     .padding(.leading, 4)
                                     .foregroundColor(.gray)

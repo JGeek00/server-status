@@ -10,12 +10,11 @@ struct TabletViewHardwareEntry: View {
     let value2Image: String?
     
     @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var appConfig: AppConfigViewModel
     
     var body: some View {
         let foregroundColor = statusModel.selectedHardwareItem == hardwareItem
         ? Color.white
-        : appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black
+        : Color.foreground
         HStack {
             Button {
                 withAnimation(nil) {

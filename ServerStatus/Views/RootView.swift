@@ -2,12 +2,13 @@ import SwiftUI
 import CoreData
 
 struct RootView: View { 
-    @EnvironmentObject var appConfig: AppConfigViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     @StateObject var welcomeSheetModel = WelcomeSheetViewModel()
     @EnvironmentObject var statusModel: StatusViewModel
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -25,7 +26,7 @@ struct RootView: View {
                     StatusView()
                 }
             }
-            .preferredColorScheme(appConfig.getTheme())
+            .preferredColorScheme(getColorScheme(theme: theme))
             .sheet(isPresented: $welcomeSheetModel.openSheet) {
                 WelcomeSheetView(welcomeSheetModel: welcomeSheetModel)
             }
@@ -52,7 +53,7 @@ struct RootView: View {
                     }
                     .tag(1)
             }
-            .preferredColorScheme(appConfig.getTheme())
+            .preferredColorScheme(getColorScheme(theme: theme))
             .sheet(isPresented: $welcomeSheetModel.openSheet) {
                 WelcomeSheetView(welcomeSheetModel: welcomeSheetModel)
             }
