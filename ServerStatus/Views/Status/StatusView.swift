@@ -6,7 +6,7 @@ struct StatusView: View {
     @EnvironmentObject var instancesModel: InstancesViewModel
     @EnvironmentObject var statusModel: StatusViewModel
     
-    @AppStorage(StorageKeys.refreshTime, store: UserDefaults(suiteName: groupId)) private var refreshTime: String = "2"
+    @AppStorage(StorageKeys.refreshTime, store: UserDefaults.shared) private var refreshTime: String = "2"
     
     var body: some View {
         VStack {

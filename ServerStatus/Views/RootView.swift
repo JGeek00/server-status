@@ -9,7 +9,7 @@ struct RootView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.colorScheme) var scheme
     
-    @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
+    @AppStorage(StorageKeys.theme, store: UserDefaults.shared) private var theme: Enums.Theme = .system
     
     @FetchRequest(
         entity: ServerInstances.entity(),

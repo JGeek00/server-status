@@ -6,7 +6,7 @@ struct MobileView: View {
     
     @State var showSystemInfoSheet = false
     
-    @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults(suiteName: groupId)) private var showServerUrlDetails: Bool = true
+    @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults.shared) private var showServerUrlDetails: Bool = true
     
     var body: some View {
         Group {

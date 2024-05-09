@@ -10,9 +10,9 @@ struct SettingsView: View {
     @StateObject var instanceFormModel = InstanceFormViewModel()
     @EnvironmentObject var statusModel: StatusViewModel
     
-    @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
-    @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults(suiteName: groupId)) private var showServerUrlDetails: Bool = true
-    @AppStorage(StorageKeys.refreshTime, store: UserDefaults(suiteName: groupId)) private var refreshTime: String = "2"
+    @AppStorage(StorageKeys.theme, store: UserDefaults.shared) private var theme: Enums.Theme = .system
+    @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults.shared) private var showServerUrlDetails: Bool = true
+    @AppStorage(StorageKeys.refreshTime, store: UserDefaults.shared) private var refreshTime: String = "2"
     
     init(scheme: ColorScheme, onCloseSheet: (() -> Void)?) {
         self.scheme = scheme

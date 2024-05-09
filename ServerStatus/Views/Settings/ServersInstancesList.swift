@@ -6,7 +6,7 @@ struct ServersInstancesList: View {
     @ObservedObject var settingsModel: SettingsViewModel
     @EnvironmentObject var statusModel: StatusViewModel
     
-    @AppStorage(StorageKeys.refreshTime, store: UserDefaults(suiteName: groupId)) private var refreshTime: String = "2"
+    @AppStorage(StorageKeys.refreshTime, store: UserDefaults.shared) private var refreshTime: String = "2"
     
     @FetchRequest(
         entity: ServerInstances.entity(),

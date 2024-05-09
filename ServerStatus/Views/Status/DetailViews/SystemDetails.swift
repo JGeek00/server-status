@@ -21,7 +21,7 @@ struct SystemList: View {
     @EnvironmentObject var statusModel: StatusViewModel
     @EnvironmentObject var instancesModel: InstancesViewModel
     
-    @AppStorage(StorageKeys.theme, store: UserDefaults(suiteName: groupId)) private var theme: Enums.Theme = .system
+    @AppStorage(StorageKeys.theme, store: UserDefaults.shared) private var theme: Enums.Theme = .system
     
     var body: some View {
         let data = statusModel.status?.last
