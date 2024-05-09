@@ -1,4 +1,5 @@
 import Foundation
+import Sentry
 
 class ApiClient {
     public static func status(baseUrl: String, token: String?) async -> StatusResponse {
@@ -17,7 +18,8 @@ class ApiClient {
             else {
                 return StatusResponse(successful: false, statusCode: response.statusCode, data: nil)
             }
-        } catch {
+        } catch let error {
+            SentrySDK.capture(error: error)
             return defaultErrorResponse
         }
     }
