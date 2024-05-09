@@ -112,9 +112,6 @@ struct SettingsView: View {
         .fullScreenCover(isPresented: $settingsModel.statusRepoSafariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.statusRepo)!).ignoresSafeArea()
         })
-        .fullScreenCover(isPresented: $settingsModel.appRepoSafariOpen, content: {
-            SFSafariViewWrapper(url: URL(string: Urls.appRepo)!).ignoresSafeArea()
-        })
         .sheet(isPresented: $instanceFormModel.modalOpen, content: {
             InstanceFormView(instanceFormModel: instanceFormModel)
         })
