@@ -66,17 +66,6 @@ struct SettingsView: View {
                     }
                     Section {
                         NavigationLink("Give a tip to the developer", value: Routes.SettingsRoutes.tips)
-                        Button {
-                            settingsModel.appRepoSafariOpen.toggle()
-                        } label: {
-                            HStack {
-                                Text("Check this application repository")
-                                    .foregroundColor(appConfig.getTheme() == ColorScheme.dark ? Color.white : Color.black)
-                                Spacer()
-                                Image(systemName: "link")
-                                    .foregroundColor(valueColor)
-                            }
-                        }
                         HStack {
                             Text("App version")
                             Spacer()

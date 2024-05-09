@@ -356,16 +356,6 @@
         }
       }
     },
-    "Check this application repository" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comprueba el repositorio de esta aplicación"
-          }
-        }
-      }
-    },
     "Close" : {
       "localizations" : {
         "es" : {
