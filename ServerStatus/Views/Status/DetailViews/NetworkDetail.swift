@@ -123,12 +123,52 @@ private struct NetworkChart: View {
                                 x: .value("", index),
                                 y: .value("TX", item.tx ?? 0),
                                 series: .value("TX", "A")
-                            ).foregroundStyle(Color.blue)
+                            )
+                            .foregroundStyle(Color.blue)
+                            .interpolationMethod(.catmullRom)
+                            AreaMark(
+                                x: .value("", index),
+                                yStart: .value("TX", 0),
+                                yEnd: .value("TX", item.tx ?? 0),
+                                series: .value("TX", "A")
+                            )
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [
+                                        .blue.opacity(0.5),
+                                        .blue.opacity(0.2),
+                                        .blue.opacity(0.05)
+                                    ],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                            .interpolationMethod(.catmullRom)
                             LineMark(
                                 x: .value("", index),
                                 y: .value("RX", item.rx ?? 0),
                                 series: .value("RX", "B")
-                            ).foregroundStyle(Color.green)
+                            )
+                            .foregroundStyle(Color.green)
+                            .interpolationMethod(.catmullRom)
+                            AreaMark(
+                                x: .value("", index),
+                                yStart: .value("RX", 0),
+                                yEnd: .value("RX", item.rx ?? 0),
+                                series: .value("RX", "B")
+                            )
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [
+                                        .green.opacity(0.5),
+                                        .green.opacity(0.2),
+                                        .green.opacity(0.05)
+                                    ],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                            .interpolationMethod(.catmullRom)
                         }
                     }
                     .chartYScale(domain: 0...(maxValue! > 0 ? maxValue! : 10))
@@ -163,7 +203,4 @@ private struct NetworkChart: View {
             }
         }
     }
-}
-#Preview {
-    NetworkDetail(onCloseSheet: nil)
 }

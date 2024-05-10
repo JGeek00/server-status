@@ -132,6 +132,23 @@ private struct MemoryChart: View {
                             x: .value("", index),
                             y: .value("Memory", item.used != nil ? Double(item.used!)/1048576.0 : 0)
                         )
+                        .interpolationMethod(.catmullRom)
+                        AreaMark(
+                            x: .value("", index),
+                            y: .value("Memory", item.used != nil ? Double(item.used!)/1048576.0 : 0)
+                        )
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [
+                                    .blue.opacity(0.5),
+                                    .blue.opacity(0.2),
+                                    .blue.opacity(0.05)
+                                ],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .interpolationMethod(.catmullRom)
                     }
                 }
                 .chartYScale(domain: 0...(Double(maxValue)/1048576.0))
@@ -144,8 +161,4 @@ private struct MemoryChart: View {
             }
         }
     }
-}
-
-#Preview {
-    MemoryDetail(onCloseSheet: nil)
 }

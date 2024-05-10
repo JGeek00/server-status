@@ -171,6 +171,23 @@ private struct CpuChart: View {
                     x: .value("", index),
                     y: .value(type == "freq" ? LocalizedStringKey("Frequency") : LocalizedStringKey("Temperature"), (type == "freq" ? item.frequency : item.temperature) ?? 0)
                 )
+                .interpolationMethod(.catmullRom)
+                AreaMark(
+                    x: .value("", index),
+                    y: .value(type == "freq" ? LocalizedStringKey("Frequency") : LocalizedStringKey("Temperature"), (type == "freq" ? item.frequency : item.temperature) ?? 0)
+                )
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [
+                            .blue.opacity(0.5),
+                            .blue.opacity(0.2),
+                            .blue.opacity(0.05)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .interpolationMethod(.catmullRom)
             }
         }
         .chartYScale(domain: 0...maxValue)
@@ -178,9 +195,4 @@ private struct CpuChart: View {
         .chartXAxis(Visibility.hidden)
         .frame(height: 200)
     }
-}
-
-
-#Preview {
-    CpuDetail(onCloseSheet: nil)
 }
