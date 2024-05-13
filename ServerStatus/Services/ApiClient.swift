@@ -4,6 +4,9 @@ import Sentry
 class ApiClient {
     public static func status(baseUrl: String, token: String?) async -> StatusResponse {
         let defaultErrorResponse = StatusResponse(successful: false, statusCode: nil, data: nil)
+        if baseUrl == "" {
+            return defaultErrorResponse
+        }
         guard let url = URL(string: "\(baseUrl)/api/status") else { return defaultErrorResponse }
         do {
             var request = URLRequest(url: url)
@@ -19,7 +22,9 @@ class ApiClient {
                 return StatusResponse(successful: false, statusCode: response.statusCode, data: nil)
             }
         } catch let error {
-            SentrySDK.capture(error: error)
+            DispatchQueue.main.async {
+                SentrySDK.capture(error: error)
+            }
             return defaultErrorResponse
         }
     }
