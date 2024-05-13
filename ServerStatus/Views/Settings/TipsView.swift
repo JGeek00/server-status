@@ -34,6 +34,7 @@ struct TipsView: View {
             }
         }
         .navigationTitle("Tips")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 if tipsModel.purchaseInProgress {
