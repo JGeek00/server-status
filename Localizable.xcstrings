@@ -442,6 +442,16 @@
         }
       }
     },
+    "Contact the developer" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacta con el desarrollador"
+          }
+        }
+      }
+    },
     "Core %lld" : {
       "localizations" : {
         "es" : {

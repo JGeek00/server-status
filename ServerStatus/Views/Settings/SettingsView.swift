@@ -71,6 +71,17 @@ struct SettingsView: View {
                     }
                     Section {
                         NavigationLink("Give a tip to the developer", value: Routes.SettingsRoutes.tips)
+                        Button {
+                            settingsModel.contactDeveloperSafariOpen.toggle()
+                        } label: {
+                            HStack {
+                                Text("Contact the developer")
+                                    .foregroundColor(.foreground)
+                                Spacer()
+                                Image(systemName: "link")
+                                    .foregroundColor(valueColor)
+                            }
+                        }
                         HStack {
                             Text("App version")
                             Spacer()
@@ -116,6 +127,9 @@ struct SettingsView: View {
         .preferredColorScheme(getColorScheme(theme: theme))
         .fullScreenCover(isPresented: $settingsModel.statusRepoSafariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.statusRepo)!).ignoresSafeArea()
+        })
+        .fullScreenCover(isPresented: $settingsModel.contactDeveloperSafariOpen, content: {
+            SFSafariViewWrapper(url: URL(string: Urls.appSupport)!).ignoresSafeArea()
         })
         .sheet(isPresented: $instanceFormModel.modalOpen, content: {
             InstanceFormView(instanceFormModel: instanceFormModel)
