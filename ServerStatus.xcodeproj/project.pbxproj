@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D10C68B2C11D26F0099B53D /* Sentry-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0D10C68A2C11D26F0099B53D /* Sentry-Dynamic */; };
 		0D11EA9E2BA9E07900451321 /* StatusMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EA9D2BA9E07900451321 /* StatusMockData.swift */; };
 		0D11EAAA2BAA253100451321 /* MobileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAA92BAA253100451321 /* MobileView.swift */; };
 		0D11EAAC2BAA255300451321 /* TabletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAAB2BAA255300451321 /* TabletView.swift */; };
@@ -46,7 +47,6 @@
 		0D88524C2BB06BCB0049FE7A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D88524B2BB06BCA0049FE7A /* StoreKit.framework */; };
 		0D88524E2BB0951E0049FE7A /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88524D2BB0951E0049FE7A /* CloseButton.swift */; };
 		0D8852502BB0F4FB0049FE7A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0D11EAC82BAB964E00451321 /* PrivacyInfo.xcprivacy */; };
-		0D8852692BB1B2980049FE7A /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 0D8852682BB1B2980049FE7A /* Sentry */; };
 		0DAD5E192BA6648E006D3F52 /* ServerStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */; };
 		0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1A2BA6648E006D3F52 /* Persistence.swift */; };
 		0DAD5E1E2BA6648E006D3F52 /* ServerStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E1C2BA6648E006D3F52 /* ServerStatus.xcdatamodeld */; };
@@ -337,7 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D88524C2BB06BCB0049FE7A /* StoreKit.framework in Frameworks */,
-				0D8852692BB1B2980049FE7A /* Sentry in Frameworks */,
+				0D10C68B2C11D26F0099B53D /* Sentry-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +723,7 @@
 			);
 			name = ServerStatus;
 			packageProductDependencies = (
-				0D8852682BB1B2980049FE7A /* Sentry */,
+				0D10C68A2C11D26F0099B53D /* Sentry-Dynamic */,
 			);
 			productName = ServerStatus;
 			productReference = 0DAD5E152BA6648E006D3F52 /* ServerStatus.app */;
@@ -818,7 +818,7 @@
 			);
 			mainGroup = 0DAD5E0C2BA6648E006D3F52;
 			packageReferences = (
-				0D8852672BB1B2980049FE7A /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				0D10C6892C11D26F0099B53D /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 0DAD5E162BA6648E006D3F52 /* Products */;
 			projectDirPath = "";
@@ -1601,21 +1601,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0D8852672BB1B2980049FE7A /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+		0D10C6892C11D26F0099B53D /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
 			requirement = {
-				kind = exactVersion;
-				version = 8.22.4;
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.27.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0D8852682BB1B2980049FE7A /* Sentry */ = {
+		0D10C68A2C11D26F0099B53D /* Sentry-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0D8852672BB1B2980049FE7A /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
+			package = 0D10C6892C11D26F0099B53D /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = "Sentry-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 
