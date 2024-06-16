@@ -25,23 +25,27 @@ struct SettingsView: View {
             Group {
                 List {
                     ServersInstancesList(instanceFormModel: instanceFormModel, settingsModel: settingsModel)
-                    Section("Theme") {
-                        ThemeButton(
-                            thisOption: Enums.Theme.system,
-                            selectedOption: $theme,
-                            onSelect: { value in theme = .system}
-                        )
-                        ThemeButton(
-                            thisOption: Enums.Theme.light,
-                            selectedOption: $theme,
-                            onSelect: { value in theme = .light}
-                        )
-                        ThemeButton(
-                            thisOption: Enums.Theme.dark,
-                            selectedOption: $theme,
-                            onSelect: { value in theme = .dark}
-                        )
+                    Picker("Theme", selection: $theme) {
+                        HStack {
+                            Image(systemName: "iphone")
+                                .padding(.trailing, 6)
+                            Text("System defined")
+                        }
+                        .tag(Enums.Theme.system)
+                        HStack {
+                            Image(systemName: "sun.max")
+                                .padding(.trailing, 6)
+                            Text("Light")
+                        }
+                        .tag(Enums.Theme.light)
+                        HStack {
+                            Image(systemName: "moon")
+                                .padding(.trailing, 6)
+                            Text("Dark")
+                        }
+                        .tag(Enums.Theme.dark)
                     }
+                    .pickerStyle(InlinePickerStyle())
                     Section("App settings") {
                         Toggle("Show server URL on details screen", isOn: $showServerUrlDetails)
                         Picker(selection: $refreshTime) {
