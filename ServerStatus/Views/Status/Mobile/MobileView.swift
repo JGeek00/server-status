@@ -40,7 +40,7 @@ struct MobileView: View {
                     let width =  geometry.size.width - 32
                     let gaugeSize = (geometry.size.width*0.5)/2
                     ScrollView {
-                        VStack(alignment: .leading) {
+                        LazyVStack(alignment: .leading) {
                             if instancesModel.demoMode == true {
                                 Text("Demo mode")
                                     .padding(.leading, 4)
