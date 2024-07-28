@@ -18,13 +18,12 @@ struct SystemDetail: View {
 struct SystemList: View {
     let onCloseSheet: (() -> Void)?
     
-    @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var instancesModel: InstancesViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @AppStorage(StorageKeys.theme, store: UserDefaults.shared) private var theme: Enums.Theme = .system
     
     var body: some View {
-        let data = statusModel.status?.last
+        let data = statusProvider.status?.last
         let valueColor = theme == .dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
         List {
             HStack {
@@ -70,8 +69,7 @@ struct SystemList: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    guard let instance = instancesModel.selectedInstance else { return }
-                    Task { await statusModel.fetchStatus(serverInstance: instance, showError: false) }
+                    Task { await statusProvider.fetchStatus() }
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }

@@ -1,13 +1,9 @@
 import SwiftUI
 import CoreData
 
-struct RootView: View { 
-    @EnvironmentObject var instancesModel: InstancesViewModel
-    @StateObject var welcomeSheetModel = WelcomeSheetViewModel()
-    @EnvironmentObject var statusModel: StatusViewModel
-    
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.colorScheme) var scheme
+struct RootView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.colorScheme) private var scheme
     
     @AppStorage(StorageKeys.theme, store: UserDefaults.shared) private var theme: Enums.Theme = .system
     
@@ -15,12 +11,14 @@ struct RootView: View {
         entity: ServerInstances.entity(),
         sortDescriptors: [],
         animation: .spring
-    ) var instances: FetchedResults<ServerInstances>
+    ) private var instances: FetchedResults<ServerInstances>
+    
+    @EnvironmentObject private var welcomeSheetViewModel: WelcomeSheetViewModel
     
     var body: some View {
         if horizontalSizeClass == .regular {
             Group {
-                if instances.isEmpty && instancesModel.demoMode == false {
+                if instances.isEmpty {
                     NoInstancesView()
                 }
                 else {
@@ -28,14 +26,14 @@ struct RootView: View {
                 }
             }
             .preferredColorScheme(getColorScheme(theme: theme))
-            .sheet(isPresented: $welcomeSheetModel.openSheet) {
-                WelcomeSheetView(welcomeSheetModel: welcomeSheetModel)
+            .sheet(isPresented: $welcomeSheetViewModel.openSheet) {
+                WelcomeSheetView()
             }
         }
         else {
             TabView {
                 NavigationStack {
-                    if instances.isEmpty && instancesModel.demoMode == false {
+                    if instances.isEmpty {
                         NoInstancesView()
                     }
                     else {
@@ -55,8 +53,8 @@ struct RootView: View {
                     .tag(1)
             }
             .preferredColorScheme(getColorScheme(theme: theme))
-            .sheet(isPresented: $welcomeSheetModel.openSheet) {
-                WelcomeSheetView(welcomeSheetModel: welcomeSheetModel)
+            .sheet(isPresented: $welcomeSheetViewModel.openSheet) {
+                WelcomeSheetView()
             }
         }
     }

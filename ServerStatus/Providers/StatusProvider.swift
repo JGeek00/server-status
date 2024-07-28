@@ -2,22 +2,30 @@ import Combine
 import Foundation
 import Sentry
 
-class StatusViewModel: ObservableObject {
+class StatusProvider: ObservableObject {
+    static let shared = StatusProvider()
+    
     @Published var status: [StatusModel]?
     @Published var initialLoading = true
     @Published var loadError = false
     @Published var timer: Timer?
     @Published var selectedHardwareItem: Enums.HardwareItem?
     
-    func startTimer(serverInstance: ServerInstances, interval: String) {
+    func reset() {
+        self.status = nil
+        self.initialLoading = true
+        self.loadError = false
+        self.timer = nil
+        self.selectedHardwareItem = nil
+    }
+    
+    func startTimer(instance: ServerInstances? = nil, interval: String) {
+        guard (InstancesProvider.shared.selectedInstance != nil || instance != nil) else { return }
         DispatchQueue.main.async {
             self.timer?.invalidate()
             self.timer = Timer.scheduledTimer(withTimeInterval: Double(interval) ?? 2.0, repeats: true) { timer in
                 Task {
-                    await self.fetchStatus(
-                        serverInstance: serverInstance,
-                        showError: self.status == nil
-                    )
+                    await self.fetchStatus(instance: instance, showError: self.status == nil)
                 }
             }
 
@@ -26,33 +34,27 @@ class StatusViewModel: ObservableObject {
         }
     }
     
-    func changeInterval(instance: ServerInstances?, newInterval: String) {
-        guard let ins = instance else { return }
-        startTimer(serverInstance: ins, interval: newInterval)
+    func changeInterval(newInterval: String) {
+        startTimer(interval: newInterval)
     }
     
-    func startDemoMode() {
-        if let jsonData = statusMockData.data(using: .utf8) {
-            do {
-                status = try JSONDecoder().decode([StatusModel].self, from: Data(jsonData))
-                initialLoading = false
-                loadError = false
-            } catch {
-                SentrySDK.capture(error: error)
+    func fetchStatus(instance: ServerInstances? = nil, showLoading: Bool = false, showError: Bool = false) async {
+        let instance = instance ?? InstancesProvider.shared.selectedInstance
+        
+        guard let instance = instance else { return }
+        
+        if showLoading == true {
+            DispatchQueue.main.async {
+                self.initialLoading = true
             }
-        } else {
-            SentrySDK.capture(message: "Invalid JSON data on demo mode")
         }
-    }
-    
-    func fetchStatus(serverInstance: ServerInstances, showError: Bool) async {
-        let instance = serverInstance.self
+        
         let response = await ApiClient.status(
-            baseUrl: generateInstanceUrl(instance: serverInstance),
-            token: serverInstance.useBasicAuth ? encodeCredentialsBasicAuth(username: serverInstance.basicAuthUser!, password: serverInstance.basicAuthPassword!) : nil
+            baseUrl: generateInstanceUrl(instance: instance),
+            token: instance.useBasicAuth ? encodeCredentialsBasicAuth(username: instance.basicAuthUser!, password: instance.basicAuthPassword!) : nil
         )
 
-        if instance.id != serverInstance.id {
+        if InstancesProvider.shared.selectedInstance?.id != instance.id {
             return
         }
         
@@ -69,12 +71,13 @@ class StatusViewModel: ObservableObject {
                     else {
                         self.status!.append(data)
                     }
+                    self.initialLoading = false
                     self.loadError = false
                 }
-            } catch let error as NSError {
-                SentrySDK.capture(error: error)
+            } catch {
                 if showError == true {
                     DispatchQueue.main.async {
+                        self.initialLoading = false
                         self.loadError = true
                     }
                 }

@@ -1,9 +1,17 @@
 import SwiftUI
 
 struct InstanceFormView: View {
-    @ObservedObject var instanceFormModel: InstanceFormViewModel
-    @EnvironmentObject var instancesModel: InstancesViewModel
-    @EnvironmentObject var statusModel: StatusViewModel
+    var instance: ServerInstances?
+    var onClose: () -> Void
+    
+    init(instance: ServerInstances? = nil, onClose: @escaping () -> Void) {
+        self.instance = instance
+        self.onClose = onClose
+    }
+    
+    @StateObject private var instanceFormModel = InstanceFormViewModel()
+    @EnvironmentObject private var instancesModel: InstancesProvider
+    @EnvironmentObject private var statusModel: StatusProvider
     
     @FetchRequest(
         entity: ServerInstances.entity(),
@@ -90,7 +98,7 @@ struct InstanceFormView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        instanceFormModel.modalOpen.toggle()
+                        onClose()
                     } label: {
                         Text("Cancel")
                     }
@@ -101,10 +109,9 @@ struct InstanceFormView: View {
                     }
                     else {
                         Button {
-                            instanceFormModel.saveInstance(
-                                instancesModel: instancesModel,
-                                statusModel: statusModel
-                            )
+                            instanceFormModel.saveInstance() {
+                                onClose()
+                            }
                         } label: {
                             Text("Save")
                         }
@@ -130,6 +137,8 @@ struct InstanceFormView: View {
 
 struct InstanceFormView_Previews: PreviewProvider {
     static var previews: some View {
-        InstanceFormView(instanceFormModel: InstanceFormViewModel())
+        InstanceFormView() {
+            
+        }
     }
 }

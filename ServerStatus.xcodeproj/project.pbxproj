@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D10C68B2C11D26F0099B53D /* Sentry-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0D10C68A2C11D26F0099B53D /* Sentry-Dynamic */; };
 		0D11EA9E2BA9E07900451321 /* StatusMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EA9D2BA9E07900451321 /* StatusMockData.swift */; };
 		0D11EAAA2BAA253100451321 /* MobileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAA92BAA253100451321 /* MobileView.swift */; };
 		0D11EAAC2BAA255300451321 /* TabletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11EAAB2BAA255300451321 /* TabletView.swift */; };
@@ -60,7 +59,6 @@
 		0DAD5E412BA67A06006D3F52 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */; };
 		0DAD5E482BA681AB006D3F52 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E472BA681AB006D3F52 /* SettingsView.swift */; };
 		0DAD5E4A2BA682AC006D3F52 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E492BA682AC006D3F52 /* Enums.swift */; };
-		0DAD5E4D2BA684CF006D3F52 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E4C2BA684CF006D3F52 /* ThemeButton.swift */; };
 		0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */; };
 		0DAD5E522BA68FF0006D3F52 /* Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E512BA68FF0006D3F52 /* Gauge.swift */; };
 		0DAD5E5B2BA697F6006D3F52 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD5E5A2BA697F6006D3F52 /* StorageKeys.swift */; };
@@ -70,12 +68,12 @@
 		0DB64CA32BED911C0063FBFE /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB64CA22BED911C0063FBFE /* UserDefaultsExtension.swift */; };
 		0DC4DB612BA6A175007A8328 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB602BA6A175007A8328 /* Strings.swift */; };
 		0DC4DB632BA6A358007A8328 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 0DC4DB622BA6A358007A8328 /* Readme.md */; };
-		0DC4DB652BA713CD007A8328 /* InstancesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */; };
+		0DC4DB652BA713CD007A8328 /* InstancesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB642BA713CD007A8328 /* InstancesProvider.swift */; };
 		0DC4DB672BA71475007A8328 /* InstanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB662BA71475007A8328 /* InstanceModel.swift */; };
 		0DC4DB6E2BA723AE007A8328 /* InstanceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */; };
-		0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */; };
+		0DC4DB702BA76392007A8328 /* ServerInstanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB6F2BA76392007A8328 /* ServerInstanceItem.swift */; };
 		0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB722BA77007007A8328 /* StatusView.swift */; };
-		0DC4DB752BA77032007A8328 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB742BA77032007A8328 /* StatusViewModel.swift */; };
+		0DC4DB752BA77032007A8328 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB742BA77032007A8328 /* StatusProvider.swift */; };
 		0DC4DB772BA77AED007A8328 /* GaugeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB762BA77AED007A8328 /* GaugeColors.swift */; };
 		0DC4DB792BA781F7007A8328 /* CpuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB782BA781F7007A8328 /* CpuData.swift */; };
 		0DC4DB7B2BA782CF007A8328 /* RamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DB7A2BA782CF007A8328 /* RamData.swift */; };
@@ -86,6 +84,7 @@
 		0DC4DBB62BA8845F007A8328 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBB52BA8845F007A8328 /* StatusModel.swift */; };
 		0DC4DBBB2BA88AC8007A8328 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */; };
 		0DC4DBBD2BA88F6A007A8328 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC4DBBC2BA88F6A007A8328 /* BasicAuth.swift */; };
+		0DD7BCC52C56E58C00A99EDB /* SentrySwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0DD7BCC42C56E58C00A99EDB /* SentrySwiftUI */; };
 		0DD98CDF2BAC9F4300804BE7 /* Sentry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CDE2BAC9F4300804BE7 /* Sentry.swift */; };
 		0DD98CE12BACA94E00804BE7 /* SentryConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CE02BACA94E00804BE7 /* SentryConfig.swift */; };
 		0DD98CE42BAD937100804BE7 /* ContributionProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD98CE32BAD937100804BE7 /* ContributionProduct.swift */; };
@@ -265,7 +264,6 @@
 		0DAD5E402BA67A06006D3F52 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0DAD5E472BA681AB006D3F52 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0DAD5E492BA682AC006D3F52 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		0DAD5E4C2BA684CF006D3F52 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0DAD5E512BA68FF0006D3F52 /* Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gauge.swift; sourceTree = "<group>"; };
 		0DAD5E5A2BA697F6006D3F52 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
@@ -275,12 +273,12 @@
 		0DB64CA22BED911C0063FBFE /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		0DC4DB602BA6A175007A8328 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0DC4DB622BA6A358007A8328 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
-		0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancesViewModel.swift; sourceTree = "<group>"; };
+		0DC4DB642BA713CD007A8328 /* InstancesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancesProvider.swift; sourceTree = "<group>"; };
 		0DC4DB662BA71475007A8328 /* InstanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceModel.swift; sourceTree = "<group>"; };
 		0DC4DB6D2BA723AE007A8328 /* InstanceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceUrl.swift; sourceTree = "<group>"; };
-		0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersInstancesList.swift; sourceTree = "<group>"; };
+		0DC4DB6F2BA76392007A8328 /* ServerInstanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerInstanceItem.swift; sourceTree = "<group>"; };
 		0DC4DB722BA77007007A8328 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
-		0DC4DB742BA77032007A8328 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
+		0DC4DB742BA77032007A8328 /* StatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusProvider.swift; sourceTree = "<group>"; };
 		0DC4DB762BA77AED007A8328 /* GaugeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeColors.swift; sourceTree = "<group>"; };
 		0DC4DB782BA781F7007A8328 /* CpuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuData.swift; sourceTree = "<group>"; };
 		0DC4DB7A2BA782CF007A8328 /* RamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamData.swift; sourceTree = "<group>"; };
@@ -337,7 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D88524C2BB06BCB0049FE7A /* StoreKit.framework in Frameworks */,
-				0D10C68B2C11D26F0099B53D /* Sentry-Dynamic in Frameworks */,
+				0DD7BCC52C56E58C00A99EDB /* SentrySwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +481,7 @@
 				0DAD5E502BA68FE4006D3F52 /* Components */,
 				0DC4DBB92BA88ABE007A8328 /* Services */,
 				0DAD5E432BA680C3006D3F52 /* Utils */,
+				0DD7BCC22C56CB6900A99EDB /* Providers */,
 				0DAD5E422BA6800F006D3F52 /* ViewModels */,
 				0DAD5E2D2BA66568006D3F52 /* Views */,
 				0DAD5E182BA6648E006D3F52 /* ServerStatusApp.swift */,
@@ -557,8 +556,6 @@
 			children = (
 				0DAD5E372BA667FD006D3F52 /* InstanceFormViewModel.swift */,
 				0DAD5E4E2BA68786006D3F52 /* SettingsViewModel.swift */,
-				0DC4DB642BA713CD007A8328 /* InstancesViewModel.swift */,
-				0DC4DB742BA77032007A8328 /* StatusViewModel.swift */,
 				0DC4DB8A2BA7B2C7007A8328 /* WelcomeSheetViewModel.swift */,
 				0DD98CE92BAD991500804BE7 /* TipsViewModel.swift */,
 			);
@@ -584,8 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				0DAD5E472BA681AB006D3F52 /* SettingsView.swift */,
-				0DAD5E4C2BA684CF006D3F52 /* ThemeButton.swift */,
-				0DC4DB6F2BA76392007A8328 /* ServersInstancesList.swift */,
+				0DC4DB6F2BA76392007A8328 /* ServerInstanceItem.swift */,
 				0DD98CE52BAD970C00804BE7 /* TipsView.swift */,
 			);
 			path = Settings;
@@ -625,6 +621,15 @@
 				0DC4DBBA2BA88AC8007A8328 /* ApiClient.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		0DD7BCC22C56CB6900A99EDB /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				0DC4DB642BA713CD007A8328 /* InstancesProvider.swift */,
+				0DC4DB742BA77032007A8328 /* StatusProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		0DEC7DDE2BDAE56000749D7A /* MemoryWidget */ = {
@@ -723,7 +728,7 @@
 			);
 			name = ServerStatus;
 			packageProductDependencies = (
-				0D10C68A2C11D26F0099B53D /* Sentry-Dynamic */,
+				0DD7BCC42C56E58C00A99EDB /* SentrySwiftUI */,
 			);
 			productName = ServerStatus;
 			productReference = 0DAD5E152BA6648E006D3F52 /* ServerStatus.app */;
@@ -818,7 +823,7 @@
 			);
 			mainGroup = 0DAD5E0C2BA6648E006D3F52;
 			packageReferences = (
-				0D10C6892C11D26F0099B53D /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				0DD7BCC32C56E58C00A99EDB /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 0DAD5E162BA6648E006D3F52 /* Products */;
 			projectDirPath = "";
@@ -935,7 +940,7 @@
 				0DAD5E382BA667FD006D3F52 /* InstanceFormViewModel.swift in Sources */,
 				0DC4DBBB2BA88AC8007A8328 /* ApiClient.swift in Sources */,
 				0DD98CDF2BAC9F4300804BE7 /* Sentry.swift in Sources */,
-				0DC4DB702BA76392007A8328 /* ServersInstancesList.swift in Sources */,
+				0DC4DB702BA76392007A8328 /* ServerInstanceItem.swift in Sources */,
 				0DC4DB732BA77007007A8328 /* StatusView.swift in Sources */,
 				0DAD5E202BA6648E006D3F52 /* RootView.swift in Sources */,
 				0DAD5E4F2BA68786006D3F52 /* SettingsViewModel.swift in Sources */,
@@ -959,13 +964,13 @@
 				0DAD5E3B2BA670DE006D3F52 /* Regexps.swift in Sources */,
 				0D11EAB42BAB113B00451321 /* CpuDetail.swift in Sources */,
 				0DD98CEA2BAD991500804BE7 /* TipsViewModel.swift in Sources */,
-				0DC4DB752BA77032007A8328 /* StatusViewModel.swift in Sources */,
+				0DC4DB752BA77032007A8328 /* StatusProvider.swift in Sources */,
 				0DAD5E5D2BA69B53006D3F52 /* Urls.swift in Sources */,
 				0DAD5E672BA69F80006D3F52 /* SafariView.swift in Sources */,
 				0DD98CE62BAD970C00804BE7 /* TipsView.swift in Sources */,
 				0DC4DB792BA781F7007A8328 /* CpuData.swift in Sources */,
 				0DAD5E1B2BA6648E006D3F52 /* Persistence.swift in Sources */,
-				0DC4DB652BA713CD007A8328 /* InstancesViewModel.swift in Sources */,
+				0DC4DB652BA713CD007A8328 /* InstancesProvider.swift in Sources */,
 				0DC4DB7B2BA782CF007A8328 /* RamData.swift in Sources */,
 				0D11EAC12BAB62AD00451321 /* DetailedViewButton.swift in Sources */,
 				0D4DB7B92BCA081B005ADE68 /* SystemDetails.swift in Sources */,
@@ -973,7 +978,6 @@
 				0DAD5E4A2BA682AC006D3F52 /* Enums.swift in Sources */,
 				0DB64CA32BED911C0063FBFE /* UserDefaultsExtension.swift in Sources */,
 				0D11EABD2BAB43C900451321 /* StorageDetail.swift in Sources */,
-				0DAD5E4D2BA684CF006D3F52 /* ThemeButton.swift in Sources */,
 				0DB64CA12BED4A6A0063FBFE /* GetValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1607,21 +1611,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0D10C6892C11D26F0099B53D /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+		0DD7BCC32C56E58C00A99EDB /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
 			requirement = {
-				kind = exactVersion;
-				version = 8.27.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.32.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0D10C68A2C11D26F0099B53D /* Sentry-Dynamic */ = {
+		0DD7BCC42C56E58C00A99EDB /* SentrySwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0D10C6892C11D26F0099B53D /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = "Sentry-Dynamic";
+			package = 0DD7BCC32C56E58C00A99EDB /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = SentrySwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 

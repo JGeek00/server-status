@@ -17,11 +17,7 @@ struct TipsView: View {
             }
             else {
                 List {
-                    Section("A message from the developer") {
-                        Text("Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the App Store I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you.")
-                        
-                    }
-                    Section("Donation options") {
+                    Section {
                         ForEach($tipsModel.allProducts, id: \.self) { item in
                             TipItem(contributionProduct: item.wrappedValue) {
                                 if let product = tipsModel.product(for: item.wrappedValue.id) {
@@ -29,6 +25,10 @@ struct TipsView: View {
                                 }
                             }
                         }
+                    } header: {
+                        Text("Hi! I'm the developer of Server Status.\nServer Status is free and I want it to remain free, but by offering this application on the App Store I run into some costs, such as Apple's developer license. I would appreciate a lot every donation to help me paying this costs.\nThank you.")
+                            .padding(.bottom, 12)
+                            .textCase(nil)
                     }
                 }
             }

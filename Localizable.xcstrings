@@ -138,6 +138,7 @@
       }
     },
     "A message from the developer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -587,6 +588,7 @@
       }
     },
     "Demo mode" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -628,6 +630,7 @@
       }
     },
     "Donation options" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

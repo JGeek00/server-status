@@ -20,11 +20,10 @@ struct StorageDetail: View {
 private struct StorageList: View {
     let onCloseSheet: (() -> Void)?
     
-    @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var instancesModel: InstancesViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     var body: some View {
-        let data = statusModel.status?.last
+        let data = statusProvider.status?.last
         List {
             if data?.storage != nil {
                 ForEach(data!.storage!.indices, id: \.self) { index in
@@ -66,8 +65,7 @@ private struct StorageList: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    guard let instance = instancesModel.selectedInstance else { return }
-                    Task { await statusModel.fetchStatus(serverInstance: instance, showError: false) }
+                    Task { await statusProvider.fetchStatus() }
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }
@@ -76,7 +74,7 @@ private struct StorageList: View {
     }
 }
 
-private class StorageChartData {
+private struct StorageChartData: Equatable {
     let id: String
     let used: Double?
     let total: Double?
@@ -93,10 +91,10 @@ private class StorageChartData {
 private struct StorageChart: View {
     let storageIndex: Int
     
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     private func generateChartData() -> [StorageChartData]? {
-        guard let data = statusModel.status else { return nil }
+        guard let data = statusProvider.status else { return nil }
         var reversedData: [StatusModel?] = data.reversed()
         if reversedData.count < ChartsConfig.points {
             reversedData.append(contentsOf: Array(repeating: nil, count: ChartsConfig.points-reversedData.count))
@@ -157,6 +155,7 @@ private struct StorageChart: View {
             .chartYScale(domain: 0...maxValue)
             .chartYAxisLabel(LocalizedStringKey("Storage"))
             .chartXAxis(Visibility.hidden)
+            .animation(.easeInOut(duration: 0.2), value: chartData)
             .frame(height: 300)
             .padding(.bottom, 16)
             .listRowSeparator(.hidden)

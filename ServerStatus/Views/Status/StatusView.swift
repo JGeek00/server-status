@@ -3,8 +3,8 @@ import SwiftUI
 struct StatusView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
-    @EnvironmentObject var instancesModel: InstancesViewModel
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var instancesProvider: InstancesProvider
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @AppStorage(StorageKeys.refreshTime, store: UserDefaults.shared) private var refreshTime: String = "2"
     
@@ -18,8 +18,7 @@ struct StatusView: View {
             }
         }
         .onAppear(perform: {
-            guard let selectedInstance = instancesModel.selectedInstance else { return }
-            statusModel.startTimer(serverInstance: selectedInstance, interval: refreshTime)
+            statusProvider.startTimer(interval: refreshTime)
         })
     }
 }

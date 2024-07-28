@@ -9,16 +9,16 @@ struct TabletViewHardwareEntry: View {
     let value2: String?
     let value2Image: String?
     
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     var body: some View {
-        let foregroundColor = statusModel.selectedHardwareItem == hardwareItem
+        let foregroundColor = statusProvider.selectedHardwareItem == hardwareItem
         ? Color.white
         : Color.foreground
         HStack {
             Button {
                 withAnimation(nil) {
-                    statusModel.selectedHardwareItem = hardwareItem
+                    statusProvider.selectedHardwareItem = hardwareItem
                 }
             } label: {
                 HStack {
@@ -61,7 +61,7 @@ struct TabletViewHardwareEntry: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
-            .background(statusModel.selectedHardwareItem == hardwareItem ? Color.blue : nil)
+            .background(statusProvider.selectedHardwareItem == hardwareItem ? Color.blue : nil)
         }
         .cornerRadius(8)
         .padding(.horizontal, 8)

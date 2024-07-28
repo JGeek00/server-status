@@ -2,12 +2,17 @@ import SwiftUI
 
 struct CpuData: View {
     let gaugeSize: Double
-    @EnvironmentObject var statusModel: StatusViewModel
+    
+    init(gaugeSize: Double) {
+        self.gaugeSize = gaugeSize
+    }
+    
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @State var showSheet = false
 
     var body: some View {
-        let data = statusModel.status?.last
+        let data = statusProvider.status?.last
 
         let cpuMaxTemp = data?.cpu?.cpuCores?.map({ return $0.temperatures?.first ?? 0 }).max()
         let cpuMaxTempLimit = data?.cpu?.cpuCores?.map({ return $0.temperatures?.last ?? 0 }).max()

@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct NetworkData: View {
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @State var showSheet = false
     
     var body: some View {
-        let data = statusModel.status?.last
-        let previous = statusModel.status != nil ? statusModel.status!.count > 1 ? statusModel.status![statusModel.status!.count-2] : nil : nil
+        let data = statusProvider.status?.last
+        let previous = statusProvider.status != nil ? statusProvider.status!.count > 1 ? statusProvider.status![statusProvider.status!.count-2] : nil : nil
         VStack(alignment: .leading) {
             HStack() {
                 Image(systemName: "network")

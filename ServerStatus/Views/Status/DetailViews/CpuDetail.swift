@@ -19,11 +19,10 @@ struct CpuDetail: View {
 private struct CpuList: View {
     let onCloseSheet: (() -> Void)?
     
-    @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var instancesModel: InstancesViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     var body: some View {
-        let data = statusModel.status?.last
+        let data = statusProvider.status?.last
         let cpuMaxTemp = data?.cpu?.cpuCores?.map({ return $0.temperatures?.first ?? 0 }).max()
         List {
             Section("Information") {
@@ -74,8 +73,7 @@ private struct CpuList: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    guard let instance = instancesModel.selectedInstance else { return }
-                    Task { await statusModel.fetchStatus(serverInstance: instance, showError: false) }
+                    Task { await statusProvider.fetchStatus() }
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }
@@ -84,7 +82,7 @@ private struct CpuList: View {
     }
 }
 
-private class CpuChartData {
+private struct CpuChartData: Equatable {
     let id: String
     let frequency: Int?
     let minFrequency: Int?
@@ -106,10 +104,10 @@ private struct CpuCharts: View {
     let index: Int
     let inSheet: Bool
     
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     private func generateChartData() -> [CpuChartData]? {
-        guard let data = statusModel.status else { return nil }
+        guard let data = statusProvider.status else { return nil }
         var reversedData: [StatusModel?] = data.reversed()
         if reversedData.count < ChartsConfig.points {
             reversedData.append(contentsOf: Array(repeating: nil, count: ChartsConfig.points-reversedData.count))
@@ -193,6 +191,7 @@ private struct CpuChart: View {
         .chartYScale(domain: 0...maxValue)
         .chartYAxisLabel(type == "freq" ? LocalizedStringKey("Frequency (MHz)") : LocalizedStringKey("Temperature (ºC)"))
         .chartXAxis(Visibility.hidden)
+        .animation(.easeInOut(duration: 0.2), value: chartData)
         .frame(height: 200)
     }
 }

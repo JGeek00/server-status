@@ -4,12 +4,12 @@ struct StorageData: View {
     let gaugeSize: Double
     let containerWidth: Double
     
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @State var showSheet = false
     
     var body: some View {
-        let data = statusModel.status?.last
+        let data = statusProvider.status?.last
         let total = data?.storage?.map() { $0.total ?? 0 }.max()
         let available = data?.storage?.map() { $0.available ?? 0 }.max()
         VStack {

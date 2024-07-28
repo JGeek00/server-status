@@ -2,9 +2,7 @@ import Foundation
 import Combine
 import CoreData
 
-class InstanceFormViewModel: ObservableObject {
-    @Published var modalOpen = false
-    
+class InstanceFormViewModel: ObservableObject {    
     @Published var editId = ""
     @Published var name = ""
     @Published var connectionMethod = "HTTP"
@@ -88,13 +86,13 @@ class InstanceFormViewModel: ObservableObject {
         }
     }
     
-    func saveInstance(instancesModel: InstancesViewModel, statusModel: StatusViewModel) {
+    func saveInstance(finished: @escaping () -> Void) {
         Task {
             DispatchQueue.main.async {
                 self.isLoading = true
             }
             
-            let baseUrl = "\(String(describing: connectionMethod))://\(String(describing: ipDomain))\(port != "" ? ":\(String(describing: port))" : "")\(path != "" ? String(describing: path) : "")"
+            let baseUrl = "\(String(describing: self.connectionMethod))://\(String(describing: self.ipDomain))\(self.port != "" ? ":\(String(describing: self.port))" : "")\(self.path != "" ? String(describing: self.path) : "")"
             let response = await ApiClient.status(
                 baseUrl: baseUrl,
                 token: useBasicAuth ? encodeCredentialsBasicAuth(username: basicAuthUser, password: basicAuthPassword) : nil
@@ -122,14 +120,10 @@ class InstanceFormViewModel: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.async {
-                self.modalOpen.toggle()
-            }
-            
-            let instanceId = editId != "" ? editId : UUID().uuidString
+            let instanceId = self.editId != "" ? self.editId : UUID().uuidString
             
             if editId != "" {
-                instancesModel.editInstance(
+                InstancesProvider.shared.editInstance(
                     id: editId,
                     name: name,
                     connectionMethod: String(connectionMethod).lowercased(),
@@ -142,7 +136,7 @@ class InstanceFormViewModel: ObservableObject {
                 )
             }
             else {
-                instancesModel.createInstance(
+                let instance = InstancesProvider.shared.createInstance(
                     id: instanceId,
                     name: name,
                     connectionMethod: String(connectionMethod).lowercased(),
@@ -153,18 +147,10 @@ class InstanceFormViewModel: ObservableObject {
                     basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
                     basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
                 )
+                StatusProvider.shared.startTimer(instance: instance, interval: getRefreshTime())
             }
             
-            let fetchRequest: NSFetchRequest<ServerInstances> = ServerInstances.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", instanceId as CVarArg)
-            do {
-                let data = try PersistenceController.shared.container.viewContext.fetch(fetchRequest)
-                guard let instance = data.first else { return }
-                statusModel.startTimer(serverInstance: instance, interval: getRefreshTime())
-            } catch {
-                print("Error fetching data: \(error.localizedDescription)")
-            }
-            
+            finished()
         }
     }
 }

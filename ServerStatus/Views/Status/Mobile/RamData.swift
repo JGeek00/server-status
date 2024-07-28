@@ -4,12 +4,12 @@ struct RamData: View {
     let gaugeSize: Double
     let containerWidth: Double
     
-    @EnvironmentObject var statusView: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @State var showSheet = false
     
     var body: some View {
-        let data = statusView.status?.last
+        let data = statusProvider.status?.last
         
         VStack {
             HStack() {

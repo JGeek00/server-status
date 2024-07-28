@@ -1,12 +1,13 @@
 import SwiftUI
 
 struct NoInstancesView: View {
-    @StateObject var instanceFormModel = InstanceFormViewModel()
+    init() {}
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.colorScheme) var scheme
     
-    @State var showSettingsSheet = false
+    @State private var showSettingsSheet = false
+    @State private var showFormSheet = false
     
     var body: some View {
         VStack {
@@ -19,8 +20,7 @@ struct NoInstancesView: View {
             Spacer().frame(height: 50)
             HStack {
                 Button {
-                    instanceFormModel.reset()
-                    instanceFormModel.modalOpen.toggle()
+                    showFormSheet = true
                 } label: {
                     Label {
                         Text("Add instance")
@@ -56,8 +56,10 @@ struct NoInstancesView: View {
             }
         }
         .padding()
-        .sheet(isPresented: $instanceFormModel.modalOpen, content: {
-            InstanceFormView(instanceFormModel: instanceFormModel)
+        .sheet(isPresented: $showFormSheet, content: {
+            InstanceFormView() {
+                showFormSheet = false
+            }
         })
         .toolbar {
             ToolbarItem(placement: .secondaryAction) {
@@ -75,6 +77,7 @@ struct NoInstancesView: View {
                 showSettingsSheet.toggle()
             }
         })
+        .navigationTitle("Server Status")
     }
 }
 

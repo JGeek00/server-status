@@ -20,11 +20,10 @@ struct NetworkDetail: View {
 private struct NetworkList: View {
     let onCloseSheet: (() -> Void)?
     
-    @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var instancesModel: InstancesViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     var body: some View {
-        let data = statusModel.status?.last
+        let data = statusProvider.status?.last
         List {
             Section("Information") {
                 HStack {
@@ -52,8 +51,7 @@ private struct NetworkList: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    guard let instance = instancesModel.selectedInstance else { return }
-                    Task { await statusModel.fetchStatus(serverInstance: instance, showError: false) }
+                    Task { await statusProvider.fetchStatus() }
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }
@@ -62,7 +60,7 @@ private struct NetworkList: View {
     }
 }
 
-private class NetworkChartData {
+private struct NetworkChartData: Equatable {
     let id: String
     let tx: Double?
     let rx: Double?
@@ -75,10 +73,10 @@ private class NetworkChartData {
 }
 
 private struct NetworkChart: View {
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     private func generateChartData() -> [NetworkChartData]? {
-        guard let data = statusModel.status else { return nil }
+        guard let data = statusProvider.status else { return nil }
         let reversedData: [StatusModel?] = data.reversed()
         
         var networkData: [NetworkChartData] = []
@@ -197,6 +195,7 @@ private struct NetworkChart: View {
                         Spacer()
                     }
                 }
+                .animation(.easeInOut(duration: 0.2), value: chartData)
                 .padding(.top, 8)
                 .padding(.bottom, 12)
                 .listRowSeparator(.hidden)

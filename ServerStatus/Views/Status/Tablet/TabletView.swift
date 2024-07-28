@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct TabletView: View {
-    @EnvironmentObject var instancesModel: InstancesViewModel
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var instancesModel: InstancesProvider
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.colorScheme) var scheme
@@ -13,8 +13,8 @@ struct TabletView: View {
     @State var showSettingsSheet = false
     
     var body: some View {
-        let data = statusModel.status?.last
-        let previous = statusModel.status != nil ? statusModel.status!.count > 1 ? statusModel.status![statusModel.status!.count-2] : nil : nil
+        let data = statusProvider.status?.last
+        let previous = statusProvider.status != nil ? statusProvider.status!.count > 1 ? statusProvider.status![statusProvider.status!.count-2] : nil : nil
         
         let cpuMaxTemp = data?.cpu?.cpuCores?.map({ return $0.temperatures?.first ?? 0 }).max()
         
@@ -49,12 +49,12 @@ struct TabletView: View {
         
         return NavigationSplitView(columnVisibility: .constant(.all)) {
             VStack {
-                if statusModel.initialLoading == true {
+                if statusProvider.initialLoading == true {
                     VStack {
                         ProgressView()
                     }
                 }
-                else if statusModel.loadError == true {
+                else if statusProvider.loadError == true {
                     VStack {
                         Image(systemName: "exclamationmark.circle")
                             .font(.system(size: 40))
@@ -62,28 +62,23 @@ struct TabletView: View {
                         Text("An error occured while loading the data.")
                             .font(.system(size: 24))
                             .multilineTextAlignment(.center)
-                        Spacer().frame(height: 40)
+                        Spacer()
+                            .frame(height: 40)
                         Button {
-                            guard let selectedInstance = instancesModel.selectedInstance else { return }
-                            Task { await statusModel.fetchStatus(serverInstance: selectedInstance, showError: true) }
+                            Task { await statusProvider.fetchStatus(showLoading: true, showError: true) }
                         } label: {
                             HStack {
                                 Image(systemName: "arrow.counterclockwise")
                                 Text("Retry")
                             }
                         }
-                    }.padding(.horizontal, 24)
+                    }
+                    .padding(.horizontal, 24)
                 }
                 else {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 0) {
-                            if instancesModel.demoMode == true {
-                                Text("Demo mode")
-                                    .padding(.leading, 17)
-                                    .padding(.bottom, 10)
-                                    .foregroundColor(.gray)
-                            }
-                            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && showServerUrlDetails {
+                            if instancesModel.selectedInstance != nil && showServerUrlDetails {
                                 Text(generateInstanceUrl(instance: instancesModel.selectedInstance!))
                                     .padding(.leading, 17)
                                     .padding(.bottom, 10)
@@ -128,11 +123,7 @@ struct TabletView: View {
                         }
                     }
                     .refreshable {
-                        guard let selectedInstance = instancesModel.selectedInstance else { return }
-                        await statusModel.fetchStatus(
-                            serverInstance: selectedInstance,
-                            showError: false
-                        )
+                        await statusProvider.fetchStatus()
                     }
                 }
             }
@@ -140,7 +131,7 @@ struct TabletView: View {
             .toolbar(content: {
                 ToolbarItem {
                     HStack {
-                        if statusModel.status?.isEmpty == false && statusModel.status?[0].host != nil {
+                        if statusProvider.status?.isEmpty == false && statusProvider.status?[0].host != nil {
                             Button {
                                 showSystemInfoSheet.toggle()
                             } label: {
@@ -166,8 +157,8 @@ struct TabletView: View {
                 }
             })
         } detail: {
-            if statusModel.status != nil && statusModel.selectedHardwareItem != nil {
-                switch statusModel.selectedHardwareItem! {
+            if statusProvider.status != nil && statusProvider.selectedHardwareItem != nil {
+                switch statusProvider.selectedHardwareItem! {
                     case .cpu:
                         CpuDetail(onCloseSheet: nil)
                     case .memory:

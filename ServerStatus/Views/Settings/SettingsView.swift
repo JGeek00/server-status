@@ -5,26 +5,55 @@ struct SettingsView: View {
     var scheme: ColorScheme
     var onCloseSheet: (() -> Void)?
     
-    @EnvironmentObject var instancesModel: InstancesViewModel
-    @StateObject var settingsModel = SettingsViewModel()
-    @StateObject var instanceFormModel = InstanceFormViewModel()
-    @EnvironmentObject var statusModel: StatusViewModel
+    init(scheme: ColorScheme, onCloseSheet: (() -> Void)?) {
+        self.scheme = scheme
+        self.onCloseSheet = onCloseSheet
+    }
+    
+    @EnvironmentObject private var instancesProvider: InstancesProvider
+    @EnvironmentObject private var statusProvider: StatusProvider
+    
+    @StateObject private var settingsModel = SettingsViewModel()
+    @StateObject private var instanceFormModel = InstanceFormViewModel()
     
     @AppStorage(StorageKeys.theme, store: UserDefaults.shared) private var theme: Enums.Theme = .system
     @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults.shared) private var showServerUrlDetails: Bool = true
     @AppStorage(StorageKeys.refreshTime, store: UserDefaults.shared) private var refreshTime: String = "2"
     
-    init(scheme: ColorScheme, onCloseSheet: (() -> Void)?) {
-        self.scheme = scheme
-        self.onCloseSheet = onCloseSheet
-    }
+    @FetchRequest(
+        entity: ServerInstances.entity(),
+        sortDescriptors: [],
+        animation: .spring
+    ) var instances: FetchedResults<ServerInstances>
+    
+    @State private var newInstanceFormSheet = false
+    @State private var instanceFormModalOpen = false
     
     var body: some View {
         let valueColor = theme == .dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
         NavigationStack {
             Group {
                 List {
-                    ServersInstancesList(instanceFormModel: instanceFormModel, settingsModel: settingsModel)
+                    Section("Server instances") {
+                        ForEach(instances) { item in
+                            ServerInstanceItem(instance: item)
+                        }
+                        Button {
+                            newInstanceFormSheet = true
+                        } label: {
+                            HStack {
+                                Spacer().frame(width: 4)
+                                Image(systemName: "plus")
+                                Spacer().frame(width: 18)
+                                Text("New instance")
+                            }
+                        }
+                        .sheet(isPresented: $newInstanceFormSheet, content: {
+                            InstanceFormView() {
+                                newInstanceFormSheet = false
+                            }
+                        })
+                    }
                     Picker("Theme", selection: $theme) {
                         HStack {
                             Image(systemName: "iphone")
@@ -57,7 +86,7 @@ struct SettingsView: View {
                             Text("Refresh time")
                         }
                         .onChange(of: refreshTime) { _, newValue in
-                            statusModel.changeInterval(instance: instancesModel.selectedInstance, newInterval: newValue)
+                            statusProvider.changeInterval(newInterval: newValue)
                         }
                     }
                     Section("Status API") {
@@ -135,22 +164,10 @@ struct SettingsView: View {
         .fullScreenCover(isPresented: $settingsModel.contactDeveloperSafariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.appSupport)!).ignoresSafeArea()
         })
-        .sheet(isPresented: $instanceFormModel.modalOpen, content: {
-            InstanceFormView(instanceFormModel: instanceFormModel)
-        })
-        .alert("Delete instance", isPresented:$settingsModel.confirmDeleteOpen, actions: {
-            Button(role: .destructive) {
-                instancesModel.deleteInstance(
-                    instance: settingsModel.selectedItemDelete!,
-                    instancesModel: instancesModel,
-                    statusModel: statusModel
-                )
-                settingsModel.selectedItemDelete = nil
-            } label: {
-                Text("Delete")
+        .sheet(isPresented: $instanceFormModalOpen, content: {
+            InstanceFormView() {
+                instanceFormModalOpen = false
             }
-        }, message: {
-            Text("Are you sure you want to delete this instance?")
         })
         .environment(\.colorScheme, scheme)
     }

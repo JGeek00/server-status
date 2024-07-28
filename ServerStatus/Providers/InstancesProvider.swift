@@ -1,10 +1,11 @@
 import Combine
 import CoreData
 
-class InstancesViewModel: ObservableObject {
+class InstancesProvider: ObservableObject {
+    static let shared = InstancesProvider()
+    
     @Published var defaultServer = ""
     @Published var selectedInstance: ServerInstances?
-    @Published var demoMode = false
     
     init() {
         let def = UserDefaults(suiteName: groupId)?.string(forKey: StorageKeys.defaultServer) ?? ""
@@ -25,14 +26,12 @@ class InstancesViewModel: ObservableObject {
     
     private let persistenceController = PersistenceController.shared
     
-    func switchInstance(instance: ServerInstances, statusModel: StatusViewModel) {
-        statusModel.initialLoading = true
-        statusModel.loadError = false
-        statusModel.status = nil
+    func switchInstance(instance: ServerInstances) {
+        StatusProvider.shared.reset()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250), execute: {
             self.selectedInstance = instance
-            statusModel.startTimer(serverInstance: instance, interval: getRefreshTime())
+            StatusProvider.shared.startTimer(interval: getRefreshTime())
         })
     }
     
@@ -60,11 +59,7 @@ class InstancesViewModel: ObservableObject {
         useBasicAuth: Bool,
         basicAuthUser: String?,
         basicAuthPassword: String?
-    ) {
-        if demoMode == true {
-            return
-        }
-        
+    ) -> ServerInstances? {
         let managedContext = persistenceController.container.viewContext
         let newInstance = ServerInstances(context: managedContext)
         newInstance.id = id
@@ -82,14 +77,15 @@ class InstancesViewModel: ObservableObject {
             
             let newInstances = fetchInstances(instanceId: nil)
             if newInstances.count == 1 {
-                setDefaultInstance(instance: newInstances[0])
+                setDefaultInstance(instance: newInstances.first)
                 DispatchQueue.main.async {
-                    self.selectedInstance = newInstances[0]
-                    
+                    self.selectedInstance = newInstances.first
                 }
             }
+            return newInstances.first
         } catch {
             print("Failed to save object: \(error)")
+            return nil
         }
     }
     
@@ -104,10 +100,6 @@ class InstancesViewModel: ObservableObject {
         basicAuthUser: String?,
         basicAuthPassword: String?
     ) {
-        if demoMode == true {
-            return
-        }
-        
         let managedContext = persistenceController.container.viewContext
         
         let fetchRequest: NSFetchRequest<ServerInstances> = ServerInstances.fetchRequest()
@@ -130,11 +122,7 @@ class InstancesViewModel: ObservableObject {
         }
     }
     
-    func deleteInstance(instance: ServerInstances, instancesModel: InstancesViewModel, statusModel: StatusViewModel) {
-        if demoMode == true {
-            return
-        }
-        
+    func deleteInstance(instance: ServerInstances) {
         let instanceId = instance.id!
         let managedContext = persistenceController.container.viewContext
         do {
@@ -143,19 +131,15 @@ class InstancesViewModel: ObservableObject {
             
             let instances = fetchInstances(instanceId: nil)
             if instances.isEmpty {
-                statusModel.initialLoading = true
-                statusModel.loadError = false
-                statusModel.status = nil
+                StatusProvider.shared.reset()
                 setDefaultInstance(instance: nil)
-                instancesModel.selectedInstance = nil
+                self.selectedInstance = nil
             }
             else if instanceId == defaultServer {
-                statusModel.initialLoading = true
-                statusModel.loadError = false
-                statusModel.status = nil
+                StatusProvider.shared.reset()
                 setDefaultInstance(instance: instances[0])
-                instancesModel.selectedInstance = instances[0]
-                statusModel.startTimer(serverInstance: instances[0], interval: getRefreshTime())
+                self.selectedInstance = instances[0]
+                StatusProvider.shared.startTimer(interval: getRefreshTime())
             }
         } catch let error as NSError {
             print("Failed to delete entity: \(error)")
@@ -163,10 +147,6 @@ class InstancesViewModel: ObservableObject {
     }
     
     func setDefaultInstance(instance: ServerInstances?) {
-        if demoMode == true {
-            return
-        }
-        
         DispatchQueue.main.async {
             self.defaultServer = instance != nil ? instance!.id! : ""
         }

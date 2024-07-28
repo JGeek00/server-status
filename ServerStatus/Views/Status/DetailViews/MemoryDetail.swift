@@ -19,11 +19,10 @@ struct MemoryDetail: View {
 private struct MemoryList: View {
     let onCloseSheet: (() -> Void)?
     
-    @EnvironmentObject var statusModel: StatusViewModel
-    @EnvironmentObject var instancesModel: InstancesViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     var body: some View {
-        let data = statusModel.status?.last
+        let data = statusProvider.status?.last
         List {
             Section("General status") {
                 HStack {
@@ -75,8 +74,7 @@ private struct MemoryList: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    guard let instance = instancesModel.selectedInstance else { return }
-                    Task { await statusModel.fetchStatus(serverInstance: instance, showError: false) }
+                    Task { await statusProvider.fetchStatus() }
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }
@@ -85,7 +83,7 @@ private struct MemoryList: View {
     }
 }
 
-private class MemoryChartData {
+private struct MemoryChartData: Equatable {
     let id: String
     let used: Int?
     let total: Int?
@@ -98,10 +96,10 @@ private class MemoryChartData {
 }
 
 private struct MemoryChart: View {
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var statusProvider: StatusProvider
     
     private func generateChartData() -> [MemoryChartData]? {
-        guard let data = statusModel.status else { return nil }
+        guard let data = statusProvider.status else { return nil }
         var reversedData: [StatusModel?] = data.reversed()
         if reversedData.count < ChartsConfig.points {
             reversedData.append(contentsOf: Array(repeating: nil, count: ChartsConfig.points-reversedData.count))
@@ -154,6 +152,7 @@ private struct MemoryChart: View {
                 .chartYScale(domain: 0...(Double(maxValue)/1048576.0))
                 .chartYAxisLabel(LocalizedStringKey("Memory (GB)"))
                 .chartXAxis(Visibility.hidden)
+                .animation(.easeInOut(duration: 0.2), value: chartData)
                 .frame(height: 300)
                 .padding(.top, 8)
                 .padding(.bottom, 16)

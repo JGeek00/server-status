@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct MobileView: View {
-    @EnvironmentObject var instancesModel: InstancesViewModel
-    @EnvironmentObject var statusModel: StatusViewModel
+    @EnvironmentObject var instancesProvider: InstancesProvider
+    @EnvironmentObject var statusProvider: StatusProvider
     
     @State var showSystemInfoSheet = false
     
@@ -10,12 +10,12 @@ struct MobileView: View {
     
     var body: some View {
         Group {
-            if statusModel.initialLoading == true {
+            if statusProvider.initialLoading == true {
                 VStack {
                     ProgressView()
                 }
             }
-            else if statusModel.loadError == true {
+            else if statusProvider.loadError == true {
                 VStack {
                     Image(systemName: "exclamationmark.circle")
                         .font(.system(size: 40))
@@ -25,15 +25,15 @@ struct MobileView: View {
                         .multilineTextAlignment(.center)
                     Spacer().frame(height: 40)
                     Button {
-                        guard let selectedInstance = instancesModel.selectedInstance else { return }
-                        Task { await statusModel.fetchStatus(serverInstance: selectedInstance, showError: true) }
+                        Task { await statusProvider.fetchStatus(showLoading: true) }
                     } label: {
                         HStack {
                             Image(systemName: "arrow.counterclockwise")
                             Text("Retry")
                         }
                     }
-                }.padding(.horizontal, 24)
+                }
+                .padding(.horizontal, 24)
             }
             else {
                 GeometryReader { geometry in
@@ -41,13 +41,8 @@ struct MobileView: View {
                     let gaugeSize = (geometry.size.width*0.5)/2
                     ScrollView {
                         LazyVStack(alignment: .leading) {
-                            if instancesModel.demoMode == true {
-                                Text("Demo mode")
-                                    .padding(.leading, 4)
-                                    .foregroundColor(.gray)
-                            }
-                            if instancesModel.demoMode == false && instancesModel.selectedInstance != nil && showServerUrlDetails {
-                                Text(generateInstanceUrl(instance: instancesModel.selectedInstance!))
+                            if instancesProvider.selectedInstance != nil && showServerUrlDetails {
+                                Text(generateInstanceUrl(instance: instancesProvider.selectedInstance!))
                                     .padding(.leading, 4)
                                     .foregroundColor(.gray)
                             }
@@ -76,20 +71,16 @@ struct MobileView: View {
                         .padding(.horizontal, 16)
                     }
                     .refreshable {
-                        guard let selectedInstance = instancesModel.selectedInstance else { return }
-                        await statusModel.fetchStatus(
-                            serverInstance: selectedInstance,
-                            showError: false
-                        )
+                        await statusProvider.fetchStatus()
                     }
                 }
             }
         }
-        .navigationTitle(instancesModel.selectedInstance?.name ?? "Server status")
+        .navigationTitle(instancesProvider.selectedInstance?.name ?? "Server status")
         .toolbar(content: {
             ToolbarItem {
                 HStack {
-                    if statusModel.status?.isEmpty == false && statusModel.status?[0].host != nil {
+                    if statusProvider.status?.isEmpty == false && statusProvider.status?[0].host != nil {
                         Button {
                             showSystemInfoSheet.toggle()
                         } label: {
