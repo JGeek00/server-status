@@ -115,6 +115,17 @@ struct SettingsView: View {
                                     .foregroundColor(valueColor)
                             }
                         }
+                        Button {
+                            settingsModel.appRepoSafariOpen.toggle()
+                        } label: {
+                            HStack {
+                                Text("Check the app repository")
+                                    .foregroundColor(.foreground)
+                                Spacer()
+                                Image(systemName: "link")
+                                    .foregroundColor(valueColor)
+                            }
+                        }
                         HStack {
                             Text("App version")
                             Spacer()
@@ -163,6 +174,9 @@ struct SettingsView: View {
         })
         .fullScreenCover(isPresented: $settingsModel.contactDeveloperSafariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.appSupport)!).ignoresSafeArea()
+        })
+        .fullScreenCover(isPresented: $settingsModel.appRepoSafariOpen, content: {
+            SFSafariViewWrapper(url: URL(string: Urls.appRepo)!).ignoresSafeArea()
         })
         .sheet(isPresented: $instanceFormModalOpen, content: {
             InstanceFormView() {

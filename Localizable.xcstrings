@@ -137,17 +137,6 @@
         }
       }
     },
-    "A message from the developer" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Un mensaje del desarrollador"
-          }
-        }
-      }
-    },
     "About the app" : {
       "localizations" : {
         "es" : {
@@ -353,6 +342,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comprueba el repositorio de \"Status\""
+          }
+        }
+      }
+    },
+    "Check the app repository" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprueba el repositorio de la app"
           }
         }
       }
@@ -587,17 +586,6 @@
         }
       }
     },
-    "Demo mode" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modo de demostración"
-          }
-        }
-      }
-    },
     "DETAILED VIEW" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -625,17 +613,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre del dispositivo"
-          }
-        }
-      }
-    },
-    "Donation options" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opciones de donación"
           }
         }
       }
