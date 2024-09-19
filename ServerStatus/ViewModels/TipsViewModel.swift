@@ -1,127 +1,106 @@
-import Foundation
 import StoreKit
-import Sentry
+import SwiftUI
+import Combine
 
-typealias FetchCompleteHandler = (([SKProduct]) -> Void)
-typealias PurchasesCompleteHandler = ((SKPaymentTransaction) -> Void)
-
-class TipsViewModel: NSObject, ObservableObject {
-    @Published var allProducts = [ContributionProduct]()
+final class IAPManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver, @unchecked Sendable {    
+    @Published var products = [SKProduct]()
+    @Published var purchaseState: PurchaseState = .idle
+    
+    // Alerts
+    @Published var successfulPurchase = false
     @Published var purchaseInProgress = false
     @Published var failedPurchase = false
-    @Published var successfulPurchase = false
     
-    private let allIdentifiers = Set([
-        "com.jgeek00.ServerStatus.SmallTip",
-        "com.jgeek00.ServerStatus.MediumTip",
-        "com.jgeek00.ServerStatus.BigTip",
-        "com.jgeek00.ServerStatus.VeryBigTip",
-        "com.jgeek00.ServerStatus.GloriousTip"
-    ])
+    private var productRequest: SKProductsRequest?
 
-    private var productsRequest: SKProductsRequest?
-    private var fetchedProductos = [SKProduct]()
-    private var fetchCompleteHandler : FetchCompleteHandler?
-    private var purchasesCompleteHandler : PurchasesCompleteHandler?
-    
-    
-    override init(){
+    override init() {
         super.init()
-        startObservingPayment()
-        fetchProducts { products in
-            self.allProducts = products.map() {
-                ContributionProduct(product: $0)
-            }.sorted(by: { a, b in
-                a.numericPrice < b.numericPrice
+        SKPaymentQueue.default().add(self)
+        fetchProducts()
+    }
+    
+    deinit {
+        SKPaymentQueue.default().remove(self)
+    }
+    
+    func fetchProducts() {
+        productRequest = SKProductsRequest(productIdentifiers: iapIds)
+        productRequest?.delegate = self
+        productRequest?.start()
+    }
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        Task { @MainActor in
+            self.products = response.products.sorted(by: { a, b in
+                a.price.doubleValue < b.price.doubleValue
             })
         }
     }
-    
-    private func startObservingPayment() {
-        SKPaymentQueue.default().add(self)
-    }
-    
-    private func fetchProducts(_ completion: @escaping FetchCompleteHandler){
-        guard self.productsRequest == nil else { return }
-        fetchCompleteHandler = completion
-        productsRequest = SKProductsRequest(productIdentifiers: allIdentifiers)
-        productsRequest?.delegate = self
-        productsRequest?.start()
-    }
-    
-    private func buy(_ product: SKProduct, completion: @escaping PurchasesCompleteHandler){
-        purchasesCompleteHandler = completion
-        let payment = SKPayment(product: product)
-        SKPaymentQueue.default().add(payment)
-    }
-}
 
-extension TipsViewModel: SKProductsRequestDelegate {
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        let loadedProducts = response.products
-        let invalidProducts = response.invalidProductIdentifiers
-        
-        guard !loadedProducts.isEmpty else{
-            if !invalidProducts.isEmpty {
-                SentrySDK.capture(message: "Cannot load products: \(invalidProducts)")
-                print("Cannot load products: \(invalidProducts)")
+    func purchase(product: SKProduct) {
+        if SKPaymentQueue.canMakePayments() {
+            let payment = SKPayment(product: product)
+            SKPaymentQueue.default().add(payment)
+        } else {
+            Task { @MainActor in
+                self.purchaseState = .failed(message: "User cannot make payments")
             }
-            productsRequest = nil
-            return
         }
-        
-        fetchedProductos = loadedProducts
-        DispatchQueue.main.async {
-            self.fetchCompleteHandler?(loadedProducts)
-            self.fetchCompleteHandler = nil
-            self.productsRequest = nil
-        }
-        
     }
-}
 
-extension TipsViewModel : SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
-            var finishTransaction = false
             switch transaction.transactionState {
-                case .purchased, .restored:
-                    self.successfulPurchase = true
-                    finishTransaction = true
-                case .failed:
-                    self.failedPurchase = true
-                    finishTransaction = true
-                case .deferred, .purchasing:
-                    break
-                @unknown default:
-                    break
-            }
-            
-            if finishTransaction {
-                SKPaymentQueue.default().finishTransaction(transaction)
-                DispatchQueue.main.async {
-                    self.purchaseInProgress = false
-                    self.purchasesCompleteHandler?(transaction)
-                    self.purchasesCompleteHandler = nil
-                }
+            case .purchased:
+                completeTransaction(transaction)
+            case .failed:
+                failedTransaction(transaction)
+            case .restored:
+                restoreTransaction(transaction)
+            default:
+                break
             }
         }
     }
-}
 
-extension TipsViewModel {
-    func product(for identifier: String) -> SKProduct? {
-        return fetchedProductos.first(where: { $0.productIdentifier == identifier })
+    private func completeTransaction(_ transaction: SKPaymentTransaction) {
+        Task { @MainActor in
+            print("Purchase successful for product: \(transaction.payment.productIdentifier)")
+            self.purchaseState = .successful
+            self.purchaseInProgress = false
+            self.successfulPurchase = true
+        }
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+
+    private func failedTransaction(_ transaction: SKPaymentTransaction) {
+        Task { @MainActor in
+            if let error = transaction.error as NSError? {
+                print("Transaction failed with error: \(error.localizedDescription)")
+                self.purchaseState = .failed(message: error.localizedDescription)
+                self.purchaseInProgress = false
+                self.failedPurchase = true
+            }
+        }
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+
+    private func restoreTransaction(_ transaction: SKPaymentTransaction) {
+        Task { @MainActor in
+            print("Restored transaction for product: \(transaction.payment.productIdentifier)")
+            self.purchaseState = .restored
+        }
+        SKPaymentQueue.default().finishTransaction(transaction)
     }
     
-    func purchaseProduct(product: SKProduct){
-        self.purchaseInProgress = true
-        startObservingPayment()
-        buy(product) { _ in }
-    }
-    
-    func restorePurchase(){
+    func restorePurchases() {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
 
+enum PurchaseState {
+    case idle
+    case successful
+    case failed(message: String)
+    case restored
+}

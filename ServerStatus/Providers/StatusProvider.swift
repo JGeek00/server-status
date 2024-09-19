@@ -1,7 +1,9 @@
 import Combine
+import CoreData
 import Foundation
 import Sentry
 
+@MainActor
 class StatusProvider: ObservableObject {
     static let shared = StatusProvider()
     
@@ -21,11 +23,12 @@ class StatusProvider: ObservableObject {
     
     func startTimer(instance: ServerInstances? = nil, interval: String) {
         guard (InstancesProvider.shared.selectedInstance != nil || instance != nil) else { return }
+        let instanceId = instance?.objectID
         DispatchQueue.main.async {
             self.timer?.invalidate()
             self.timer = Timer.scheduledTimer(withTimeInterval: Double(interval) ?? 2.0, repeats: true) { timer in
                 Task {
-                    await self.fetchStatus(instance: instance, showError: self.status == nil)
+                    await self.fetchStatus(instanceId: instanceId, showError: self.status == nil)
                 }
             }
 
@@ -38,10 +41,22 @@ class StatusProvider: ObservableObject {
         startTimer(interval: newInterval)
     }
     
-    func fetchStatus(instance: ServerInstances? = nil, showLoading: Bool = false, showError: Bool = false) async {
-        let instance = instance ?? InstancesProvider.shared.selectedInstance
+    func fetchStatus(instanceId: NSManagedObjectID? = nil, showLoading: Bool = false, showError: Bool = false) async {
+        func getInstance() -> ServerInstances? {
+            let backgroundContext = PersistenceController.shared.container.newBackgroundContext()
+            if instanceId != nil {
+                guard let instanceId = instanceId else { return nil }
+                return try? backgroundContext.existingObject(with: instanceId) as? ServerInstances
+            }
+            else if InstancesProvider.shared.selectedInstance?.objectID != nil {
+                return InstancesProvider.shared.selectedInstance
+            }
+            else {
+                return nil
+            }
+        }
         
-        guard let instance = instance else { return }
+        guard let instance = getInstance() else { return }
         
         if showLoading == true {
             DispatchQueue.main.async {

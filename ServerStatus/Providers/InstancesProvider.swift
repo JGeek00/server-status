@@ -1,6 +1,7 @@
 import Combine
 import CoreData
 
+@MainActor
 class InstancesProvider: ObservableObject {
     static let shared = InstancesProvider()
     

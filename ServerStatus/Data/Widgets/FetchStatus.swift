@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 func fetchStatus(serverInstance: ServerInstances) async -> StatusModel? {
     let response = await ApiClient.status(
         baseUrl: generateInstanceUrl(instance: serverInstance),

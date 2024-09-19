@@ -63,7 +63,8 @@ struct RamData: View {
                             }.font(.system(size: 16))
                             Spacer()
                         }
-                        Divider().padding(.vertical, 6)
+                        Spacer()
+                            .frame(height: 8)
                         if (data?.memory?.swapAvailable != nil && data?.memory?.swapTotal != nil) {
                             HStack {
                                 Text("\(String(describing: formatMemoryValue(value: data!.memory!.swapTotal! - data!.memory!.swapAvailable!))) GB")

@@ -17,7 +17,7 @@ struct ServerStatusApp: App {
                 .environmentObject(InstancesProvider.shared)
                 .environmentObject(StatusProvider.shared)
                 .environmentObject(WelcomeSheetViewModel())
-                .environmentObject(TipsViewModel())
+                .environmentObject(IAPManager())
         }
     }
 }

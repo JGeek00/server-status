@@ -1,6 +1,7 @@
 import Foundation
 import Sentry
 
+@MainActor
 class ApiClient {
     public static func status(baseUrl: String, token: String?) async -> StatusResponse {
         let defaultErrorResponse = StatusResponse(successful: false, statusCode: nil, data: nil)

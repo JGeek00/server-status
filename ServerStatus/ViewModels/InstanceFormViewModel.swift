@@ -2,7 +2,8 @@ import Foundation
 import Combine
 import CoreData
 
-class InstanceFormViewModel: ObservableObject {    
+@MainActor
+class InstanceFormViewModel: ObservableObject {
     @Published var editId = ""
     @Published var name = ""
     @Published var connectionMethod = "HTTP"

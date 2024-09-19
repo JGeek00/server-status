@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 struct UserDefaultsManager {
     static let shared = UserDefaultsManager()
     
