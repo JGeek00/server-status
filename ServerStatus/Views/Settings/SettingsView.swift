@@ -14,7 +14,6 @@ struct SettingsView: View {
     @EnvironmentObject private var statusProvider: StatusProvider
     
     @StateObject private var settingsModel = SettingsViewModel()
-    @StateObject private var instanceFormModel = InstanceFormViewModel()
     
     @AppStorage(StorageKeys.theme, store: UserDefaults.shared) private var theme: Enums.Theme = .system
     @AppStorage(StorageKeys.showServerUrlDetails, store: UserDefaults.shared) private var showServerUrlDetails: Bool = true
@@ -27,7 +26,6 @@ struct SettingsView: View {
     ) var instances: FetchedResults<ServerInstances>
     
     @State private var newInstanceFormSheet = false
-    @State private var instanceFormModalOpen = false
     
     var body: some View {
         let valueColor = theme == .dark ? Color(red: 129/255, green: 129/255, blue: 134/255) : Color(red: 138/255 , green: 138/255, blue: 142/255)
@@ -52,6 +50,7 @@ struct SettingsView: View {
                             InstanceFormView() {
                                 newInstanceFormSheet = false
                             }
+                            .environmentObject(InstanceFormViewModel())
                         })
                     }
                     Picker("Theme", selection: $theme) {
@@ -177,11 +176,6 @@ struct SettingsView: View {
         })
         .fullScreenCover(isPresented: $settingsModel.appRepoSafariOpen, content: {
             SFSafariViewWrapper(url: URL(string: Urls.appRepo)!).ignoresSafeArea()
-        })
-        .sheet(isPresented: $instanceFormModalOpen, content: {
-            InstanceFormView() {
-                instanceFormModalOpen = false
-            }
         })
         .environment(\.colorScheme, scheme)
     }

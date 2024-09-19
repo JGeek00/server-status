@@ -22,6 +22,19 @@ class InstanceFormViewModel: ObservableObject {
     @Published var showError = false
     @Published var error = ""
     
+    init(instance: ServerInstances? = nil) {
+        guard let instance = instance else { return }
+        editId = instance.id!
+        name = instance.name!
+        connectionMethod = instance.connectionMethod!.uppercased()
+        ipDomain = instance.ipDomain!
+        port = instance.port ?? ""
+        path = instance.path ?? ""
+        useBasicAuth = instance.useBasicAuth
+        basicAuthUser = instance.basicAuthUser ?? ""
+        basicAuthPassword = instance.basicAuthPassword ?? ""
+    }
+    
     private let persistenceController = PersistenceController.shared
     
     func reset() {
@@ -137,7 +150,7 @@ class InstanceFormViewModel: ObservableObject {
                 )
             }
             else {
-                let instance = InstancesProvider.shared.createInstance(
+                _ = InstancesProvider.shared.createInstance(
                     id: instanceId,
                     name: name,
                     connectionMethod: String(connectionMethod).lowercased(),
@@ -148,7 +161,6 @@ class InstanceFormViewModel: ObservableObject {
                     basicAuthUser: basicAuthUser != "" ? basicAuthUser : nil,
                     basicAuthPassword: basicAuthPassword != "" ? basicAuthPassword : nil
                 )
-                StatusProvider.shared.startTimer(instance: instance, interval: getRefreshTime())
             }
             
             finished()

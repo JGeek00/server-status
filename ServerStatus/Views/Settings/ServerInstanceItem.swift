@@ -75,6 +75,7 @@ struct ServerInstanceItem: View {
             InstanceFormView(instance: instance) {
                 editInstanceFormSheet = false
             }
+            .environmentObject(InstanceFormViewModel(instance: instance))
         })
         .alert("Delete instance", isPresented: $deleteInstanceAlert, actions: {
             Button(role: .destructive) {

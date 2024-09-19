@@ -79,9 +79,7 @@ class InstancesProvider: ObservableObject {
             let newInstances = fetchInstances(instanceId: nil)
             if newInstances.count == 1 {
                 setDefaultInstance(instance: newInstances.first)
-                DispatchQueue.main.async {
-                    self.selectedInstance = newInstances.first
-                }
+                self.selectedInstance = newInstances.first
             }
             return newInstances.first
         } catch {

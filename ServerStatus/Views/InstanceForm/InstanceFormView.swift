@@ -9,15 +9,9 @@ struct InstanceFormView: View {
         self.onClose = onClose
     }
     
-    @StateObject private var instanceFormModel = InstanceFormViewModel()
+    @EnvironmentObject private var instanceFormModel: InstanceFormViewModel
     @EnvironmentObject private var instancesModel: InstancesProvider
     @EnvironmentObject private var statusModel: StatusProvider
-    
-    @FetchRequest(
-        entity: ServerInstances.entity(),
-        sortDescriptors: [],
-        animation: .spring
-    ) var instances: FetchedResults<ServerInstances>
     
     func instanceUrl() -> String {
         return "\(String(instanceFormModel.connectionMethod).lowercased())://\(instanceFormModel.ipDomain)\(instanceFormModel.port != "" ? ":\(instanceFormModel.port)" : "")\(instanceFormModel.path)"
